@@ -1,0 +1,588 @@
+\begin{thebibliography}{10}
+
+\bibitem{mrtag1}
+K.~Abd-Elmonieum, S.~Sampath, N.~Osman, and J.L. Prince.
+\newblock Tool for automatic real-time regional cardiac function analysis using
+  harp.
+\newblock In {\em SPIE's Medical Imaging}, San Diego, CA, Feb 2003.
+
+\bibitem{alcouffe-brandt-etal-81}
+R.~E. Alcouffe, Achi Brandt, J.~E. Dendy, Jr., and J.~W. Painter.
+\newblock The multigrid method for the diffusion equation with strongly
+  discontinuous coefficients.
+\newblock {\em SIAM J. Sci. Statist. Comput.}, 2(4):430--454, 1981.
+
+\bibitem{alex01}
+D.C. Alexander, C.~Pierpaoli, P.J. Basser, and J.C. Gee.
+\newblock Spatial transformations of diffusion tensor magnetic resonance
+  images.
+\newblock {\em Medical Imaging, IEEE Transactions on}, 20:1131--1139, 2001.
+
+\bibitem{aha}
+American~Heart Association.
+\newblock Heart disease and stroke statistics.
+\newblock {\em American Heart Association, Dallas, Texas}, 2004.
+
+\bibitem{ayala85}
+D.~Ayala, P.~Brunet, R.~Juan, and I.~Navazo.
+\newblock Object representation by means of nonminimal division quadtrees and
+  octrees.
+\newblock {\em ACM Trans. Graph.}, 4(1):41--59, 1985.
+
+\bibitem{petsc-web-page}
+Satish Balay, Kris Buschelman, William~D. Gropp, Dinesh Kaushik, Matthew~G.
+  Knepley, Lois~Curfman McInnes, Barry~F. Smith, and Hong Zhang.
+\newblock {PETSc} {W}eb page, 2001.
+\newblock http://www.mcs.anl.gov/petsc.
+
+\bibitem{petsc-home-page}
+Satish Balay, Kris Buschelman, William~D. Gropp, Dinesh Kaushik, Lois~Curfman
+  McInnes, and Barry~F. Smith.
+\newblock {PETSc} home page.
+\newblock http://www.mcs.anl.gov/petsc, 2001.
+
+\bibitem{becker00}
+R.~Becker and M.~Braack.
+\newblock Multigrid techniques for finite elements on locally refined meshes.
+\newblock {\em Numerical Linear Algebra with applications}, 7:363--379, 2000.
+
+\bibitem{merck}
+M.~Beers and R.~Berkow.
+\newblock {\em The Merck Manual of Diagnosis and Therapy, 17th ed.}
+\newblock Whitehouse Station, NJ, Merck Research Laboratories, 1999.
+
+\bibitem{bern99}
+Marshall~W. Bern, David Eppstein, and Shang-Hua Teng.
+\newblock Parallel construction of quadtrees and quality triangulations.
+\newblock {\em International Journal of Computational Geometry and
+  Applications}, 9(6):517--532, 1999.
+
+\bibitem{berti04}
+G.~Berti.
+\newblock Image-based unstructured 3-d mesh generation for medical application.
+\newblock In {\em European Congress on Computational Methods in Applied
+  Sciences and Engineering}, Jyv\"askyl\"a, Finland, 2004.
+
+\bibitem{bluemke03}
+D.A. Bluemke, E.A. Krupinski, T.~Ovitt, K.~Gear, E.~Unger, L.~Axel, L.M. Boxt,
+  G.~Casolo, V.A. Ferrari, B.~Funaki, et~al.
+\newblock {MR Imaging of Arrhythmogenic Right Ventricular Cardiomyopathy:
+  Morphologic Findings and Interobserver Reliability}.
+\newblock {\em Cardiology}, 99(3):153--162, 2003.
+
+\bibitem{brandt-77}
+Achi Brandt.
+\newblock Multi-level adaptive solutions to boundary-value problems.
+\newblock {\em Mathematics of Computation}, 31(138):333--390, 1977.
+
+\bibitem{brunet90}
+Pere Brunet and Isabel Navazo.
+\newblock Solid representation and operation using extended octrees.
+\newblock {\em ACM Trans. Graph.}, 9(2):170--197, 1990.
+
+\bibitem{Cachier:MICCAI:01}
+P.~Cachier.
+\newblock How to trade off between regularization and image similarity in
+  non-rigid registration?
+\newblock In W.J. Niessen and M.A. Viergever, editors, {\em 4th Int. Conf. on
+  Medical Image Computing and Computer-Assisted Intervention (MICCAI'01)},
+  volume 2208 of {\em LNCS}, pages 1285--1286, Utrecht, The Netherlands,
+  October 2001.
+
+\bibitem{Cachier-JMIV-2004}
+P.~Cachier and N.~Ayache.
+\newblock Isotropic energies, filters and splines for vectorial regularization.
+\newblock {\em J. of Math. Imaging and Vision}, 20(3):251--265, May 2004.
+
+\bibitem{zoltan}
+Paul~M. Campbell, Karen~D. Devine, Joseph~E. Flaherty, Luis~G. Gervasio, and
+  James~D. Teresco.
+\newblock Dynamic octree load balancing using space-filling curves.
+\newblock Technical Report CS-03-01, Williams College Department of Computer
+  Science, 2003.
+
+\bibitem{chenBook}
+Yasheng Chen, Yu-Ping Wang, and A.~A. Amini.
+\newblock {\em Measurement of Cardiac Deformation from MRI: Physical and
+  Mathematical Models}, chapter 8: Tagged MRI Image Analysis from Splines.
+\newblock Kluwer Academic Publishers, 2001.
+
+\bibitem{clr90}
+T.~Corman, C.~Leiserson, and R.~Rivest.
+\newblock {\em Introduction to Algorithms}.
+\newblock MIT Press, 1990.
+
+\bibitem{epstein2004dec}
+F.H. Epstein and W.D. Gilson.
+\newblock {Displacement-encoded cardiac MRI using cosine and sine modulation to
+  eliminate(CANSEL) artifact-generating echoes}.
+\newblock {\em Magnetic Resonance in Medicine}, 52(4):774--781, 2004.
+
+\bibitem{makela02}
+Makela et~al.
+\newblock A review of cardiac image registration methods.
+\newblock {\em IEEE Transactions on Medical Imaging}, 21(9):1011--1021, 2002.
+
+\bibitem{ferrari2003arv}
+V.A. Ferrari and C.H. Scott.
+\newblock {Arrhythmogenic Right Ventricular Cardiomyopathy}.
+\newblock {\em Journal of Cardiovascular Electrophysiology}, 14(5):483--484,
+  2003.
+
+\bibitem{finkel74}
+Raphael~A. Finkel and Jon~Louis Bentley.
+\newblock Quad trees: A data structure for retrieval on composite keys.
+\newblock {\em Acta Inf.}, 4:1--9, 1974.
+
+\bibitem{freitag99}
+L.A. Freitag and R.M. Loy.
+\newblock Adaptive, multiresolution visualization of large data sets using a
+  distributed memory octree.
+\newblock In {\em ACM/IEEE 1999 Conference on Supercomputing}, 13-18 Nov. 1999.
+
+\bibitem{fuchs83}
+Henry Fuchs, Gregory~D. Abram, and Eric~D. Grant.
+\newblock Near real-time shaded display of rigid objects.
+\newblock In {\em SIGGRAPH '83: Proceedings of the 10th annual conference on
+  Computer graphics and interactive techniques}, pages 65--72, New York, NY,
+  USA, 1983. ACM Press.
+
+\bibitem{fuchs80}
+Henry Fuchs, Zvi~M. Kedem, and Bruce~F. Naylor.
+\newblock On visible surface generation by a priori tree structures.
+\newblock In {\em SIGGRAPH '80: Proceedings of the 7th annual conference on
+  Computer graphics and interactive techniques}, pages 124--133, New York, NY,
+  USA, 1980. ACM Press.
+
+\bibitem{Gladilin2003}
+E.~Gladilin.
+\newblock {\em Real-time Simulation of Physically Realistic Global
+  Deformations}.
+\newblock PhD thesis, Fachbereich Mathematik und Informatik, Freie
+  Universit{\"a}t Berlin, 2003.
+
+\bibitem{golub83}
+G.H. Golub and P.J. Basser.
+\newblock {\em Matrix Computations}.
+\newblock Johns Hopkins University Press, Baltimore, 1983.
+
+\bibitem{karypis03}
+A.~Grama, A.~Gupta, G.~Karypis, and V.~Kumar.
+\newblock {\em An Introduction to Parallel Computing: Design and Analysis of
+  Algorithms}.
+\newblock Addison Wesley, second edition, 2003.
+
+\bibitem{gray18}
+Henry Gray.
+\newblock {\em Anatomy of the Human Body}.
+\newblock Lea \& Febiger, Philadelphia, 1918.
+
+\bibitem{greaves99}
+D.~M. Greaves and A.~G.~L. Borthwick.
+\newblock Hierarchical tree-based finite element mesh generation.
+\newblock {\em International Journal for Numerical Methods in Engineering},
+  45(4):447--471, 1999.
+
+\bibitem{greengard89}
+Leslie Greengard and William Gropp.
+\newblock A parallel version of the fast multipole method-invited talk.
+\newblock In {\em Proceedings of the Third SIAM Conference on Parallel
+  Processing for Scientific Computing}, pages 213--222, Philadelphia, PA, USA,
+  1989. Society for Industrial and Applied Mathematics.
+
+\bibitem{griebel98}
+M.~Griebel and G.~Zumbusch.
+\newblock Parallel multigrid in an adaptive {PDE} solver based on hashing.
+\newblock In E.~H. D'Hollander, G.~R. Joubert, F.~J. Peters, and
+  U.~Trottenberg, editors, {\em Parallel Computing: Fundamentals, Applications
+  and New Directions, Proceedings of the Conference ParCo'97, 19-22 September
+  1997, Bonn, Germany}, volume~12, pages 589--600, Amsterdam, 1998. Elsevier,
+  North-Holland.
+
+\bibitem{guest01}
+Elizabeth Guest, Elizabeth Berry, Richard~A. Baldock, Marta Fidrich, and
+  Mike~A. Smith.
+\newblock Robust point correspondence applied to two-and three-dimensional
+  image registration.
+\newblock {\em IEEE Trans. Pattern Anal. Mach. Intell.}, 23(2):165--179, 2001.
+
+\bibitem{aluru02}
+Bhanu Hariharan, Srinivas Aluru, and Balasubramaniam Shanker.
+\newblock A scalable parallel fast multipole method for analysis of scattering
+  from perfect electrically conducting surfaces.
+\newblock In {\em Supercomputing '02: Proceedings of the 2002 ACM/IEEE
+  conference on Supercomputing}, pages 1--17, Los Alamitos, CA, USA, 2002. IEEE
+  Computer Society Press.
+
+\bibitem{herzen87}
+Brian~Von Herzen and Alan~H. Barr.
+\newblock Accurate triangulations of deformed, intersecting surfaces.
+\newblock In {\em SIGGRAPH '87: Proceedings of the 14th annual conference on
+  Computer graphics and interactive techniques}, pages 103--110, New York, NY,
+  USA, 1987. ACM Press.
+
+\bibitem{Hughes87}
+T.J.R Hughes.
+\newblock {\em The Finte Element Method. {L}inear Static and Dynamic Finite
+  Element Analysis}.
+\newblock Prentice-Hall, Englewood Cliffs, New Jersey, 1987.
+
+\bibitem{garot00}
+Garot J., Bluemke D.A., Osman N.F., and et~al.
+\newblock Fast determination of regional myocardial strain fields from tagged
+  cardiac images using harmonic phase mri.
+\newblock {\em Circulation}, 101:981--988, 2000.
+
+\bibitem{kim02}
+E.~{Kim}, J.~{Bielak}, O.~{Ghattas}, and J.~{Wang}.
+\newblock {Octree-based finite element method for large-scale earthquake ground
+  motion modeling in heterogeneous basins}.
+\newblock {\em AGU Fall Meeting Abstracts}, pages B1221+, December 2002.
+
+\bibitem{ledesma01}
+M.J. Ledesma-Carbayo, J.~Kybic, M.~Desco, A.~Santos, and M.~Unser.
+\newblock Cardiac motion analysis from ultrasound sequences using non-rigid
+  registration.
+\newblock In W.J. Niessen and M.A. Viergever, editors, {\em MICCAI}, volume
+  2208 of {\em Lecture Notes in Computer Science}, pages 889--896, Utrecht, The
+  Netherlands, October 14-17, 2001. Springer.
+
+\bibitem{locfreq}
+J.~Liu, B.~Vemuri, and J.~Marroquin.
+\newblock Local frequency representations for robust multimodal image
+  registration.
+\newblock {\em Medical Imaging, IEEE Transactions on}, 21(5):462--469, May
+  2002.
+
+\bibitem{guttman94}
+Guttman M.A., Prince J.L., and McVeigh E.R.
+\newblock Tag and contour detection in tagged mr images of the left-ventricle.
+\newblock {\em IEEE Transactions on Medical Imaging}, 13:74--88, 1994.
+
+\bibitem{mackerle2005fem}
+J.~Mackerle.
+\newblock {Finite element modelling and simulations in cardiovascular mechanics
+  and cardiology: A bibliography 1993--2004}.
+\newblock {\em Computer Methods in Biomechanics and Biomedical Engineering},
+  8(2):59--81, 2005.
+
+\bibitem{anant}
+Anant Madabhushi, Michael~D. Feldman, Dimitris~N. Metaxas, John Tomaszeweski,
+  and Deborah Chute.
+\newblock Novel stochastic combination of 3d texture features for automated
+  segmentation of prostatic adenocarcinoma from high resolution mri.
+\newblock In {\em MICCAI}, 2003.
+
+\bibitem{laData00}
+H.~MAGISTRALE, S.~DAY, R.~CLAYTON, and R.~GRAVES.
+\newblock The scec southern california reference three-dimensional seismic
+  velocity model version 2.
+\newblock {\em Bulletin of the Seismological Soceity of America}, 2000.
+
+\bibitem{manju96}
+B.~S. Manjunath and W.~Y. Ma.
+\newblock Texture features for browsing and retrieval of image data.
+\newblock {\em IEEE Trans. Pattern Anal. Mach. Intell.}, 18(8):837--842, 1996.
+
+\bibitem{mcculloch1998cbh}
+A.~McCulloch, J.~Bassingthwaighte, P.~Hunter, and D.~Noble.
+\newblock {Computational biology of the heart: from structure to function.}
+\newblock {\em Prog Biophys Mol Biol}, 69(2-3):153--5, 1998.
+
+\bibitem{McE00}
+J.C. McEachen, II, A.~Nehorai, and J.S. Duncan.
+\newblock Multiframe temporal estimation of cardiac nonrigid motion.
+\newblock {\em Image Processing, IEEE Transactions on}, 9(4):651--665, Apr.
+  2000.
+
+\bibitem{meagher82}
+D.~Meagher.
+\newblock Geometric modeling using octree encoding.
+\newblock {\em Computer Graphics and Image Processing}, 19:129--147, 1982.
+
+\bibitem{moore95}
+Doug Moore.
+\newblock The cost of balancing generalized quadtrees.
+\newblock In {\em Symposium on Solid Modeling and Applications}, pages
+  305--312, 1995.
+
+\bibitem{osman1999cmt}
+N.F. Osman, W.S. Kerwin, E.R. McVeigh, and J.L. Prince.
+\newblock {Cardiac motion tracking using CINE harmonic phase(HARP) magnetic
+  resonance imaging}.
+\newblock {\em Magnetic Resonance in Medicine}, 42(6):1048--1060, 1999.
+
+\bibitem{Papa01}
+X.~Papademetris, A.~J. Sinusas, D.~P. Dione, and J.~S. Duncan.
+\newblock Estimation of {3D} left ventricular deformation from
+  echocardiography.
+\newblock {\em Medical Image Analysis}, 5:17--28, 2001.
+
+\bibitem{pattynama93}
+PM~Pattynama, HJ~Lamb, EA~van~der Velde, EE~van~der Wall, and A.~de~Roos.
+\newblock {Left ventricular measurements with cine and spin-echo MR imaging: a
+  study of reproducibility with variance component analysis.}
+\newblock {\em Radiology}, 187(1):261--8, 1993.
+
+\bibitem{paul2003gar}
+M.~Paul, E.~Schulze-Bahr, G.~Breithardt, and T.~Wichter.
+\newblock {Genetics of arrhythmogenic right ventricular cardiomyopathy-status
+  quo and future perspectives}.
+\newblock {\em Zeitschrift f{\"u}r Kardiologie}, 92(2):128--136, 2003.
+
+\bibitem{perperidis04}
+D.~Perperidis, R.~Mohiaddin, and D.~Rueckert.
+\newblock Spatio-temporal free-form registration of cardiac mr image sequences.
+\newblock In {\em MICCAI}, pages 911--919, 2004.
+
+\bibitem{pierpaoli96}
+C.~Pierpaoli, P.~Jezzard, P.J. Basser, A.~Barnett, and G.D. Chiro.
+\newblock Diffusion tensor mr imaging of the human brain.
+\newblock {\em Radiology}, 201(3):637--648, 1996.
+
+\bibitem{popinet03}
+S.~Popinet.
+\newblock Gerris: a tree-based adaptive solver for the incompressible euler
+  equations in complex geometries.
+\newblock {\em Journal of Computational Physics}, 190:572--600(29), 20
+  September 2003.
+
+\bibitem{intgrad}
+A.~Roche, X.~Pennec, G.~Malandain, and N.~Ayache.
+\newblock Rigid registration of {3D} ultrasound with mr images: a new approach
+  combining intensity and gradient information.
+\newblock {\em Medical Imaging, IEEE Transactions on}, 20(10):1038--1049, Oct.
+  2001.
+
+\bibitem{sachse04}
+Frank~B. Sachse.
+\newblock {\em Computational Cardiology: Modeling of Anatomy,
+  Electrophysiology, and Mechanics}, volume 2966 of {\em Lecture Notes in
+  Computer Science}.
+\newblock Springer, 2004.
+
+\bibitem{stenoses}
+S.G. Sawada, Segar D.S., and Ryan T.
+\newblock Echocardiographic detection of coronary artery disease during
+  dobutamine infusion.
+\newblock {\em Circulation}, 83:1605--1614, 1991.
+
+\bibitem{schneiders97}
+R.~Schneiders.
+\newblock An algorithm for the generation of hexahedral element meshes based on
+  an octree technique, 1997.
+
+\bibitem{schneiders96}
+R.~Schneiders, R.~Schindler, and F.~Weiler.
+\newblock Octree-based generation of hexahedral element meshes, 1996.
+
+\bibitem{schumaker69}
+R.A. Schumaker, P.~Brand, M.~Gilliland, and W.~Sharp.
+\newblock Study for applying computer-generated images to visual simulation.
+\newblock {\em U.S. Air Force Human Resources Laboratory, Technical Report},
+  69(14), 1969.
+
+\bibitem{scollan98}
+D.F Scollan, A.~Holmes, R.L. Winslow, and J.~Forder.
+\newblock Histological validation of myocardial microstructure obtained from
+  diffusion tensor magnetic resonance imaging.
+\newblock {\em Am. J. Physiol. (Heart Circulatory Physiol.}, 275:2308--2318,
+  1998.
+
+\bibitem{sermesant04}
+M.~Sermesant, K.~Rhode, G.I. Sanchez-Ortiz, O.~Camara, R.~Andriantsimiavona,
+  S.~Hegde, D.~Rueckert, P.~Lambiase, C.~Bucknall, E.~Rosenthal, H.~Delingette,
+  D.L.G. Hill, N.~Ayache, and R.~Razavi.
+\newblock Simulation of cardiac pathologies using an electromechanical
+  biventricular model and xmr interventional imaging.
+\newblock In {\em MICCAI}, pages 467--480, 2004.
+
+\bibitem{hammer}
+Dinggang Shen and C.~Davatzikos.
+\newblock Hammer: hierarchical attribute matching mechanism for elastic
+  registration.
+\newblock {\em Medical Imaging, IEEE Transactions on}, 21(11):1421--1439, Nov.
+  2002.
+
+\bibitem{shepard91}
+M.S. Shephard and M.K. Georges.
+\newblock Automatic three-dimensional mesh generation by the finite octree
+  technique.
+\newblock {\em International Journal for Numerical Methods in Engineering},
+  26:709--749, 1991.
+
+\bibitem{shewchuk98}
+Jonathan~Richard Shewchuk.
+\newblock Tetrahedral mesh generation by delaunay refinement.
+\newblock In {\em Proceedings of the Fourteenth Annual Symposium on
+  Computational Geometry}, pages 86--95, Minneapolis, Minnesota, USA, June
+  1998. Association for Computing Machinery.
+
+\bibitem{Shi99}
+P.~Shi, A.J. Sinusas, R.~T. Constable, and J.S. Duncan.
+\newblock Volumetric deformation analysis using mechanics--based data fusion:
+  Applications in cardiac motion recovery.
+\newblock {\em International Journal of Computer Vision}, 35(1):65--85, Nov.
+  1999.
+
+\bibitem{smart2000das}
+S.C. Smart, T.~Knickelbine, F.~Malik, and K.B. Sagar.
+\newblock {Dobutamine-Atropine Stress Echocardiography for the Detection of
+  Coronary Artery Disease in Patients With Left Ventricular Hypertrophy
+  Importance of Chamber Size and Systolic Wall Stress}, 2000.
+
+\bibitem{overlapComm97}
+Arun~K. Somani and Allen~M. Sansano.
+\newblock Minimizing overhead in parallel algorithms through overlapping
+  communication/computation.
+\newblock Technical report, Institute for Computer Applications in Science and
+  Engineering (ICASE), 1997.
+
+\bibitem{Song91}
+S.~Song and R.~Leahy.
+\newblock Computation of 3d velocity fields from 3d cine ct images of a human
+  heart.
+\newblock {\em Medical Imaging, IEEE Transactions on}, 10(9):295--306, Sep
+  1991.
+
+\bibitem{strasters91}
+K.C. Strasters and J.J. Gerbrands.
+\newblock 3-dimensional image segmentation using a split, merge and
+  group-approach.
+\newblock {\em Pattern Recognition Letters}, 12(5):307--325, May 1991.
+
+\bibitem{streeter73}
+Daniel~D. Streeter~Jr. and William~T. Hanna.
+\newblock {Engineering Mechanics for Successive States in Canine Left
+  Ventricular Myocardium: II. Fiber Angle and Sarcomere Length}.
+\newblock {\em Circ Res}, 33(6):656--664, 1973.
+
+\bibitem{tandri2003mri}
+H.~TANDRI, H.~CALKINS, K.~NASIR, C.~BOMMA, E.~CASTILLO, J.~RUTBERG,
+  C.~TICHNELL, J.~LIMA, and D.A. BLUEMKE.
+\newblock {Magnetic Resonance Imaging Findings in Patients Meeting Task Force
+  Criteria for Arrhythmogenic Right Ventricular Dysplasia}.
+\newblock {\em magnetic resonance imaging}, 2003.
+
+\bibitem{moments}
+C.H. Teh and R.T. Chin.
+\newblock On image analysis by the methods of moments.
+\newblock {\em IEEE Trans. PAMI}, 10:496--513, 1988.
+
+\bibitem{shangHua98}
+Shang-Hua Teng.
+\newblock Provably good partitioning and load balancing algorithms for parallel
+  adaptive n-body simulation.
+\newblock {\em SIAM Journal on Scientific Computing}, 19, 1998.
+
+\bibitem{thiene2000pap}
+G.~Thiene, C.~Basso, F.~Calabrese, A.~Angelini, and M.~Valente.
+\newblock {Pathology and Pathogenesis of Arrhythmogenic Right Ventricular
+  Cardiomyopathy}.
+\newblock {\em Herz}, 25(3):210--215, 2000.
+
+\bibitem{thiene1988rvc}
+G.~Thiene, A.~Nava, D.~Corrado, L.~Rossi, and N.~Pennelli.
+\newblock {Right ventricular cardiomyopathy and sudden death in young people}.
+\newblock {\em New Engl J Med}, 318:129--133, 1988.
+
+\bibitem{mrphase}
+Francois~Meyer Todd~Constable, et~al.
+\newblock Tracking myocardial deformation using phase contrast mr velocity
+  fields: a stocastic approach.
+\newblock {\em IEEE Transactions on Medical Imaging}, 15(4):453--465, 1996.
+
+\bibitem{tropf81}
+H.~Tropf and H.~Herzog.
+\newblock Multidimensional range search in dynamically balanced trees.
+\newblock {\em Angewandte Informatik}, 2:71--77, 1981.
+
+\bibitem{tseng99}
+W.-Y.I. Tseng, T.G. Reese, R.M Weisskoff, and V.J. Wedeen.
+\newblock Cardiac diffusion tensor mri in vivo without strain correction.
+\newblock {\em Magnetic Resonance in Medicine}, 42(2):393--403, 1999.
+
+\bibitem{tu04a}
+Tiankai Tu and David~R. O'Hallaron.
+\newblock Balance refinement of massive linear octree datasets.
+\newblock {\em CMU Technical Report}, CMU-CS-04(129), 2004.
+
+\bibitem{tu04b}
+Tiankai Tu and David~R. O'Hallaron.
+\newblock Extracting hexahedral mesh structures from balanced linear octrees.
+\newblock In {\em 13th International Meshing Roundtable}, pages 191--200,
+  Williamsburg, VA, Sandia National Laboratories, September 19-22 2004.
+
+\bibitem{tu05}
+Tiankai Tu, David~R. O'Hallaron, and Omar Ghattas.
+\newblock Scalable parallel octree meshing for terascale applications.
+\newblock In {\em SC '05: Proceedings of the 2005 ACM/IEEE conference on
+  Supercomputing}, page~4, Washington, DC, USA, 2005. IEEE Computer Society.
+
+\bibitem{walker05}
+Joseph~C. Walker, Julius~M. Guccione, Yi~Jiang, Peng Zhang, Arthur~W. Wallace,
+  Edward~W. Hsu, and Mark~B. Ratcliffe.
+\newblock {Helical myofiber orientation after myocardial infarction and left
+  ventricular surgical restoration in sheep}.
+\newblock {\em J Thorac Cardiovasc Surg}, 129(2):382--390, 2005.
+
+\bibitem{Wang01}
+Yu-Ping Wang, Y.~Chen, and A.~A. Amini.
+\newblock Efficient lv motion estimation using subspace approximation
+  techniques.
+\newblock {\em Medical Image Analysis}, 20(6):499--513, Jun. 2001.
+
+\bibitem{warren92}
+M.~S. Warren and J.~K. Salmon.
+\newblock Astrophysical n-body simulations using hierarchical tree data
+  structures.
+\newblock In {\em Supercomputing '92: Proceedings of the 1992 ACM/IEEE
+  conference on Supercomputing}, pages 570--576, Los Alamitos, CA, USA, 1992.
+  IEEE Computer Society Press.
+
+\bibitem{warren93}
+Michael~S. Warren and John~K. Salmon.
+\newblock A parallel hashed oct-tree n-body algorithm.
+\newblock In {\em Proceedings of Supercomputing '93}, 31 March 1993.
+
+\bibitem{wha}
+World Heart~Foundation website.
+\newblock http://www.worldheart.org/call-to-action.php.
+
+\bibitem{xu03}
+Dongrong Xu, Susumu Mori, Dinggang Shen, Peter C.M.~van Zijl, and Christos
+  Davatzikos.
+\newblock Spatial normalization of diffusion tensor fields.
+\newblock {\em Magnetic Resonance in Medicine}, 50:175--182, 2003.
+
+\bibitem{wav}
+Zhong Xue, Dinggang Shen, and C.~Davatzikos.
+\newblock Determining correspondence in 3-d mr brain images using attribute
+  vectors as morphological signatures of voxels.
+\newblock {\em Medical Imaging, IEEE Transactions on}, 23(10):1276--1291, Oct.
+  2004.
+
+\bibitem{ying04}
+Lexing Ying, George Biros, and Denis Zorin.
+\newblock A kernel-independent adaptive fast multipole algorithm in two and
+  three dimensions.
+\newblock {\em J. Comput. Phys.}, 196(2):591--626, 2004.
+
+\bibitem{ying03}
+Lexing Ying, George Biros, Denis Zorin, and Harper Langston.
+\newblock A new parallel kernel-independent fast multipole method.
+\newblock In {\em SC '03: Proceedings of the 2003 ACM/IEEE conference on
+  Supercomputing}, page~14, Washington, DC, USA, 2003. IEEE Computer Society.
+
+\bibitem{mrtag}
+EA~Zerhouni, DM~Parish, WJ~Rogers, A~Yang, and EP~Shapiro.
+\newblock Human heart: tagging with mr imaging--a method for noninvasive
+  assessment of myocardial motion.
+\newblock {\em Radiology}, 169(1):59--63, 1988.
+
+\bibitem{Zitova03}
+Barbara Zitov{\'a} and Jan Flusser.
+\newblock Image registration methods: a survey.
+\newblock {\em Image Vision Comput.}, 21(11):977--1000, 2003.
+
+\end{thebibliography}

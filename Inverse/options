@@ -1,0 +1,43 @@
+%-ksp_monitor
+%-ksp_converged_reason
+-ksp_type cg
+-t0 0.0
+-t1 1.0
+-dt 0.125
+-Ns 17
+-nu 1.0
+-levels 2
+-ratio 1.0
+-ksp_rtol 1e-5
+-forward_ksp_rtol 1e-8
+%-forward_ksp_monitor
+-invmg_ksp_converged_reason
+-mg_coarse_ksp_max_it 100
+-mg_coarse_ksp_type gmres
+-mg_coarse_pc_type none
+%-mg_coarse_ksp_monitor
+-mg_coarse_ksp_rtol 1e-8
+-mg_coarse_ksp_converged_reason
+-mg_levels_pc_type highpass
+-mg_levels_ksp_type frankel
+-mg_levels_ksp_max_it 1
+%-mg_levels_ksp_converged_reason
+%-mg_levels_ksp_monitor
+-invmg_ksp_type richardson
+-invmg_pc_type mg
+%-invmg_ksp_max_it 10
+-invmg_ksp_rtol 1e-8
+-invmg_ksp_max_it 20
+-beta 0.001
+-restype 3					
+-pc_mg_type MULTIPLICATIVE
+%-pc_mg_type FULL
+-invmg_ksp_norm_type unpreconditioned
+
+%-randomguess
+-invmg_ksp_monitor
+
+%-invmg_ksp_view
+-dmmg_galerkin 0
+%-mg_levels_0_pc_type highpass
+%-mg_levels_0_ksp_monitor

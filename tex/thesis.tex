@@ -1,0 +1,154 @@
+
+\documentclass{upenndiss}
+% The default font size is 12pt, but can be changed in the normal way:
+% \documentclass[11pt]{upenndiss}
+%
+% The Penn guidelines allow smaller sizes, but be warned that the lines
+% are too long for anything smaller than 12pt to be easily readable (see any
+% introduction to designing text layouts).
+
+% Add packages and definitions you want to use here:
+\usepackage{times}
+\usepackage{epsfig, bbm, subfigure} 
+%\usepackage[mathbf,mathcal]{euler}
+%\usepackage{pifont,epsfig}
+
+\usepackage[
+pdfauthor={Hari Sundar},
+pdftitle={ Ph.D. Thesis },
+pdfcreator={pdftex},
+pdfsubject={Computer Aided Diagnosis of Cardiomyopathies},
+pdfkeywords={Cardiomyopathy, CAD, registration},
+pagebackref  = {true},
+hyperindex = {true},
+colorlinks = {true},
+linkcolor = {blue},
+pagecolor = {blue},
+citecolor = {blue}
+]{hyperref} 
+%\usepackage{cite}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+%\usepackage{algorithmic}
+%\usepackage{algorithm}
+
+%%%%%%%%%% Start TeXmacs macros
+\newcommand{\tmstrong}[1]{\textbf{#1}}
+\newcommand{\tmmathbf}[1]{\ensuremath{\boldsymbol{#1}}}
+\newcommand{\tmop}[1]{\ensuremath{\operatorname{#1}}}
+\newenvironment{enumerateroman}{\begin{enumerate}[i.]}{\end{enumerate}}
+%%%%%%%%%% End TeXmacs macros
+
+\renewcommand{\div}{{\boldsymbol{\nabla}}}
+\input{mac-gen}
+\input{mac-fem}
+\input{mac-vf}
+%------------------------------------------------------------
+\newtheorem{algorithm}{\textbf{Algorithm}}
+\newtheorem{acknowledgement}{Acknowledgement}
+\newtheorem{axiom}{Axiom}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proof}{Proof}
+\newtheorem{case}{Case}
+\newtheorem{claim}{Claim}
+\newtheorem{conclusion}{Conclusion}
+\newtheorem{condition}{Condition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{criterion}{Criterion}
+\newtheorem{example}{Example}
+\newtheorem{exercise}{Exercise}
+
+\newtheorem{notation}{Notation}
+\newtheorem{problem}{Problem}
+
+\newtheorem{remark}{Remark}
+\newtheorem{prop}{Property}
+\newtheorem{define}{Definition}
+\newtheorem{solution}{Solution}
+\newtheorem{summary}{Summary}
+\numberwithin{equation}{section}
+%\newenvironment{proof}{
+%  \noindent\textbf{Proof}\ }{\hspace*{\fill}
+%  \begin{math}\Box\end{math}\medskip}
+%------------------------------------------------------------
+\newcommand{\pe}{\psi}
+\newcommand{\argmax}[1]{\ensuremath{\arg \,\underset{#1}{\max}\;}}
+\def\d{\delta} 
+\def\ds{\displaystyle} 
+\def\e{{\epsilon}} 
+\def\eb{\bar{\eta}}  
+\def\enorm#1{\|#1\|_2} 
+\def\Fp{F^\prime}  
+\def\Kc{{\cal K}} 
+\def\norm#1{\|#1\|} 
+\def\wb{{\bar w}} 
+\def\zb{{\bar z}} 
+
+
+\def\bfE{\mbox{\boldmath$E$}}
+\def\bfG{\mbox{\boldmath$G$}}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%  The title pages  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Note: Use \protect\\ if you need a manual line break
+%\title{A Really Clever Title: \protect\\ The Second Line of Your Title}
+\title{Spatio-Temporal Deformation Analysis of Cardiac MR Images}
+
+% Fill in here as appropriate.  Separate multiple names with \and  
+\author{Hari Sundar}
+\supervisor{Christos Davatzikos}
+\gradchair{Susan Margulies}
+\committee{George Biros \and Victor Ferrari \and Harold Litt \and Dinggang Shen}
+
+% Change to \copyrighttrue if you want to generate a copyright page.
+\copyrightfalse  
+% \copyrightyear{2000}  % Defaults to the current year if undefined.
+
+\department{Bioengineering}
+
+
+%%%%%%%%%%%%%%%%%%%  Now for the front matter %%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Front matter elements are required to appear in a specific order.  In this
+% section you define the parts of your front matter, and the style will
+% automatically put them in the proper order.
+
+
+% Declare the sections that you use.  Only Abstract is obligatory.  
+%
+\abstractfile{abstract}
+\acknowledgementsfile{acknow}
+% \dedicationfile{dedication}
+% \prefacefile{preface}
+
+% ALTERNATELY, if you have a really short Dedication (no more than one
+% paragraph) you can place it in the main file, with the command
+% \dedication{...}, INSTEAD of using \dedicationfile.
+\dedication{\center
+\textit{Quidquid id est,} \\
+\textit{timeo Danaos et dona ferentes.} \\
+\quad\quad-Vergil, Aeneid II.49}
+
+\begin{document}
+% The following command now generates all your starting pages:
+\FrontMatter
+
+\include {introduction}
+\include {hammer}
+\include {model}
+\include {octree}
+\include {inverse}
+\include {results}	     
+
+% And the bibliography
+
+\bibliographystyle{plain}
+\bibliography{thesis,octree}
+
+\end{document}
+

@@ -1,0 +1,154 @@
+\backcite {bluemke03}{{iv}{(document)}{Doc-Start}}
+\backcite {pattynama93}{{iv}{(document)}{Doc-Start}}
+\backcite {gray18}{{x}{(document)}{Doc-Start}}
+\backcite {aha}{{1}{1.1}{section.1.1}}
+\backcite {aha}{{1}{1.1}{section.1.1}}
+\backcite {aha}{{2}{1.1}{section.1.1}}
+\backcite {aha}{{2}{1.1}{section.1.1}}
+\backcite {wha}{{2}{1.1}{section.1.1}}
+\backcite {merck}{{2}{1.1}{section.1.1}}
+\backcite {merck}{{2}{1.1}{section.1.1}}
+\backcite {bluemke03}{{3}{1.1}{section.1.1}}
+\backcite {pattynama93}{{3}{1.1}{section.1.1}}
+\backcite {ferrari2003arv, thiene1988rvc}{{4}{1.2.1}{subsection.1.2.1}}
+\backcite {paul2003gar}{{4}{1.2.1}{subsection.1.2.1}}
+\backcite {thiene1988rvc}{{4}{1.2.1}{subsection.1.2.1}}
+\backcite {thiene2000pap}{{4}{1.2.1}{subsection.1.2.1}}
+\backcite {bluemke03}{{4}{1.2.2}{subsection.1.2.2}}
+\backcite {tandri2003mri}{{5}{1.2.2}{subsection.1.2.2}}
+\backcite {bluemke03}{{5}{1.2.2}{subsection.1.2.2}}
+\backcite { intgrad}{{5}{1.3}{section.1.3}}
+\backcite { hammer, moments}{{5}{1.3}{section.1.3}}
+\backcite { manju96}{{5}{1.3}{section.1.3}}
+\backcite { locfreq}{{5}{1.3}{section.1.3}}
+\backcite {smart2000das}{{6}{1.3}{section.1.3}}
+\backcite { mrtag}{{6}{1.3.1}{section*.5}}
+\backcite { Shi99, chenBook}{{7}{1.3.1}{section*.5}}
+\backcite { guttman94}{{7}{1.3.1}{section*.5}}
+\backcite { mrtag}{{7}{1.3.1}{section*.5}}
+\backcite {osman1999cmt}{{7}{1.3.1}{section*.5}}
+\backcite { garot00}{{7}{1.3.1}{section*.5}}
+\backcite { mrphase}{{7}{1.3.1}{section*.6}}
+\backcite {epstein2004dec}{{8}{1.3.1}{section*.7}}
+\backcite {osman1999cmt}{{8}{1.3.1}{section*.7}}
+\backcite { Shi99, ledesma01, McE00, Papa01, perperidis04, Song91, Wang01}{{8}{1.3.2}{subsection.1.3.2}}
+\backcite { Shi99, Papa01, Wang01}{{8}{1.3.2}{subsection.1.3.2}}
+\backcite { Shi99, McE00}{{9}{1.3.2}{subsection.1.3.2}}
+\backcite { ledesma01, perperidis04, Song91}{{9}{1.3.2}{subsection.1.3.2}}
+\backcite { perperidis04}{{9}{1.3.2}{subsection.1.3.2}}
+\backcite { Cachier:MICCAI:01, Cachier-JMIV-2004}{{9}{1.3.2}{subsection.1.3.2}}
+\backcite {mcculloch1998cbh}{{9}{1.3.2}{subsection.1.3.2}}
+\backcite { makela02}{{10}{1.3.2}{subsection.1.3.2}}
+\backcite { Zitova03}{{10}{1.3.2}{subsection.1.3.2}}
+\backcite {intgrad}{{12}{2}{chapter.2}}
+\backcite {hammer}{{12}{2}{chapter.2}}
+\backcite {moments}{{12}{2}{chapter.2}}
+\backcite {manju96}{{12}{2}{chapter.2}}
+\backcite {anant}{{12}{2}{chapter.2}}
+\backcite {locfreq}{{12}{2}{chapter.2}}
+\backcite {stenoses}{{12}{2}{chapter.2}}
+\backcite {mrtag}{{14}{2.1}{figure.2.1}}
+\backcite {mrphase}{{14}{2.1}{figure.2.1}}
+\backcite {mrtag}{{14}{2.1}{figure.2.1}}
+\backcite {Shi99}{{14}{2.1}{figure.2.1}}
+\backcite {mrtag1}{{14}{2.1}{figure.2.1}}
+\backcite {chenBook}{{14}{2.1}{figure.2.1}}
+\backcite {guttman94}{{14}{2.1}{figure.2.1}}
+\backcite {mrtag}{{14}{2.1}{figure.2.1}}
+\backcite {mrtag1}{{14}{2.1}{figure.2.1}}
+\backcite {garot00}{{14}{2.1}{figure.2.1}}
+\backcite {mrphase}{{14}{2.1}{figure.2.1}}
+\backcite {Shi99}{{15}{2.1}{figure.2.1}}
+\backcite {Papa01}{{15}{2.1}{figure.2.1}}
+\backcite {Wang01}{{15}{2.1}{figure.2.1}}
+\backcite {McE00}{{15}{2.1}{figure.2.1}}
+\backcite {Song91}{{15}{2.1}{figure.2.1}}
+\backcite {ledesma01}{{15}{2.1}{figure.2.1}}
+\backcite {perperidis04}{{15}{2.1}{figure.2.1}}
+\backcite {Shi99}{{15}{2.1}{figure.2.1}}
+\backcite {Papa01}{{15}{2.1}{figure.2.1}}
+\backcite {Wang01}{{15}{2.1}{figure.2.1}}
+\backcite {Shi99}{{15}{2.1}{figure.2.1}}
+\backcite {McE00}{{15}{2.1}{figure.2.1}}
+\backcite {ledesma01}{{15}{2.1}{figure.2.1}}
+\backcite {Song91}{{15}{2.1}{figure.2.1}}
+\backcite {perperidis04}{{15}{2.1}{figure.2.1}}
+\backcite {perperidis04}{{15}{2.1}{figure.2.1}}
+\backcite {makela02}{{16}{2.1}{figure.2.1}}
+\backcite {Zitova03}{{16}{2.1}{figure.2.1}}
+\backcite {hammer}{{16}{2.1}{figure.2.1}}
+\backcite {wav}{{16}{2.1}{figure.2.1}}
+\backcite {wav}{{16}{2.2}{section.2.2}}
+\backcite {wav}{{20}{2.2.2}{figure.2.3}}
+\backcite {wav}{{20}{2.2.3}{subsection.2.2.3}}
+\backcite {guest01}{{20}{2.2.3}{subsection.2.2.3}}
+\backcite {guest01}{{23}{2.2.4}{subsection.2.2.4}}
+\backcite {sachse04}{{32}{3.1}{section.3.1}}
+\backcite {mackerle2005fem, sachse04}{{33}{3.2}{section.3.2}}
+\backcite {gray18}{{34}{3.2}{section.3.2}}
+\backcite {gray18}{{34}{3.1}{figure.3.1}}
+\backcite {Gladilin2003}{{35}{3.3}{equation.3.3.1}}
+\backcite {Hughes87}{{35}{1}{Hfootnote.1}}
+\backcite {brandt-77}{{45}{3.3.3}{section*.9}}
+\backcite {alcouffe-brandt-etal-81}{{45}{3.3.3}{section*.9}}
+\backcite {petsc-home-page}{{45}{3.3.3}{section*.9}}
+\backcite {pierpaoli96}{{46}{3.4}{section.3.4}}
+\backcite {scollan98}{{46}{3.4}{section.3.4}}
+\backcite {tseng99, scollan98}{{47}{3.4}{equation.3.4.1}}
+\backcite {hammer}{{47}{3.5}{section.3.5}}
+\backcite {Zitova03}{{48}{3.5.1}{subsection.3.5.1}}
+\backcite {hammer}{{48}{3.5.1}{subsection.3.5.1}}
+\backcite {xu03}{{49}{3.5.2}{subsection.3.5.2}}
+\backcite {alex01}{{49}{3.5.2}{subsection.3.5.2}}
+\backcite {golub83}{{49}{3.5.2}{subsection.3.5.2}}
+\backcite {xu03}{{50}{3.5.2}{subsection.3.5.2}}
+\backcite {scollan98}{{51}{3.6}{section.3.6}}
+\backcite {streeter73}{{51}{3.6}{section.3.6}}
+\backcite {sachse04, sermesant04}{{51}{3.6}{section.3.6}}
+\backcite {walker05}{{51}{3.6}{figure.3.4}}
+\backcite {becker00,kim02}{{54}{4}{chapter.4}}
+\backcite {griebel98, popinet03}{{54}{4}{chapter.4}}
+\backcite {greengard89, aluru02, shangHua98, warren92, ying04, ying03}{{54}{4}{chapter.4}}
+\backcite { fuchs83, fuchs80, schumaker69}{{54}{4}{chapter.4}}
+\backcite {finkel74}{{54}{4}{chapter.4}}
+\backcite {meagher82}{{54}{4}{chapter.4}}
+\backcite {tropf81}{{55}{4}{chapter.4}}
+\backcite {bern99, tu05}{{55}{4}{chapter.4}}
+\backcite {shewchuk98}{{55}{4}{chapter.4}}
+\backcite {berti04, greaves99, schneiders97, schneiders96,shepard91, tu04b}{{55}{4}{chapter.4}}
+\backcite {meagher82}{{55}{4}{chapter.4}}
+\backcite {ayala85, brunet90}{{55}{4}{chapter.4}}
+\backcite {freitag99}{{55}{4}{chapter.4}}
+\backcite {strasters91}{{55}{4}{chapter.4}}
+\backcite {griebel98, popinet03}{{55}{4}{chapter.4}}
+\backcite {greengard89, aluru02, shangHua98, warren92, ying04, ying03}{{55}{4}{chapter.4}}
+\backcite {bern99, tu05}{{55}{4}{chapter.4}}
+\backcite { aluru02, warren93, ying03}{{55}{4}{chapter.4}}
+\backcite { kim02, tu05}{{55}{4}{chapter.4}}
+\backcite { aluru02, tu05, warren93, ying03}{{56}{4}{chapter.4}}
+\backcite { tu05, warren93, ying03}{{56}{4}{chapter.4}}
+\backcite {bern99}{{56}{4}{chapter.4}}
+\backcite {tu05}{{56}{4}{chapter.4}}
+\backcite {laData00}{{56}{4}{chapter.4}}
+\backcite {tu05}{{56}{2}{Hfootnote.4}}
+\backcite {moore95}{{56}{3}{Hfootnote.5}}
+\backcite {tu05}{{57}{4}{chapter.4}}
+\backcite {karypis03}{{57}{4}{chapter.4}}
+\backcite {zoltan}{{60}{6}{Hfootnote.8}}
+\backcite {herzen87,kim02,tu05}{{61}{4.1.2}{subsection.4.1.2}}
+\backcite {moore95}{{61}{4.1.2}{subsection.4.1.2}}
+\backcite {aluru02, tu05, warren93, ying03}{{63}{4.2.1}{Item.4}}
+\backcite {clr90}{{73}{4.2.5}{subsection.4.2.5}}
+\backcite {bern99}{{73}{4.2.5}{section*.11}}
+\backcite {tu04a, tu05}{{73}{4.2.5}{section*.11}}
+\backcite {tu05}{{74}{4.2.5}{section*.11}}
+\backcite { bern99, tu04a}{{76}{4.2.5}{section*.13}}
+\backcite {tu04a}{{80}{4.2.5}{section*.14}}
+\backcite {bern99,tu04a,tu05}{{81}{4.2.5}{section*.14}}
+\backcite {tu04a}{{81}{4.2.5}{section*.15}}
+\backcite {tu05}{{85}{4.2.5}{section*.16}}
+\backcite { karypis03, overlapComm97}{{85}{4.2.5}{section*.16}}
+\backcite {karypis03}{{92}{4.3}{section.4.3}}
+\backcite {petsc-web-page}{{92}{4.3}{section.4.3}}
+\backcite {tu05}{{93}{4.3.2}{subsection.4.3.2}}
+\backcite {karypis03}{{95}{4.3.3}{subsection.4.3.3}}

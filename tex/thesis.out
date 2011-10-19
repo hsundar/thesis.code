@@ -1,0 +1,58 @@
+\BOOKMARK [0][-]{section*.1}{Acknowledgements}{}
+\BOOKMARK [0][-]{chapter*.2}{Abstract}{}
+\BOOKMARK [0][-]{chapter*.2}{Contents}{}
+\BOOKMARK [0][-]{chapter*.3}{List of Figures}{}
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}
+\BOOKMARK [1][-]{section.1.1}{Motivation}{chapter.1}
+\BOOKMARK [1][-]{section.1.2}{Arrhythmogenic Right Ventricular Cardiomyopathy}{chapter.1}
+\BOOKMARK [2][-]{subsection.1.2.1}{Clinical Features and Relevance}{section.1.2}
+\BOOKMARK [2][-]{subsection.1.2.2}{MR Imaging of ARVC}{section.1.2}
+\BOOKMARK [1][-]{section.1.3}{Assessing Myocardial Function}{chapter.1}
+\BOOKMARK [2][-]{subsection.1.3.1}{Specialized MR Protocols}{section.1.3}
+\BOOKMARK [2][-]{subsection.1.3.2}{Extracting motion from MR Cine images}{section.1.3}
+\BOOKMARK [1][-]{section.1.4}{Biomechanical Modeling of the Heart}{chapter.1}
+\BOOKMARK [1][-]{section.1.5}{Contributions}{chapter.1}
+\BOOKMARK [1][-]{section.1.6}{Organization of this Thesis}{chapter.1}
+\BOOKMARK [0][-]{chapter.2}{Image Registration based Motion Estimation}{}
+\BOOKMARK [1][-]{section.2.1}{Using MR Cine Sequences for Structural and Functional Characterization}{chapter.2}
+\BOOKMARK [1][-]{section.2.2}{Wavelet Attribute Vectors}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.2.1}{Construction of Wavelet Attribute Vectors}{section.2.2}
+\BOOKMARK [2][-]{subsection.2.2.2}{Wavelet attribute vector similarity function}{section.2.2}
+\BOOKMARK [2][-]{subsection.2.2.3}{Selecting the best correspondence point}{section.2.2}
+\BOOKMARK [2][-]{subsection.2.2.4}{Distinctiveness of attribute vectors}{section.2.2}
+\BOOKMARK [1][-]{section.2.3}{Estimating the Cardiac Motion Field}{chapter.2}
+\BOOKMARK [1][-]{section.2.4}{Periodicity Constraint}{chapter.2}
+\BOOKMARK [0][-]{chapter.3}{Mechanical Model of the Heart}{}
+\BOOKMARK [1][-]{section.3.1}{Introduction}{chapter.3}
+\BOOKMARK [1][-]{section.3.2}{Anatomical Structure of the Heart}{chapter.3}
+\BOOKMARK [1][-]{section.3.3}{Mechanical Modeling}{chapter.3}
+\BOOKMARK [2][-]{subsection.3.3.1}{Linear Elastodynamics}{section.3.3}
+\BOOKMARK [2][-]{subsection.3.3.2}{Semidiscrete Galerkin formulation of elastodynamics}{section.3.3}
+\BOOKMARK [2][-]{subsection.3.3.3}{Solving the forward problem: Newmark Scheme}{section.3.3}
+\BOOKMARK [1][-]{section.3.4}{Diffusion Tensor Imaging}{chapter.3}
+\BOOKMARK [1][-]{section.3.5}{Warping Diffusion Tensors from template to subjects}{chapter.3}
+\BOOKMARK [2][-]{subsection.3.5.1}{Deformable Image Registration}{section.3.5}
+\BOOKMARK [2][-]{subsection.3.5.2}{Tensor Reorientation}{section.3.5}
+\BOOKMARK [1][-]{section.3.6}{Results and Validation}{chapter.3}
+\BOOKMARK [0][-]{chapter.4}{Octree Meshing}{}
+\BOOKMARK [1][-]{section.4.1}{Background}{chapter.4}
+\BOOKMARK [2][-]{subsection.4.1.1}{Morton encoding}{section.4.1}
+\BOOKMARK [2][-]{subsection.4.1.2}{Balance Constraint}{section.4.1}
+\BOOKMARK [1][-]{section.4.2}{Algorithms}{chapter.4}
+\BOOKMARK [2][-]{subsection.4.2.1}{Constructing large linear octrees in parallel}{section.4.2}
+\BOOKMARK [2][-]{subsection.4.2.2}{Constructing a minimal linear octree between two octants}{section.4.2}
+\BOOKMARK [2][-]{subsection.4.2.3}{Constructing complete linear octrees from a partial set of octants}{section.4.2}
+\BOOKMARK [2][-]{subsection.4.2.4}{Parallel bottom-up coarsening of octrees}{section.4.2}
+\BOOKMARK [2][-]{subsection.4.2.5}{Balancing large linear octrees in parallel}{section.4.2}
+\BOOKMARK [1][-]{section.4.3}{Results}{chapter.4}
+\BOOKMARK [2][-]{subsection.4.3.1}{Test Data}{section.4.3}
+\BOOKMARK [2][-]{subsection.4.3.2}{Comparison between different strategies for the local balancing stage}{section.4.3}
+\BOOKMARK [2][-]{subsection.4.3.3}{Scalability analysis}{section.4.3}
+\BOOKMARK [1][-]{section.4.4}{Conclusions}{chapter.4}
+\BOOKMARK [1][-]{section.4.5}{Properties of Morton encoding}{chapter.4}
+\BOOKMARK [1][-]{section.4.6}{Multicomponent Morton Representation}{chapter.4}
+\BOOKMARK [1][-]{section.4.7}{Analysis of the Block Partitioning Algorithm}{chapter.4}
+\BOOKMARK [1][-]{section.4.8}{Special case during construction}{chapter.4}
+\BOOKMARK [0][-]{chapter.5}{Inverse Problem}{}
+\BOOKMARK [0][-]{chapter.6}{Results}{}
+\BOOKMARK [0][-]{chapter.6}{Bibliography}{}

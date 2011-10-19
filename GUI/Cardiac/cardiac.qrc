@@ -1,0 +1,37 @@
+<RCC>
+    <qresource prefix="/res" >
+				<file>cardiac.qss</file>
+        <file>images/Heart.png</file>
+        <file>images/anonymize.png</file>
+        <file>images/bbox.png</file>
+        <file>images/cd_import.png</file>
+        <file>images/clipplane.png</file>
+        <file>images/data.png</file>
+        <file>images/database.png</file>
+        <file>images/deformation.png</file>
+        <file>images/dicom.png</file>
+        <file>images/display.png</file>
+        <file>images/edit_info.png</file>
+        <file>images/export.png</file>
+        <file>images/hdd_import.png</file>
+        <file>images/import.png</file>
+        <file>images/info.png</file>
+        <file>images/isosurface.png</file>
+        <file>images/loadoct.png</file>
+        <file>images/loadvol.png</file>
+        <file>images/motion.png</file>
+        <file>images/octree.png</file>
+        <file>images/patient.png</file>
+        <file>images/player_fwd.png</file>
+        <file>images/player_pause.png</file>
+        <file>images/player_play.png</file>
+        <file>images/player_rew.png</file>
+        <file>images/registration.png</file>
+        <file>images/reload.png</file>
+        <file>images/settings.png</file>
+        <file>images/tfeditor.png</file>
+        <file>images/tfpresets.png</file>
+        <file>images/trash.png</file>
+        <file>images/view_data.png</file>
+    </qresource>
+</RCC>

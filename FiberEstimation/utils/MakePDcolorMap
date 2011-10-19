@@ -1,0 +1,17 @@
+CC = g++
+#CFLAGS = -g -Wall
+CFLAGS = -O3 -Wall -D_V2_
+
+#INCLUDES = -I/usr/local/include/
+#LIBTOOL = -static -L/usr/local/lib -lgsl -lgslcblas -lm
+LIBTOOL = -static -lgsl -lgslcblas -lm
+OBJS = PDcolorMap.o RGBAcolorMap.o Fields.o
+PROG = PDcolorMap
+
+.cpp.o:
+	$(CC) $(CFLAGS) $(INCLUDES) -c $*.cpp
+$(PROG): $(OBJS)
+	$(CC)  $(CFLAGS) -o $(PROG) $(INCLUDES)  $(OBJS) $(LIBTOOL)
+
+clean:
+	rm *.o

@@ -1,0 +1,73 @@
+\documentclass[12pt,twoside,onecolumn]{IEEEtran}
+%\usepackage{times}
+%\documentclass[12pt]{article}
+\usepackage{epsfig, bbm, subfigure} % capt-of,ifthen, calc,
+%\usepackage[mathbf,mathcal]{euler}
+%\usepackage{pifont,epsfig}
+\usepackage[
+pdfauthor={Hari Sundar},
+pdftitle={ Ph.D Proposal },
+pdfcreator={pdftex},
+pdfsubject={Computer Aided Diagnosis of Cardiomyopathies},
+pdfkeywords={Cardiomyopathy, CAD, registration},
+pagebackref  = {true},
+hyperindex = {true},
+colorlinks = {true},
+linkcolor = {blue},
+pagecolor = {blue},
+citecolor = {blue}
+]{hyperref} 
+%\usepackage{cite}
+
+\usepackage{amsmath}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+%\renewcommand{\baselinestretch}{1.5}
+%\newcommand{\remove}[1]{}
+\renewcommand{\div}{{\boldsymbol{\nabla}}}
+% \overrideIEEEmargins
+
+\input{mac-gen}
+\input{mac-fem}
+\input{mac-vf}
+
+\begin{document}
+
+%\title{4D Deformable Registration Methods for Cardiac MR Images: Characterization and Diagnosis of Cardiomyopathies}
+\title{Spatio-Temporal Deformation Analysis of Cardiac MR Images}
+\author{Hari Sundar \thanks{hsundar@seas.upenn.edu}}
+
+\markboth{University of Pennsylvania}{Hari Sundar:~~~~ Proposal}
+
+\maketitle
+
+\begin{abstract}
+
+Cardiac diseases claim more lives than any other disease in the world. Early diagnosis and treatment can save a lot of lives and reduce the associated socio-economic costs. It is extremely difficult to screen millions of patients using current diagnostic methods. Therefore it is important to develop non-invasive computer aided diagnosis methods for screening cardiac patients. Cardiac diseases are characterized both by changes in the myocardial structure as well as changes in cardiac function. It is important for any cardiac diagnosis method to consider both these aspects. Magnetic Resonance Imaging is one of the safest imaging modalities currently in use and most modern scanners are able to acquire 4 dimensional scans of the beating heart. We develop a method for accurate estimation of myocardial motion, an indicator of cardiac function, from these 4D images. The motion estimation process is constrained by a mechanical model of the heart and therefore produces better motion estimates as compared to standard image registration approaches. We extend the work and propose a 4-D registration algorithm that allows us to estimate the transformation required to map a given patient scan to a template in order to be able to construct statistical atlases of normative cardiac structure and function, and to compare patient data against these atlases for diagnostic purposes 
+%Preliminary experiments suggest that this transformation effectively captures the functional and structural differences between the subject and the template. It is therefore a good descriptor for driving a classification algorithm for cardiomyopathies. 
+We combine the 4-D transformation with the residual image that remains after the registration to construct a joint image descriptor, and use it to identify and quantify group differences in comparative studies. The combined descriptor captures the group differences much better than their individual components, and it is more robust to varying registration accuracies.
+
+\end{abstract}
+
+%\begin{keywords}
+%registration, cardiomyopathies, computer aided diagnosis, motion estimation, mechanical modeling, tensor reorientation, classification
+%\end{keywords}
+
+%%%%%%%%%%%%%%%%
+%	Introduction %
+%%%%%%%%%%%%%%%%
+\include {introduction}
+\include {model}
+\include {motion}	     
+\include {4dreg}         
+\include {classify}     
+
+
+%\appendix
+%\include{appendix}
+
+\bibliographystyle{plain} 
+\bibliography{proposal}
+
+\end{document}
+

@@ -1,0 +1,37 @@
+%-fwd_ksp_monitor
+%-fwd_ksp_converged_reason
+-fwd_ksp_type cg
+%-mass_ksp_converged_reason
+-mass_ksp_type cg
+-mass_pc_type jacobi
+-dt 0.03125
+-Ns 32
+-pn lv
+%-ksp_atol 1e-2
+-fwd_ksp_rtol 1e-8
+-mass_ksp_rtol 1e-16
+-t0 0.0
+-t1 1.0
+% PC
+-fwd_pc_type asm
+-fwd_pc_asm_type basic
+-fwd_pc_asm_overlap 1
+%-fwd_pc_ilu_levels 0
+-fwd_pc_asm_blocks 2
+-fwd_sub_pc_type ilu
+-fwd_sub_pc_factor_levels 2
+% use with lu only.
+%-fwd_sub_pc_factor_in_place
+-fwd_sub_pc_factor_pivot_in_blocks true
+%-fwd_sub_ksp_type preonly
+-fwd_sub_pc_factor_fill 2
+%-fwd_pc_hypre_boomeramg_print_statistics
+%-fwd_pc_hypre_boomeramg_max_levels 4
+%-fwd_pc_hypre_boomeramg_grid_sweeps_down 4
+%-fwd_pc_hypre_boomeramg_grid_sweeps_up 4
+% Inverse KSP options
+-inv_ksp_rtol 1e-4
+-inv_ksp_converged_reason
+-inv_ksp_type gmres
+%-inv_ksp_monitor
+-beta 0.0

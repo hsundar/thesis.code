@@ -1,0 +1,71 @@
+\section{Mathematical Formulation}
+
+We shall now describe the formulation of the mechanical model of the heart. We assume that the normalized fiber orientations at the resting phase, $\bn$, of the heart are available. The fiber orientations in the deformed state are given by,
+
+\begin{equation}
+\bm = \frac{\bchi\bn}{\sqrt{\bchi\bn\cdot\bchi\bn}}
+\end{equation}
+
+We represent the active force that acts along the fiber, per unit mass, as $\tau$ and the active force along the normal to the fiber as $\btheta$. For simplicity we assume that $\btheta = 0$. Then writing the momentum balance equations at the deformed configuration, we get,
+
+\begin{equation}
+\label{eq:def_mom}
+\rho[\bx] \frac{D \bv [\bx, t]}{Dt} - \mbox{div} (\bT [\bx, t]) = \rho(\bx, t)\tau(\bx, t)\bm(\bx, t)
+\end{equation}
+
+where, $\bT$ is the Cachy stress tensor, $\rho$ is the density of the myocardium and $\bv$ is the velocity estimate.
+
+Since we intend to solve the equations in the undeformed state, we need to transform equation (\ref{eq:def_mom}) to the reference configuration. Let $\bp$ be a material point in the reference configuration. At a given time instant, $t$, the point has moved to a new location, $\bx = \bchi(\bp, t)$. We define the jacobian and the determinant of the jacobian as,
+\begin{eqnarray*}
+\bF(\bp, t) = \div (\bchi) \\
+\mathcal{J} = \det \bF
+\end{eqnarray*}
+
+We can write the stress tensor in the reference configuration, $\tilde{\bT}$, and the active forces, $\tilde{\tau}$, as:
+\begin{eqnarray*}
+\tilde{\bT} = \tilde{\bT}[\bp, t] =  \bT[\bchi[\bp, t], t] \\
+\tilde{\tau} = \tilde{\tau}[\bp, t] =  \tau[\bchi[\bp, t], t]
+\end{eqnarray*}
+
+Also, the displacement field, $\bu$ is defined as,
+\[
+\bu = \bu[\bp, t] = \bchi[\bp, t] - \bp
+\]
+
+Rewriting, equation (\ref{eq:def_mom}), we have:
+
+\begin{equation}
+\rho_0 \dudtsq - \mbox{Div} (\mathcal{J}\tilde{\bT}\bF^{-T}) = \tilde{\tau} \frac{\bchi\bn}{\sqrt{\bchi\bn\cdot\bchi\bn}} 
+\end{equation}
+
+The Cauchy stress $\bT$ measures the contact forces per unit area in the deformed configuration. However, it is not convenient to work with $\bT$, since the deformed configuration is not known in advance. Therefore, we replace it with the {\em Piola-Kirchhoff} stress tensor, $\bS$, which gives the force measured per unit area in the reference configuration. We can write the Piola-Kirchhoff stress as,
+
+\[
+\bS = \piola
+\]
+
+Therefore, we can write the momentum conservation equation in the reference configuration as,
+
+\begin{equation}
+\rho_0\dudtsq - \mbox{Div}(\bF \bS) = \sigma\bF\bn
+\end{equation}
+
+where, $\sigma = \rho_0\tilde{\tau}/\sqrt{\bF\bn\cdot\bF\bn}$.
+
+%It is important to realize that the diffeomorphic contraints for the transformation, i.e., $\mathcal{J} > 0$ and ensuring that the transformation is one-to-one globally are very difficult to enforce.
+
+The simplest material we can use for the muscle fiber is the Neo-Hookean material. The Neo-Hookean model is an extension of Hooke's law for the case of large deformations. The Neo-Hookean model is commonly used for plastics and rubber-like substances. The model can be written as,
+
+\[
+\bS = \lambda \ln \mathcal{J} \bF^{-1}\bF^{-T}  + \mu(\bI - \bF^{-1}\bF^{-T} )
+\]
+where, $\lambda$ and $\mu$ are the standard material properties.
+
+Therefore the overall equation can be written as,
+
+
+\begin{equation}
+\label{eq:model}
+\boxed {
+\rho_0\dudtsq - \mbox{Div}(\lambda \ln\mathcal{J}\bF^{-T} + \mu(\bF -\bf^{-T})) = \sigma\bF\bn}
+\end{equation}

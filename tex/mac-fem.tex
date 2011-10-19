@@ -1,0 +1,156 @@
+\newfont{\amsbold}{msbm10}
+\newfont{\logobold}{logobf10 scaled\magstep2}
+\newcommand{\real}{\mathbb{R}}
+\newcommand{\assembly}{\mathop{\mbox{\logobold A}}}
+\def\nsd{{n_\mathrm{sd}}}
+\def\isd{{i_\mathrm{sd}}}
+\def\nen{{n_\mathrm{en}}}
+\def\nel{{n_\mathrm{el}}}
+\def\iel{{i_\mathrm{el}}}
+\def\nln{{n_\mathrm{ln}}}
+\def\nq{{n_\mathrm{eq}}}
+\def\nelem{{n_\mathrm{e}}}
+\def\nnode{{n_\mathrm{n}}}
+\def\ndf{{n_\mathrm{dof}}}
+\def\idf{{i_\mathrm{dof}}}
+\def\ned{{n_\mathrm{ed}}}
+\def\nee{{n_\mathrm{ee}}}
+\def\iee{{i_\mathrm{ee}}}
+\def\nint{{n_\mathrm{int}}}
+\def\nquad{{n_\mathrm{quad}}}
+\def\iquad{{i_\mathrm{quad}}}
+\def\neemax{n_\mathrm{ee\_max}}
+\def\npes{{n_\mathrm{PEs}}}
+\def\Ot{\Omega_t}
+\def\Gt{\Gamma_t}
+\def\On{\Omega_n}
+\def\Gn{\Gamma_n}
+\newcommand{\Reynolds}{\mathrm{Re}}
+\newcommand{\Prandtl}{\mathrm{Pr}}
+\newcommand{\Froude}{\mathrm{Fr}}
+\newcommand{\Strouhal}{\mathrm{St}}
+\def\sbn{{\pmb n}}
+\def\sbt{{\pmb t}}
+\def\sbb{{\pmb b}}
+\newcommand{\ba}{\mathbf{a}}
+\newcommand{\bb}{\mathbf{b}}
+\newcommand{\bc}{\mathbf{c}}
+\newcommand{\bd}{\mathbf{d}}
+\newcommand{\be}{\mathbf{e}}
+\newcommand{\force}{\mathbf{f}}
+\newcommand{\bg}{{\boldsymbol{\mathit{g}}}}
+\newcommand{\bh}{{\boldsymbol{\mathit{h}}}}
+\newcommand{\bi}{\mathbf{i}}
+\newcommand{\bj}{\mathbf{j}}
+\newcommand{\bk}{\mathbf{k}}
+\newcommand{\bm}{\mathbf{m}}
+\newcommand{\bn}{\mathbf{n}}
+\newcommand{\bp}{\mathbf{p}}
+\newcommand{\bq}{\mathbf{q}}
+\newcommand{\br}{\mathbf{r}}
+\newcommand{\bs}{\mathbf{s}}
+\newcommand{\bt}{\mathbf{t}}
+\newcommand{\bu}{\mathbf{u}}
+\newcommand{\bv}{\mathbf{v}}
+\newcommand{\bw}{\mathbf{w}}
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\by}{\mathbf{y}}
+\newcommand{\bz}{\mathbf{z}}
+\newcommand{\bA}{\mathbf{A}}
+\newcommand{\bB}{\mathbf{B}}
+\newcommand{\bC}{\mathbf{C}}
+\newcommand{\bD}{\mathbf{D}}
+\newcommand{\bE}{\mathbf{E}}
+\newcommand{\bF}{\mathbf{F}}
+\newcommand{\bG}{\mathbf{G}}
+\newcommand{\bH}{\mathbf{H}}
+\newcommand{\bI}{\mathbf{I}}
+\newcommand{\bJ}{\mathbf{J}}
+\newcommand{\bK}{\mathbf{K}}
+\newcommand{\bL}{\mathbf{L}}
+\newcommand{\bM}{\mathbf{M}}
+\newcommand{\bN}{\mathbf{N}}
+\newcommand{\bO}{\mathbf{O}}
+\newcommand{\bP}{\mathbf{P}}
+\newcommand{\bQ}{\mathbf{Q}}
+\newcommand{\bR}{\mathbf{R}}
+\newcommand{\bS}{\mathbf{S}}
+\newcommand{\bT}{\mathbf{T}}
+\newcommand{\bU}{\mathbf{U}}
+\newcommand{\bV}{\mathbf{V}}
+\newcommand{\bW}{\mathbf{W}}
+\newcommand{\bX}{\mathbf{X}}
+\newcommand{\bY}{\mathbf{Y}}
+\newcommand{\bZ}{\mathbf{Z}}
+\newcommand{\zero}{\mathbf{0}}
+\newcommand{\bxi}{{\boldsymbol{\xi}}}
+\newcommand{\balpha}{{\boldsymbol{\alpha}}}
+\newcommand{\bomega}{{\boldsymbol{\omega}}}
+\newcommand{\bchi}{{\boldsymbol{\chi}}}
+\newcommand{\btheta}{{\boldsymbol{\theta}}}
+%\newcommand{\bChi}{{\boldsymbol{\Chi}}}
+\newcommand{\bepsilon}{{\boldsymbol{\epsilon}}}
+\newcommand{\bPsi}{{\boldsymbol{\Psi}}}
+\newcommand{\bphi}{{\boldsymbol{\phi}}}
+\newcommand{\bpi}{{\boldsymbol{\pi}}}
+\newcommand{\design}{\balpha}
+\def\but{{\bf u}_{,t}}
+\def\bvt{{\bf v}_{,t}}
+\def\ST{{{\cal S}^h_\bT}}
+\def\VT{{{\cal V}^h_\bT}}
+\def\SH{{{\cal S}^h_H}}
+\def\VH{{{\cal V}^h_H}}
+\def\Su{{{\cal S}^h_\bu}}
+\def\Vu{{{\cal V}^h_\bu}}
+\def\SU{{{\cal S}^h_\bU}}
+\def\VU{{{\cal V}^h_\bU}}
+\def\Sv{{{\cal S}^h_\bv}}
+\def\Vv{{{\cal V}^h_\bv}}
+\def\Sp{{{\cal S}^h_p}}
+\def\Vp{{{\cal V}^h_p}}
+\def\Sh{{{\cal S}^h_\phi}}
+\def\Vh{{{\cal V}^h_\phi}}
+\def\Sun{{(\Su)_n}}
+\def\Vun{{(\Vu)_n}}
+\def\SHn{{(\SH)_n}}
+\def\VHn{{(\VH)_n}}
+\def\SUn{{(\SU)_n}}
+\def\VUn{{(\VU)_n}}
+\def\Svn{{(\Sv)_n}}
+\def\Vvn{{(\Vv)_n}}
+\def\Spn{{(\Sp)_n}}
+\def\Vpn{{(\Vp)_n}}
+\def\Shn{{(\Sh)_n}}
+\def\Vhn{{(\Vh)_n}}
+\newcommand{\strain}{{\boldsymbol{\varepsilon}}}
+\newcommand{\stress}{{\boldsymbol{\sigma}}}
+\newcommand{\blambda}{{\boldsymbol{\lambda}}}
+\renewcommand{\div}{{\boldsymbol{\nabla}}}
+\newcommand{\sbg}{\bg}
+\newcommand{\sbh}{\bh}
+\newcommand{\btau}{\boldsymbol{\tau}}
+\newcommand{\tauT}{{\tau_\mathrm{\scriptscriptstyle CONS}}}
+\newcommand{\tauu}{{\tau_\mathrm{\scriptscriptstyle MOM}}}
+\newcommand{\taup}{{\tau_\mathrm{\scriptscriptstyle CONT}}}
+\newcommand{\taudc}{{\tau_\mathrm{\scriptscriptstyle DC}}}
+\newcommand{\tauadv}{{\tau_\mathrm{\scriptscriptstyle ADV}}}
+\newcommand{\tausupg}{{\tau_\mathrm{\scriptscriptstyle SUPG}}}
+\newcommand{\taupspg}{{\tau_\mathrm{\scriptscriptstyle PSPG}}}
+\newcommand{\taugls}{{\tau_\mathrm{\scriptscriptstyle GLS}}}
+\newcommand{\tauglsa}{{\tau_\mathrm{\scriptscriptstyle GLS1}}}
+\newcommand{\tauglsb}{{\tau_\mathrm{\scriptscriptstyle GLS2}}}
+\newcommand{\oneovermu}{\frac{1}{2 \mu_{1}}}
+\newcommand{\lamovermu}{\frac{\lambda}{2 \mu_{1}}}
+\newcommand{\lsqovermu}{\frac{\lambda^{2}}{2 \mu_{1}}}
+\newcommand{\hash}{{\includegraphics[width=0.1in]{x.ps}}}
+\newcommand{\hashblue}{{\includegraphics[width=0.1in]{x-blue.ps}}}
+\newcommand{\subhash}{{\includegraphics[width=0.06in]{x.ps}}}
+\newcommand{\subhashblue}{{\includegraphics[width=0.06in]{x-blue.ps}}}
+\newcommand{\upup}           {{\includegraphics[width=0.1in]{h.ps}}}
+\newcommand{\upupblue}       {{\includegraphics[width=0.1in]{h-blue.ps}}}
+\newcommand{\upupred}        {{\includegraphics[width=0.1in]{h-red.ps}}}
+\newcommand{\upupmagenta}    {{\includegraphics[width=0.1in]{h-magenta.ps}}}
+\newcommand{\subupup}        {{\includegraphics[width=0.1in]{h.ps}}}
+\newcommand{\subupupblue}    {{\includegraphics[width=0.06in]{h-blue.ps}}}
+\newcommand{\subupupred}     {{\includegraphics[width=0.06in]{h-red.ps}}}
+\newcommand{\subupupmagenta} {{\includegraphics[width=0.06in]{h-magenta.ps}}}

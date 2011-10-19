@@ -1,0 +1,654 @@
+//  visClrMap:  Visualization of Color Map (ABGR-format: 4 bytes per voxel)
+//----------------------------------------------------------------------
+// This program is used to distribute certain number of sample
+//   points evenly on a template corpus collosum slice image,
+//   then map it to an individual corpus collosum image based
+//   on a given vector-field data file
+//
+// Related file:
+//   Makefile
+//
+// Run Command:
+//   visColormap
+//   visColormap -h for help
+//----------------------------------------------------------------------
+
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <string.h>
+
+#include <GL/gl.h>
+#include <GL/glu.h>
+//#include <GL/glut.h>
+#include "GL/glut.h"
+
+#include <iostream>
+#include <strstream>
+#include <fstream>
+//#include <fmclient.h>
+
+using namespace std;
+
+
+#include "RGBAcolorMap.h"
+
+int  iWidth=256, iHeight=256; //slice image size
+int  pixVal = 250; //default value of the pixel value of the area of interest
+int  wTemp; //window for Template and Target
+char * bufRGBA = NULL;
+int dx, dy, dz,nZslice;
+int viewPlan=3; //1:view X-cut 2: view Y-cut; 3: view Z-cut (XY-plan: default)
+class RGBAcolorMap *map=NULL;
+char infile [200]; //input color map file to be displayed
+float fSCALE=1.0; //scale for view Y-cut / X-cut left/rigt-arrow to adjust
+float resx, resy, resz; //resolutions, for show views in reality
+int meshON = 0; //mesh on / off
+static int meshFirstTime=1; 
+int meshStep=35; // mesh size
+
+GLubyte space[] =
+    {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+GLubyte smbDash[] =
+    {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00};
+GLubyte digits[][13] = {
+    {0x00, 0x00, 0x7e, 0xc3, 0x81, 0xe1, 0xb1, 0x99, 0x8d, 0x87, 0x81, 0xc3, 0x7e}, //0
+    {0x00, 0x00, 0x7f, 0x0c, 0x0c, 0x0c, 0x0c, 0x0c, 0x0c, 0x4c, 0x3c, 0x1c, 0x0c}, //1
+    {0x00, 0x00, 0xff, 0xc1, 0xc0, 0x70, 0x38, 0x1e, 0x07, 0x81, 0xc3, 0x66, 0x3c}, //2
+    {0x00, 0x00, 0x7e, 0xc3, 0x83, 0x01, 0x03, 0x3e, 0x06, 0x03, 0x83, 0xc6, 0x3c}, //3
+    {0x00, 0x00, 0x0c, 0x0c, 0xff, 0x8c, 0xcc, 0x4c, 0x6c, 0x2c, 0x3c, 0x1c, 0x0c}, //4
+    {0x00, 0x00, 0x7e, 0xc3, 0x81, 0x01, 0x01, 0x03, 0xfe, 0xc0, 0xc0, 0xc0, 0xff}, //5
+    {0x00, 0x00, 0x7e, 0xc3, 0x81, 0x81, 0x81, 0xc3, 0xfe, 0x80, 0x81, 0xc3, 0x7e}, //6
+    {0x00, 0x00, 0x30, 0x30, 0x30, 0x30, 0x18, 0x18, 0x0c, 0x06, 0x03, 0x83, 0xff}, //7
+    {0x00, 0x00, 0x7e, 0xc3, 0x81, 0x81, 0xc3, 0x7e, 0x66, 0xc3, 0x81, 0xe7, 0x7e}, //8
+    {0x00, 0x00, 0x7c, 0xc6, 0xc3, 0x03, 0x7f, 0xc3, 0x83, 0x83, 0x83, 0xc6, 0x7c}, //9
+};
+
+GLubyte letters[][13] = {
+    {0x00, 0x00, 0xc3, 0xc3, 0xc3, 0xc3, 0xff, 0xc3, 0xc3, 0xc3, 0x66, 0x3c, 0x18},
+    {0x00, 0x00, 0xfe, 0xc7, 0xc3, 0xc3, 0xc7, 0xfe, 0xc7, 0xc3, 0xc3, 0xc7, 0xfe},
+    {0x00, 0x00, 0x7e, 0xe7, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xe7, 0x7e},
+    {0x00, 0x00, 0xfc, 0xce, 0xc7, 0xc3, 0xc3, 0xc3, 0xc3, 0xc3, 0xc7, 0xce, 0xfc},
+    {0x00, 0x00, 0xff, 0xc0, 0xc0, 0xc0, 0xc0, 0xfc, 0xc0, 0xc0, 0xc0, 0xc0, 0xff},
+    {0x00, 0x00, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xfc, 0xc0, 0xc0, 0xc0, 0xff},
+    {0x00, 0x00, 0x7e, 0xe7, 0xc3, 0xc3, 0xcf, 0xc0, 0xc0, 0xc0, 0xc0, 0xe7, 0x7e},
+    {0x00, 0x00, 0xc3, 0xc3, 0xc3, 0xc3, 0xc3, 0xff, 0xc3, 0xc3, 0xc3, 0xc3, 0xc3},
+    {0x00, 0x00, 0x7e, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x7e},
+    {0x00, 0x00, 0x7c, 0xee, 0xc6, 0x06, 0x06, 0x06, 0x06, 0x06, 0x06, 0x06, 0x06},
+    {0x00, 0x00, 0xc3, 0xc6, 0xcc, 0xd8, 0xf0, 0xe0, 0xf0, 0xd8, 0xcc, 0xc6, 0xc3},
+    {0x00, 0x00, 0xff, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0},
+    {0x00, 0x00, 0xc3, 0xc3, 0xc3, 0xc3, 0xc3, 0xc3, 0xdb, 0xff, 0xff, 0xe7, 0xc3},
+    {0x00, 0x00, 0xc7, 0xc7, 0xcf, 0xcf, 0xdf, 0xdb, 0xfb, 0xf3, 0xf3, 0xe3, 0xe3},
+    {0x00, 0x00, 0x7e, 0xe7, 0xc3, 0xc3, 0xc3, 0xc3, 0xc3, 0xc3, 0xc3, 0xe7, 0x7e},
+    {0x00, 0x00, 0xc0, 0xc0, 0xc0, 0xc0, 0xc0, 0xfe, 0xc7, 0xc3, 0xc3, 0xc7, 0xfe},
+    {0x00, 0x00, 0x3f, 0x6e, 0xdf, 0xdb, 0xc3, 0xc3, 0xc3, 0xc3, 0xc3, 0x66, 0x3c},
+    {0x00, 0x00, 0xc3, 0xc6, 0xcc, 0xd8, 0xf0, 0xfe, 0xc7, 0xc3, 0xc3, 0xc7, 0xfe},
+    {0x00, 0x00, 0x7e, 0xe7, 0x03, 0x03, 0x07, 0x7e, 0xe0, 0xc0, 0xc0, 0xe7, 0x7e},
+    {0x00, 0x00, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0xff},
+    {0x00, 0x00, 0x7e, 0xe7, 0xc3, 0xc3, 0xc3, 0xc3, 0xc3, 0xc3, 0xc3, 0xc3, 0xc3},
+    {0x00, 0x00, 0x18, 0x3c, 0x3c, 0x66, 0x66, 0xc3, 0xc3, 0xc3, 0xc3, 0xc3, 0xc3},
+    {0x00, 0x00, 0xc3, 0xe7, 0xff, 0xff, 0xdb, 0xdb, 0xc3, 0xc3, 0xc3, 0xc3, 0xc3},
+    {0x00, 0x00, 0xc3, 0x66, 0x66, 0x3c, 0x3c, 0x18, 0x3c, 0x3c, 0x66, 0x66, 0xc3},
+    {0x00, 0x00, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x3c, 0x3c, 0x66, 0x66, 0xc3},
+    {0x00, 0x00, 0xff, 0xc0, 0xc0, 0x60, 0x30, 0x7e, 0x0c, 0x06, 0x03, 0x03, 0xff}
+};
+
+GLuint fontOffset;
+
+void helpInfo();
+
+void makeRasterFont(void)
+{
+   GLuint i, j;
+   glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+
+   fontOffset = glGenLists (128);
+   for (i = 0,j = 'A'; i < 26; i++,j++) {
+      glNewList(fontOffset + j, GL_COMPILE);
+      glBitmap(8, 13, 0.0, 2.0, 10.0, 0.0, letters[i]);
+      glEndList();
+   }
+   for (i = 0,j = '0'; i < 10; i++,j++) {
+      glNewList(fontOffset + j, GL_COMPILE);
+      glBitmap(8, 13, 0.0, 2.0, 10.0, 0.0, digits[i]);
+      glEndList();
+   }
+   glNewList(fontOffset + ' ', GL_COMPILE);
+   glBitmap(8, 13, 0.0, 2.0, 10.0, 0.0, space);
+   glEndList();
+   glNewList(fontOffset + '-', GL_COMPILE);
+   glBitmap(8, 13, 0.0, 2.0, 10.0, 0.0, smbDash);
+   glEndList();
+}
+void init(void)
+{
+   glShadeModel (GL_FLAT);
+   //makeRasterFont(); // anotated on 04/22/03, repetition in InitEnvironment()
+}
+
+void outtext(char *s)
+{
+   glPushAttrib (GL_LIST_BIT);
+   glListBase(fontOffset);
+   glCallLists(strlen(s), GL_UNSIGNED_BYTE, (GLubyte *) s);
+   glPopAttrib ();
+}
+
+
+
+//----------------------
+void InitEnvironment()
+{
+  //glEnable(GL_DEPTH_TEST);
+  //glDepthFunc(GL_LESS);
+
+  glDisable(GL_CULL_FACE);
+  glClearColor(0,0,0,0.0);
+  glClearDepth(1.0);
+  glShadeModel(GL_SMOOTH);
+  glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+  //glEnable(GL_LINE_SMOOTH);
+  //glEnable(GL_POLYGON_SMOOTH);
+  
+  //glShadeModel (GL_FLAT);
+  makeRasterFont(); //for initializing font
+}
+void onIdle(void)
+{ 
+}
+void onSpecialKey(int key,int x,int y)
+{
+  switch (key){
+  case GLUT_KEY_UP:
+    switch (viewPlan){
+      case 1: //X-cut
+	nZslice ++;
+	if (nZslice > dx - 1) //map->getDimX()-1)
+	   nZslice = dx - 1; //map->getDimX()-1;
+	break;
+      case 2: //Y-cut
+	nZslice ++;
+	if (nZslice > dy-1) //map->getDimY()-1)
+	   nZslice = dy - 1; //map->getDimY()-1;
+	break;
+      case 3: //Y-cut
+	nZslice ++;
+	if (nZslice > dz-1) //map->getDimZ()-1)
+	   nZslice = dz-1; //map->getDimZ()-1;
+	break;
+     }
+     break;
+  case GLUT_KEY_DOWN:
+	if (nZslice > 0) 
+	  nZslice --;
+	break;
+  case GLUT_KEY_LEFT:
+	break;
+  case GLUT_KEY_RIGHT:
+	break;
+  }
+  glutPostRedisplay();
+
+}
+void onReshape(int w, int h)
+{
+
+   //setReshapeToView(0,w,h);
+
+   glViewport(0,0,w,h);   
+
+   glMatrixMode(GL_PROJECTION);
+   glLoadIdentity();
+   glOrtho(0.0,w, 0.0, h, -1.0, 1.0);
+   //gluPerspective(45,GLdouble(w)/(float)h,0.5,500);
+   //gluLookAt(0,0,300,0,0,0,0,1,0);
+   //gluLookAt(0,0,1,0,0,0,0,1,0);
+
+   glMatrixMode(GL_MODELVIEW);
+   //glLoadIdentity();
+
+   glClearColor(0,0,0,0.0);
+   glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);  
+   glColor3f(1.0,1.0,0.0);
+}
+void drawMesh()
+{
+  int i,k;
+  
+  if (meshFirstTime){
+      glNewList(888,GL_COMPILE_AND_EXECUTE);
+      //glColor3f(0.1,0.4,0.4);
+      glBegin(GL_LINES); 
+        k = 0;
+	for (i=1; i< 500; i+=meshStep, k++){
+	  if (k % 5 == 0)
+      	    glColor3f(0.1,0.3,0.3);
+	  else 
+      	    //glColor3f(0.1,0.3,0.3);
+            glColor3f(0.05,0.05,0.05);//dark grey
+          glVertex2f(i, 0);
+          glVertex2f(i, 500);
+	}  
+	for (i=1,k=0; i< 500; i+=meshStep,k++){
+	  if (k % 5 == 0)
+      	    glColor3f(0.1,0.3,0.3);
+      	    //glColor3f(0.1,0.4,0.4);
+	  else 
+     	    //glColor3f(0.1,0.3,0.3);
+            glColor3f(0.05,0.05,0.05);//dark grey
+          glVertex2f(0, i);
+          glVertex2f(500,i);
+	}  
+      glEnd();
+      glEndList();
+      meshFirstTime=0;
+  }else{
+      glCallList(888);
+  }
+}
+void onDisplay3(void)
+{
+   //GLfloat ff[4],gg[4];
+   GLfloat white[3] = { 0.0, 1.0, 1.0 };
+ 
+   glClear(GL_COLOR_BUFFER_BIT| GL_COLOR_BUFFER_BIT);
+   glDisable(GL_LIGHTING);
+   glPushMatrix ();
+   //------
+   glColor3fv(white);
+   glColor3f(1.0,1.0,1.0);
+   glDrawBuffer(GL_BACK);    
+
+     map->getZslice(nZslice, bufRGBA);
+     glRasterPos2i(0, 0);
+     glDrawPixels(dx,dy,GL_RGBA,GL_UNSIGNED_BYTE,bufRGBA);
+
+   glRasterPos2i(20, 20);
+   outtext(" XDR XXXX YYYY");
+    glutSwapBuffers();
+  //------
+  glPopMatrix();
+}
+void onDisplay()
+{
+  char pp[200],verCap[200],horCap[200];
+  float tscl,t,trxx,tryy;
+
+  //GLfloat ff[4],gg[4];
+  glColor3f(0.0,1.0,0.0);
+
+  glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+  glDisable(GL_LIGHTING);
+  glPushMatrix ();
+  //-----------------
+    glDrawBuffer(GL_BACK);    
+
+    switch (viewPlan){
+    case 1: //X-cut
+      map->getXslice(nZslice, bufRGBA);
+      sprintf(pp,"X %d",nZslice);
+      //-----------------------------
+      tscl =  float(dy)/float(dx); t=resz/resy;
+      glEnable(GL_TEXTURE_2D); 
+      glTexImage2D(GL_TEXTURE_2D,0,3,256,256, // here color components must be 3, why?
+		 0,GL_RGBA,GL_UNSIGNED_BYTE,bufRGBA);
+                 //0,GL_RGBA,GL_UNSIGNED_BYTE,bufRGBA);   
+      glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
+      //glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
+      glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+      glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+      //glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+      glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+      glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);
+      //glEnable(GL_TEXTURE_2D);
+						 
+      glBegin(GL_POLYGON); 
+      glTexCoord2f(0.0,tscl); glVertex2f(0, 255*tscl*fSCALE*t);
+      glTexCoord2f(1.0, tscl); glVertex2f(255*fSCALE, 255*tscl*fSCALE*t);
+      glTexCoord2f(1.0, 0.0); glVertex2f(255*fSCALE, 0);
+      glTexCoord2f(0.0, 0.0); glVertex2f(0,0);
+      glEnd();
+      glDisable(GL_TEXTURE_2D); 
+      strcpy(horCap,"Y");
+      strcpy(verCap,"Z");
+
+      //-----------------------------
+
+      //glRasterPos2i(0, 0);
+      //glDrawPixels(dx,dy,GL_RGBA,GL_UNSIGNED_BYTE,bufRGBA);
+      break;
+    case 2: //Y-cut
+      map->getYslice(nZslice, bufRGBA);
+      sprintf(pp,"Y %d",nZslice);
+      //-----------------------------
+      tscl =  float(dz)/float(dx); t=resz/resx;
+      glEnable(GL_TEXTURE_2D); 
+      glTexImage2D(GL_TEXTURE_2D,0,3,256,256, // here color components must be 3, why?
+		 0,GL_RGBA,GL_UNSIGNED_BYTE,bufRGBA);
+                 //0,GL_RGBA,GL_UNSIGNED_BYTE,bufRGBA);   
+      glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
+      //glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
+      glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+      glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+      //glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+      glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+      glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);
+      //glEnable(GL_TEXTURE_2D);
+				
+      if (tscl*fSCALE*t < 1)
+	tryy = (1-tscl*fSCALE*t)*255 /2;
+      else
+	tryy = 0;
+      if (fSCALE < 1)
+	trxx = (1-fSCALE)*255 /2;
+      else
+	trxx = 0;
+      glBegin(GL_POLYGON); 
+      glTexCoord2f(0.0,tscl); glVertex2f(trxx+0, tryy+255*tscl*fSCALE*t);
+      glTexCoord2f(1.0, tscl); glVertex2f(trxx+255*fSCALE, tryy+255*tscl*fSCALE*t);
+      glTexCoord2f(1.0, 0.0); glVertex2f(trxx+255*fSCALE, tryy+0);
+      glTexCoord2f(0.0, 0.0); glVertex2f(trxx+0,tryy+0);
+      glEnd();
+      glDisable(GL_TEXTURE_2D); 
+
+      strcpy(horCap,"X");
+      strcpy(verCap,"-Z");
+      //-----------------------------
+      break;
+    case 3: //Z-cut
+      map->getZslice(nZslice, bufRGBA);
+      sprintf(pp,"Z %d",nZslice);
+      glRasterPos2i(0, 0);
+      glDrawPixels(dx,dy,GL_RGBA,GL_UNSIGNED_BYTE,bufRGBA);
+      strcpy(horCap,"X");
+      strcpy(verCap,"Y");
+      break;
+    }
+    //glRasterPos2i(0, 0);
+    //glDrawPixels(dx,dy,GL_RGBA,GL_UNSIGNED_BYTE,bufRGBA);
+
+    //------------------------------
+    //   draw mesh
+    //------------------------------
+    if (meshON) drawMesh();
+
+    //------------------------------
+    // print X/Y/Z axis
+    //------------------------------
+    glColor3f(1.0,1.0,1.0);
+    glRasterPos2i(15,10);
+    outtext(pp);
+    glRasterPos2i(225,10);
+    outtext(horCap);
+    glRasterPos2i(15,220);
+    outtext(verCap);
+   //glRasterPos4f(ff[0],ff[1],0,ff[3]);
+
+    glutSwapBuffers();
+  //-----------------  
+  glPopMatrix();
+}
+
+void onKeyStroke(unsigned char key, int x, int y)
+{
+  int x1,y1,z1;
+  byteRGBA vx;
+  GLfloat vvv[4];
+  char ss[200],combuf[400];
+
+  switch (key){
+  case 27:
+     delete []bufRGBA;
+     delete map;
+     exit(0);
+     break;
+  case 'q':
+     cout <<" input xyz coordinates:"<<endl;
+     cin >> x1>>y1>>z1;
+     cout << "\nYou've typed: "<<x1<<","<<y1<<","<<z1<<endl;
+     vx = map->getVoxel(x1,y1,z1);
+     cout << " the value (ABGR) = "<<(int)(vx.rgba[0])<<","
+		<<(int)(vx.rgba[1])<<","
+		<<(int)(vx.rgba[2])<<","<<(int)(vx.rgba[3])<<endl;
+     break;
+  case 'x':
+  case 'X': //view Z-cut (YZ-plan)
+	viewPlan=1;
+	nZslice = dx/2;
+        glutPostRedisplay();
+     break;
+  case 'y':
+  case 'Y': //view Y-cut (XZ-plan)
+	viewPlan=2;
+	nZslice = dy/2;
+        glutPostRedisplay();
+     break;
+  case 'z':
+  case 'Z': //view Z-cut (XY-plan)
+	viewPlan=3;
+	nZslice = dz/2;
+        glutPostRedisplay();
+     break;
+  case 's':
+	cout<<"The current factor of scale for view Y/X-cut is: "<<fSCALE<<endl;
+	cout<<"Now input your new value:"; flush(cout);
+        scanf("%f", &fSCALE);
+	cout<<"\n You just entered: "<<fSCALE<<endl<<endl;
+        glutPostRedisplay();
+ 	break;
+  case '<': // decrease mesh grid interval
+        meshStep --;
+	if (meshStep < 10) meshStep = 10;
+	meshFirstTime=1; // control to regenerate GL list for the mesh
+        glutPostRedisplay();
+	break;
+  case '>': // increase mesh grid interval
+        meshStep ++;
+        glutPostRedisplay();
+	meshFirstTime=1;// control to regenerate GL list for the mesh
+	break;
+  case ',': //decrease factor of view SCALE
+	cout <<"\n old factor of SCALE = "<<fSCALE<<endl;
+	fSCALE  *=0.9;
+	if (fSCALE < 0.1)
+	   fSCALE = 0.1;
+	cout <<" new factor of SCALE = "<<fSCALE<<endl<<endl;
+        glutPostRedisplay();
+	break;
+  case '.'://increase factor of view SCALE
+	cout <<"\n old factor of SCALE = "<<fSCALE<<endl;
+	fSCALE  *=1.1;
+	cout <<" new factor of SCALE = "<<fSCALE<<endl<<endl;
+        glutPostRedisplay();
+	break;
+  case 'm': //mesh on/off
+  	meshON = !meshON;
+        glutPostRedisplay();
+	break;
+
+  case 'd': //save to disk
+     x1 = glutGet(GLUT_SCREEN_WIDTH);
+     y1 = glutGet(GLUT_SCREEN_HEIGHT);
+     cout <<"\n screen width="<<x1;
+     cout <<"\n screen height="<<y1<<endl;
+     vvv[0]=glutGet(GLUT_WINDOW_X);
+     vvv[1]=glutGet(GLUT_WINDOW_Y);
+     vvv[2]=glutGet(GLUT_WINDOW_WIDTH);
+     vvv[3]=glutGet(GLUT_WINDOW_HEIGHT);
+     cout << "vvv[4]="<<vvv[0]<<","<<vvv[1]<<","<<vvv[2]<<","<<vvv[3]<<endl;
+     //glGetFloatv(GL_VIEWPORT,vvv);
+     cout <<"--->please input file name to store image:"; flush(cout);
+     scanf("%s",ss);
+     //cout << "vvv[4]="<<vvv[0]<<","<<vvv[1]<<","<<vvv[2]<<","<<vvv[3]<<endl;
+     sprintf(combuf,"/usr/sbin/scrsave %s %d %d %d %d \n",
+	 ss, (int)(vvv[0]),(int)(vvv[2]+vvv[0]),(int)(y1-vvv[1]-1),(int)(y1-1-vvv[1]-vvv[3]));
+     cout <<combuf;
+     system(combuf);
+       cout <<"...Done!"<<endl;
+     break;
+  case 'h':
+     helpInfo();
+     break;
+  }
+}
+
+void onMouseClick(int button, int status, int xx, int yy)
+{
+   /*
+   if (button == GLUT_LEFT_BUTTON && status == GLUT_UP){    
+   } else 
+   if (button == GLUT_RIGHT_BUTTON && status == GLUT_UP){
+   } 
+   if (button == GLUT_MIDDLE_BUTTON && status == GLUT_UP){
+   } 
+   if (button == GLUT_LEFT_BUTTON && status == GLUT_DOWN){    
+   } else 
+   if (button == GLUT_LEFT_BUTTON && status == GLUT_UP){
+   }else 
+   if (button == GLUT_RIGHT_BUTTON && status == GLUT_UP){
+   }else
+   if (button == GLUT_MIDDLE_BUTTON && status == GLUT_UP){
+   } */
+}
+
+void onMouseMove(int newX,int newY)
+{
+ 
+}
+void helpInfo()
+{
+   cout <<"\n\n\n"<<endl;
+   cout <<"##############################################################\n";
+   cout <<"###                   Help Information                    ####\n";
+   cout <<"##############################################################\n\n";
+   cout <<" h:              : for this screen\n";
+   cout <<" x X y Y z Z     : set view perpendicular to x/y/z axis\n";
+   cout <<" up/down arrow   : change slice number\n";
+   cout <<" , .             : change viewing amplification factor\n";
+   cout <<" s               : set scale factor for X/Y-cut views\n";
+   cout <<" m               : toggle mesh grid\n";
+   cout <<" <  >            : change the size of mesh grid\n";
+   cout <<" d               : save image in the window to disk as .rgb format\n";
+   cout <<" Esc / q         : quit \n";
+   cout <<"##############################################################\n";
+   cout <<"###      Thank you.                                       ####\n";
+   cout <<"###      XU, Dongrong                                     ####\n";
+   cout <<"###      xdr@rad.upenn.edu   (Mar 21,2003)                ####\n";
+   cout <<"##############################################################\n\n";
+   cout <<endl<<endl;
+
+}
+void usage(char* runname)
+{
+  cout <<"\n\nThis program is for displaying RGBA color map slice by slice\n";
+  cout <<"  Usage:\n    "<<runname<< " inputFile [ -D dx,dy] [-Rx,y,z]\n";
+  cout <<"	   inputFile :  the input RGBA colormap file"<<endl;
+  cout <<"	   -D<dx,dy> :  dimensions of the volume in X and Y, \n";
+  cout <<"                      default: 256x256xZ"<<endl;   
+  cout <<"		        !!NOTE: dx and dy must be the power of 2 !!\n";
+  cout <<"	   -R<x,y,z> :  resolutions of the volume in X and Y, \n";
+  cout <<"                      default: 1.0 x 1.0 x 1.0"<<endl;   
+  cout <<"	   -H: Help information" <<endl;
+  cout << endl <<endl;
+
+  cout << " An example:\n";
+  cout << "   " << runname <<" Laura.cmp  -D 256,256\n";
+
+  cout << "------------------" <<endl;
+  cout << " -by XU, Dongrong " <<endl;
+  cout << "     Feb 15, 2002 " <<endl;
+  cout << "------------------\n\n" <<endl;
+  exit(0);
+
+}
+void setDefaultValues()
+{
+    dx = dy = 256;
+    resx=resy=resz=1.0;
+    meshON = 0;
+    meshStep=35;
+}
+void getParameters(int argc, char ** argv)
+{   
+   extern char *optarg;
+   int c;
+
+   setDefaultValues();
+   if (argc <2){
+      usage(argv[0]);
+      return;
+   } else {
+     for (int i=0; i< argc; i++)
+        cout <<i<<": "<< argv[i] <<endl;
+     strcpy(infile,argv[1]);
+
+     while ((c=getopt(argc-1,argv+1,"D:HR:")) != -1) {
+      //cout << " -- --  char = " << char(c) << endl;
+      switch (c) {
+      case 'D':
+	sscanf(optarg,"%d,%d",&dx,&dy);
+	//sscanf(optarg,"%f,%f,%f",&resX,&resY,&resZ);
+        break;
+      case 'R':
+	sscanf(optarg,"%f,%f,%f",&resx,&resy,&resz);
+        break;
+      case 'H':
+      defualts:
+	usage(argv[0]);
+	break;
+      }
+     }
+     cout <<"input file = "<<infile<<endl;
+     cout << "(dx,dy)=("<<dx<<","<<dy<<")"<<endl;
+  }
+  //exit(0);
+}
+  
+int main(int argc, char **argv)
+{
+  char wCaption[240];
+
+  getParameters(argc,argv);
+  map = new RGBAcolorMap(infile, dx,dy);
+  
+  strcpy(wCaption, "Color Map: ");
+  strcat(wCaption, infile);
+
+  bufRGBA = new char[4*dx*dy];
+  if (bufRGBA == NULL){
+	cout <<" memory allocation failed."<<endl;
+	exit(0);
+  }
+  dz = map->getDimZ();
+  nZslice = dz/2;
+  //fminit(); //init font
+  //--------------------
+  
+  glutInit(&argc, argv);
+  glutInitWindowSize(dx,dy);
+  
+  glutInitWindowPosition(200,200);
+  glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
+  wTemp=glutCreateWindow(wCaption); 
+  InitEnvironment();
+  init();
+  glutReshapeFunc(onReshape);
+  glutKeyboardFunc(onKeyStroke);
+  glutSpecialFunc(onSpecialKey);  
+  glutMouseFunc(onMouseClick);
+  glutMotionFunc(onMouseMove);
+  glutDisplayFunc(onDisplay);
+  //glutIdleFunc(onIdleSurface);
+
+  glutMainLoop();
+
+  //delete []bufRGBA;
+  //delete map;
+  
+  return 0;
+}
+
+

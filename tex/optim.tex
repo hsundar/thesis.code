@@ -1,0 +1,466 @@
+\def\singlesidestandardsetup{
+
+\oddsidemargin .0 in
+
+\topmargin -0.15 in
+
+\hoffset -0.05 in
+
+\textheight 9 in
+
+\baselineskip 5 in
+
+\textwidth 6.5 in}
+
+
+\documentclass[10pt]{article}
+
+\pagestyle{plain}
+
+\singlesidestandardsetup
+
+\renewcommand{\baselinestretch}{1.0}
+
+\usepackage{amsmath,amssymb,enumerate,bbm}
+
+%%%%%%%%%% Start TeXmacs macros
+\newcommand{\tmstrong}[1]{\textbf{#1}}
+\newcommand{\tmmathbf}[1]{\ensuremath{\boldsymbol{#1}}}
+\newcommand{\tmop}[1]{\ensuremath{\operatorname{#1}}}
+\newtheorem{notation}{Notation}
+\newenvironment{enumerateroman}{\begin{enumerate}[i.]}{\end{enumerate}}
+%%%%%%%%%% End TeXmacs macros
+\input{mac-fem}
+\input{mac-vf}
+
+\begin{document}
+
+\title{Myocardial Motion Estimation} \author{} \maketitle
+
+This article attempts to lay the mathematical foundation for myocardial motion
+estimation posed as a pde constrained non-linear optimization problem. We
+attempt to maximize the similarity between the estimated images and the
+observed MR cine images, constrained by a mechanical model of the heart. We
+initially assume a homgeneous linear elastic model of the heart, and derive
+the optimality conditions for it. Damping is also ignored in the begining.
+Damping and non-linear elasticity in the form of a hyper-elastic neo-hookean
+material shall be incorporated later if required. We ignore the boundary
+conditions initially, they shall be incorporated later into the formulation.
+
+% Need to change the force formulation in these problems to one where $f$ is a scalar and the orientations are obtained from the DTI fiber orientations.
+
+\section{Linear Elastodynamics}
+
+We assume that the MR image occupies the region $\Omega \in \mathbb{R}^3$ in its reference state (end-diastole) at time $t=0$. The boundary $\Gamma=\partial\Omega$ has the outward unit normal given by $\bn$, the displacement vector is represented by $\bu$, and the velocity by $\bv$. The myocardium is assumed to be made of an elastic material and is subject to body force $\force$ per unit volume.
+
+The strong form of the equations of linear elastodynamics are written as:
+\begin{eqnarray}
+\rho\dudtsq &=& \div\cdot\stress + \force \qquad \mbox{in} ~\Omega\times]0,T[, \\
+\stress \bn &=& 0, \qquad\qquad~~~~ \mbox{in} ~\Gamma\times]0,T[, \nonumber\\
+\bu(t=0) &=& \bu_0, \qquad\qquad~~ \mbox{in} ~\Omega \nonumber\\
+\dot{\bu}(t=0) &=& \bv_0, \qquad\qquad~~ \mbox{in} ~\Omega \nonumber
+\end{eqnarray}
+where $\bu_0$ is the initial displacement, $\bv_0$ is the initial velocity, $\stress$ is the stress tensor and $\div\cdot\stress$ denotes the divergence of $\stress$. Assuming that the material is isotropic and homogeneous, one may express the stress tensor as
+\begin{equation}
+\label{eq:stressstrain}
+\stress = \lambda~\mbox{tr}~\strain\bI + 2\mu\strain,
+\end{equation}
+in terms of the Lam\'{e} constants $\lambda$ and $\mu$, the identity tensor $\bI$, and the infinitesimal strain tensor $\strain$. The strain is defined as
+\begin{equation}
+\label{eq:strain}
+\strain := \frac{1}{2}\left[ \gradu + \gradut \right] := \div_s\bu~,
+\end{equation} 
+where $\gradu$ is the gradient operator expessed in Cartesian component form as
+\[
+[\gradu] = \left[ \begin{array}{c}u_1\\u_2\\u_3\end{array}\right] 
+\left[\begin{array}{ccc} \dfrac{\partial}{\partial x} & \dfrac{\partial}{\partial y} & \dfrac{\partial}{\partial z} \end{array}\right] =
+\left[
+\begin{array}{ccc} 
+u_{1,1} & u_{1,2} & u_{1,3} \\
+u_{2,1} & u_{2,2} & u_{2,3} \\
+u_{3,1} & u_{3,2} & u_{3,3}
+\end{array}
+\right] ~.
+\]
+Using equation (\ref{eq:strain}), the components of the strain tensor are
+\[
+[\strain] = \left[
+\begin{array}{ccc} 
+u_{1,1} & \frac{1}{2}(u_{1,2}+u_{2,1}) & \frac{1}{2}(u_{1,3}+u_{3,1}) \\
+\frac{1}{2}(u_{1,2}+u_{2,1}) & u_{2,2} & \frac{1}{2}(u_{2,3}+u_{3,2}) \\
+\frac{1}{2}(u_{1,3}+u_{3,1}) & \frac{1}{2}(u_{2,3}+u_{3,2}) & u_{3,3}
+\end{array}
+\right] ~.
+\]
+
+%% Variational formulation
+Let $\bw$ denote the variations, and $\bw \in \mathcal{V}$ the variation space.
+Then the weak form can be written as
+\begin{equation}
+\int_{\Omega} \bw\cdot(\rho\dudtsq-\div\cdot\stress -\force)~d\Omega + \int_{\Gamma} \bw\cdot\stress\bn~d\Gamma = 0.
+\end{equation}
+Using the Einsteinian summation convention, we can write it as,
+
+\begin{eqnarray}
+  0 & = & \int_{\Omega} w_i ( \rho u_{i, t t} - \sigma_{i j, j} - f_i )~d\Omega + \int_{\Gamma} w_i \sigma_{ij} n_j~d \Gamma \nonumber\\
+	& = & \int_{\Omega} w_i \rho_i u_{i, t t}~d\Omega - 	
+	\left(	\int_{\Omega} w_i\sigma_{ij,j}~d\Omega \right) -
+  \int_{\Omega} w_i f_i~d\Omega + \int_{\Gamma} w_i \sigma_{ij} n_j~d\Gamma \nonumber\\
+  & = & \int_{\Omega} w_i \rho_i u_{i, t t}~d\Omega - 	
+	\left(	\int_{\Omega} (w_i\sigma_{ij})_{,j}~d\Omega - \int_{\Omega} w_{i,j}\sigma_{ij}~d\Omega \right) -
+  \int_{\Omega} w_i f_i~d\Omega + \int_{\Gamma} w_i \sigma_{ij} n_j~d\Gamma \nonumber\\
+	& = & \int_{\Omega} w_i \rho_i u_{i, t t}~d\Omega - 	
+	\left( \int_{\Gamma} w_i \sigma_{ij} n_j~d\Gamma - \int_{\Omega} w_{i, j}\sigma_{ij}~d\Omega \right) -
+  \int_{\Omega} w_i f_i~d\Omega + \int_{\Gamma} w_i \sigma_{ij} n_j~d\Gamma \nonumber\\
+  & = & \int_{\Omega} w_i \rho_i u_{i, t t}~d\Omega + \int_{\Omega} w_{( i, j )} \sigma_{ij}~d\Omega - \int_{\Omega} w_i f_i~d\Omega,
+\end{eqnarray}
+where use is made of integration by parts and the divergence theorem. It follows that,
+\begin{equation}
+\label{eq:weakForm}
+\int_{\Omega} \bw\cdot\rho\ddot{\bu} ~d\Omega - \int_{\Omega}\div_s\bw:\stress ~d\Omega = \int_{\Omega} \bw\cdot\force ~d\Omega ~,
+\end{equation}
+where $\div_s\bw:\stress$ denotes the contraction of the tensors $\div_s\bw$ and $\stress$, expressed in component form as $\div_s\bw:\stress=w_{i,j}\sigma_{ij}$.
+
+Equation (\ref{eq:weakForm}) motivates us to define the following bilinear forms:
+\begin{eqnarray}
+  a (\bw,\bu) & = & -\int_{\Omega}\div_s\bw:\stress ~d\Omega, \label{eq:bilinear} \\ %= \int_{\Omega} w_{( i, j )} \sigma_{ij}~d\Omega\\
+  (\bw,\force) & = & \int_{\Omega} \bw\cdot\force ~d\Omega, ~\mbox{and}~ \\ %= \int_{\Omega} w_i f_i~d\Omega \nonumber\\
+  (\bw, \rho \ddot{\bu} ) & = & \int_{\Omega} \bw\cdot\rho\ddot{\bu} ~d\Omega. % = \int_{\Omega} w_i \rho u_{i, t t} d \Omega \nonumber
+\end{eqnarray}
+The corresponding weak formulation can be written as:
+
+Given $\force, \bu_0 \tmop{and} \bv_0$, find $\bu( t ) \in \mathcal{S}_t, t \in [ 0, T ]$,
+such that for all $\bw \in \mathcal{V}$, such that 
+\begin{eqnarray}
+  (\bw, \rho \ddot{\bu} ) + a (\bw,\bu) &
+  = & (\bw,\force), \\
+  (\bw, \rho \bu( 0 ) ) & = & (\bw, \rho \bu_0 ), \nonumber\\
+  (\bw, \rho \dot{\bu} ( 0 ) ) & = & (\bw, \rho \tmmathbf{v}_0 ) \nonumber.
+\end{eqnarray}
+
+In order to simply the expressions, we express the components of tensorial quantities such as $\div_s\bw$ and $\stress$ in vector form. In particular we define the strain vector as,  
+
+\[ 
+	\strain(\bu) = 
+	\left\{ \begin{array}{c}
+	\epsilon_{11} \\ \epsilon_{22} \\ \epsilon_{33} \\
+	2\epsilon_{12} \\ 2\epsilon_{23} \\ 2\epsilon_{31}
+	\end{array} \right\}  =
+	\left\{ \begin{array}{c}
+     u_{1, 1}\\
+     u_{2, 2}\\
+     u_{3, 3}\\
+     u_{2, 3} + u_{3, 2}\\
+     u_{1, 3} + u_{3, 1}\\
+     u_{1, 2} + u_{2, 1}
+   \end{array} \right\} 
+\]
+
+Likewise, the stress tensor can be written in vector form as,
+
+\[
+\stress = \left\{ \begin{array}{c}
+	\sigma_{11} \\ \sigma_{22} \\ \sigma_{33} \\
+	\sigma_{12} \\ \sigma_{23} \\ \sigma_{31} \end{array} \right\} 
+\]
+
+The stress-strain law (\ref{eq:stressstrain}) can be written using the vector convention as
+\begin{equation}
+\label{ref:stressstrainMat}
+[\stress] = [\bD][\strain],
+\end{equation} 
+
+where $[\bD]$ is a ($6\times6$) elasticity matrix such that
+\begin{equation}
+  \bD= \left[ \begin{array}{cccccc}
+    \lambda + 2 \mu & \lambda & \lambda & 0 & 0 & 0\\
+    \lambda & \lambda + 2 \mu & \lambda & 0 & 0 & 0\\
+    \lambda & \lambda & \lambda + 2 \mu & 0 & 0 & 0\\
+    0 & 0 & 0 & \mu & 0 & 0\\
+    0 & 0 & 0 & 0 & \mu & 0\\
+    0 & 0 & 0 & 0 & 0 & \mu
+  \end{array} \right]
+\end{equation}
+
+Since the matrix $[\bD]$ is always symmetric, it follows that the integrand of the bilinear form in (\ref{eq:bilinear}) can be written with the aid of (\ref{ref:stressstrainMat}) as
+
+\[
+\div_s\bw:\stress = [\strain(\bw)][\bD][\strain(\bu)] := \strain(\bw)\cdot\bD\strain(\bu) ,
+\]
+which shows that the bilinear form in (\ref{eq:bilinear}) in indeed symmetric. 
+
+\subsection{Semidiscrete Galerkin formulation of elastodynamics}
+
+Given $\force, \bu_0, \tmop{and} \dot{\bu_0}$, find $\bu^h =\bv^h
++\tmmathbf{g}^h,\bu^h ( t ) \in \mathcal{S}_t^h$, such that for all
+$\bw^h \in \mathcal{V}^h$,
+\begin{eqnarray}
+  (\bw^h, \rho \ddot{\tmmathbf{v}}^h ) + a
+  (\bw^h,\tmmathbf{v}^h ) & = & (\bw^h, f ) 
+- (\bw^h, \rho \ddot{\tmmathbf{g}}^h ) - a (\bw^h,\tmmathbf{g}^h ) \nonumber\\
+  (\bw^h, \rho \tmmathbf{v}^h ( 0 ) ) & = & (\bw^h, \rho
+  \bu_0 ) - (\bw^h, \rho \tmmathbf{g}^h ( 0 ) ) \nonumber\\
+  (\bw^h, \rho \dot{\tmmathbf{v}}^h ( 0 ) ) & = & (\bw^h,
+  \rho \dot{\bu}_0 ) - (\bw^h, \rho \dot{\tmmathbf{g}}^h ( 0
+  ) ) 
+\end{eqnarray}
+The representations of $\bw^h,\tmmathbf{v}^h \tmop{and}
+\tmmathbf{g}^h$ are given by
+\begin{eqnarray}
+  \bw^h (\tmmathbf{x}, t ) = w_i^h (\tmmathbf{x}, t )\tmmathbf{e}_i &
+  = & \sum_{A \in \eta - \eta_{q_i}} N_A (\tmmathbf{x}) c_{i A} ( t
+  )\tmmathbf{e}_i \nonumber\\
+  \tmmathbf{v}^h (\tmmathbf{x}, t ) = v_i^h (\tmmathbf{x}, t )\tmmathbf{e}_i &
+  = & \sum_{A \in \eta - \eta_{g_i}} N_A (\tmmathbf{x}) d_{i A} ( t
+  )\tmmathbf{e}_i \nonumber\\
+  \tmmathbf{g}^h (\tmmathbf{x}, t ) = g_i^h (\tmmathbf{x}, t )\tmmathbf{e}_i &
+  = & \sum_{A \in \eta_{g_i}} N_A (\tmmathbf{x}) g_{i A} ( t )\tmmathbf{e}_i 
+\end{eqnarray}
+Substituting (14) into (13) we get, (ignoring $\tmmathbf{e}_i, \tmop{and}
+\tmmathbf{e}_j$ for clarity,
+
+\begin{eqnarray*}
+& & \left( \sum_{A \in \eta_{\tmop{int}}} N_A (\tmmathbf{x}) c_{i A} ( t ),
+   \sum_{B \in \eta_{\tmop{int}}} N_B (\tmmathbf{x}) \rho \ddot{d_{}}_{j B} (
+   t ) \right) + a \left( \sum_{A \in \eta_{\tmop{int}}} N_A (\tmmathbf{x})
+   c_{i A} ( t ), \sum_{B \in \eta_{\tmop{int}}} N_B (\tmmathbf{x}) d_{i B} (
+   t ) \right) \\
+&=& \left( \sum_{A \in \eta_{\tmop{int}}} N_A (\tmmathbf{x}) c_{i
+   A} ( t ),\force \right) + \left( \sum_{A \in \eta_{\tmop{int}}} N_A
+   (\tmmathbf{x}) c_{i A} ( t ),\mathfrak{h} \right)_{\Gamma} -   
+   \left( \sum_{A \in \eta_{\tmop{int}}} N_A (\tmmathbf{x}) c_{i A} ( t ),
+   \sum_{B \in \eta_{q_i}} N_B \rho \ddot{g}_{i B} ( t ) \right) \\
+&-& a\left(  \sum_{A \in \eta_{\tmop{int}}} N_A (\tmmathbf{x}) c_{i A} ( t ), \sum_{B
+   \in \eta_{q_i}} N_B g_{i B} ( t ) \right) 
+\end{eqnarray*}
+
+This gives us a set of $3 \eta_{\tmop{int}} = 3 ( \eta - \eta_{q_i} )$
+equations, where $\eta$ is the total number of nodes,
+\begin{eqnarray*}
+& & \sum^{n_{\tmop{dof}}}_{j = 1} \sum_{B \in \eta_{\tmop{int}}} ( N_A
+  \tmmathbf{e}_i, N_B \tmmathbf{e}_j ) \rho \ddot{d}_{j B} ( t ) + \sum_{j =
+  1}^{n_{\tmop{dof}}} \sum_{B \in \eta_{\tmop{int}}} a ( N_A \tmmathbf{e}_i,
+  N_B \tmmathbf{e}_j ) d_{j B} ( t ) \\
+&=& ( N_A \tmmathbf{e}_i,\force) + ( N_A \tmmathbf{e}_j,\mathfrak{h})_{\Gamma}  - \sum^{n_{\tmop{dof}}}_{j = 1}
+  \sum_{B \in \eta_{q_j}} ( N_A \tmmathbf{e}_i, N_B \tmmathbf{e}_j ) \rho
+  \ddot{g}_{j B} ( t ) - \sum_{B \in \eta_{q_j}} a ( N_A \tmmathbf{e}_i, N_B
+  \tmmathbf{e}_j ) g_{j B} ( t )
+\end{eqnarray*}
+
+
+For the case of homogeneous dirichlet boundary conditions, $\tmmathbf{g}= 0,
+\tmop{and} \eta_{q_i} = 0$, therefore (10) reduces to a set of $3 \eta$
+equations in $3 \eta$ unknowns,
+\begin{equation}
+  \sum^{n_{\tmop{dof}}}_{j = 1} \sum_{B \in \eta} ( N_A \tmmathbf{e}_i, N_B
+  \tmmathbf{e}_j ) \rho \ddot{d}_{j B} ( t ) + \sum^{n_{\tmop{dof}}}_{j = 1}
+  \sum_{B \in \eta} a ( N_A \tmmathbf{e}_i, N_B \tmmathbf{e}_j ) d_{j B} ( t )
+  = ( N_A \tmmathbf{e}_i,\force) + ( N_A
+  \tmmathbf{e}_i,\mathfrak{h})_{\Gamma}
+\end{equation}
+In order to derive the mass matrix, the global stiffness matrix and the force
+vector, we need to specify the global ordering of equations. This shall be
+explained in detail later, for now we assume we have a function
+{\tmstrong{id(i,A)}} that takes the degree of freedom and the global node
+number as input and returns the global equation number. Using this we can
+write the {\tmstrong{matrix problem}} as:
+
+%\begin{tabular}{|c|}
+%  \hline \\
+%  \begin{eqnarray}
+%    \tmmathbf{M} \ddot{\tmmathbf{d}} +\tmmathbf{K} \tmmathbf{d} & = &
+%    \force \nonumber\\
+%    \tmmathbf{d}( 0 ) & = & \tmmathbf{d}_0 \nonumber\\
+%    \dot{\tmmathbf{d}} ( 0 ) & = & \dot{\tmmathbf{d}}_0 
+%  \end{eqnarray}
+%  \hline
+%\end{tabular}
+
+where the mass matrix,
+\[ \tmmathbf{M}= \bigwedge_{e = 1}^{n_{\tmop{el}}} (\tmmathbf{m}^e ) \]
+here, $\bigwedge$is the matrix assembly operator, and the elemental mass
+matrix, $\tmmathbf{m}^e$ is given in terms of nodal submatrices as,
+\begin{eqnarray}
+  \tmmathbf{m}^e & = & \left[ m_{p q}^e \right] \nonumber\\
+  m_{p q}^e & = & \delta_{i j} \int_{\Omega_e} N_a \rho N_b d \Omega 
+\end{eqnarray}
+\begin{notation}
+  In all these definitions, $n_{\tmop{en}}$ is the number of element nodes,
+  which for the trilinear hexahedral element is 8; $n_{\tmop{ed}}$ is the
+  number of element degrees of freedom per node, which is 3 in our case. Also
+  $n_{\tmop{ee}}$ stands for the number of element equations, which is
+  $n_{\tmop{ed}} n_{\tmop{en}}$.
+\end{notation}
+
+\begin{notation}
+  For the elemental mass matrix, $1 \leqslant p, q \leqslant n_{\tmop{ee}} =
+  n_{\tmop{ed}} n_{\tmop{en}}$. Therefore in our case the elemental mass
+  matrix shall be $24 \times 24$. For the nodal submatrices, indices  $p =
+  n_{\tmop{ed}} ( a - 1 ) + i$, and $q = n_{\tmop{ed}} ( b - 1 ) + j$. 
+\end{notation}
+
+Similarly, the stiffness matrix can be written as,
+\begin{eqnarray}
+  \tmmathbf{K} & = & \bigwedge_{e = 1}^{n_{\tmop{el}}} (\tmmathbf{k}^e )
+  \nonumber\\
+  \tmmathbf{k}^e & = & \left[ k_{p q}^e \right] \nonumber\\
+  k_{p q}^e & = & \tmmathbf{e}_i^T \int_{\Omega_e} \tmmathbf{B}_a^T
+  \tmmathbf{D} \tmmathbf{B}_a d \Omega \tmmathbf{e}_j 
+\end{eqnarray}
+where the matrices $\tmmathbf{D}$ was defined earlier (7) and $\tmmathbf{B}_a$
+is given by,
+\begin{eqnarray*}
+  \tmmathbf{B}_a & = & \left[ \begin{array}{ccc}
+    N_{a, x} & 0 & 0\\
+    0 & N_{a, y} & 0\\
+    0 & 0 & N_{a, z}\\
+    0 & N_{a, z} & N_{a, y}\\
+    N_{a, z} & 0 & N_{a, x}\\
+    N_{a, y} & N_{a, x} & 0
+  \end{array} \right]
+\end{eqnarray*}
+We can now proceed to write the right hand side of our equation, i.e., the
+force vector. This can be written as,
+\begin{eqnarray}
+  \force( t ) & = & \force_{\tmop{nodal}} ( t ) +
+  \bigwedge_{e = 1}^{n_{\tmop{el}}} (\force^e ( t ) ) \nonumber\\
+  \force^e & = & \{ f_p^e \} \nonumber\\
+  f_p^e & = & \int_{\Omega_e} N_a f_i d \Omega +
+  \int_{\Gamma_{\mathfrak{h}_i}} N_a \mathfrak{h}_i d \Gamma 
+\end{eqnarray}
+Also, we get the expressions for the initial conditions as,
+\begin{eqnarray*}
+  \tmmathbf{d}_0 & = & \tmmathbf{M}^{- 1} \bigwedge_{e =
+  1}^{n_{\tmop{el}}} ( \hat{\tmmathbf{d}}^e )\\
+  \hat{\tmmathbf{d}}^e & = & \{ \hat{d}_p^e \}\\
+  \hat{d}_p^e & = & \int_{\Omega_e} N_a \rho u_{0 i} d \Omega\\
+  \dot{\tmmathbf{d}_0} & = & \tmmathbf{M}^{- 1} \bigwedge_{e =
+  1}^{n_{\tmop{el}}} ( \widehat{\dot{\tmmathbf{d}^e}}^{} )\\
+  \widehat{\dot{\tmmathbf{d}^e}} & = & \{ \widehat{\dot{d_{}^{}}} _p^e \}\\
+  \widehat{\dot{d_{}^{}}} _p^e & = & \int_{\Omega_e} N_a \rho \dot{u}_{0 i} d
+  \Omega
+\end{eqnarray*}
+Of course under the assumption that the heart is stationary at the end of
+diastole, which is our reference frame, $u_{0 i} = \dot{u_{0 i}} = 0$ and
+therefore $\tmmathbf{d}_0 = \dot{\tmmathbf{d}_{}}_0 =\tmmathbf{0}$.
+
+\subsection{Solving the forward problem: Newmark Scheme}
+
+In order to solve the forward problem, we use the Newmark method. We use the
+average acceleration or trapezoidal rule, which uses the values $\beta = 1 / 4
+\tmop{and} \gamma = 1 / 2$. We first define the predictors,
+\begin{eqnarray}
+  \tilde{\tmmathbf{d}}_{n + 1} & = & \tmmathbf{d}_n + \Delta t\tmmathbf{v}_n +
+  \frac{\Delta t^2}{4} \tmmathbf{a}_n \nonumber\\
+  \tilde{\tmmathbf{v}}_{n + 1} & = & \tmmathbf{v}_n + \frac{\Delta t}{2}
+  \tmmathbf{a}_n 
+\end{eqnarray}
+We can determine the acceleration at the next time instant by solving,
+\begin{equation}
+  \left( \tmmathbf{M}+ \frac{\Delta t^2}{2} \tmmathbf{K} \right)
+  \tmmathbf{a}_{n + 1} =\force_{n + 1} -\tmmathbf{K}
+  \tilde{\tmmathbf{d}}_{n + 1}
+\end{equation}
+We solve this to obtain $\tmmathbf{a}_{n + 1}$, and then obtain the values of
+$\tmmathbf{d}_{n + 1} \tmop{and} \tmmathbf{v}_{n + 1}$ using the correctors
+\begin{eqnarray}
+  \tmmathbf{d}_{n + 1} & = & \tilde{\tmmathbf{d}}_{n + 1} + \frac{\Delta
+  t^2}{4} \tmmathbf{a}_{n + 1} \nonumber\\
+  \tmmathbf{v}_{n + 1} & = & \tilde{\tmmathbf{v}}_{n + 1} + \frac{\Delta t}{2}
+  \tmmathbf{a}_{n + 1} 
+\end{eqnarray}
+
+\section{Optimization Problem}
+
+The optimization problem can be formulated as follows,
+
+minimize:
+\[ \mathcal{J}(\bu, f ) = \frac{1}{2} \int^T_0
+   \int_{\Omega} (\bu-\tmmathbf{z})^2 d \Omega d \tau +
+   \frac{b}{2} \int^T_0 \int_{\Omega} \force^2 d \Omega d
+   \tau \]
+subject to:
+\[ \begin{array}{lll}
+     (\bw, \rho \ddot{\bu} ) + a (\bw,\bu)
+     & = & (\bw,\force) + (\bw,\tmmathbf{h})_{\Gamma}
+     \forall \bw \in \mathcal{V}
+   \end{array} \]
+
+
+We write the lagrange functional $\mathcal{L}(\bu,\force, \xi
+)$ by introducing the lagrange multiplier $\xi$. The lagrange functional is
+expressed as,
+\begin{eqnarray*}
+  \mathcal{L}(\bu, f, \xi ) & = & \int_0^T \left( \frac{1}{2}
+  \int_{\Omega} (\bu-\tmmathbf{z})^2 d \Omega + \frac{b}{2}
+  \int_{\Omega} \force^2 d \Omega \right) d \tau\\
+  &  & - \int_0^T \left( (\tmmathbf{\xi}, \rho \ddot{\bu} ) +
+  a (\tmmathbf{\xi},\bu) - (\tmmathbf{\xi},\force) -
+  (\tmmathbf{\xi},\tmmathbf{h})_{\Gamma} \right) d \tau
+\end{eqnarray*}
+the optimization problem is one of finding $(\bu, f, \xi )$ such that
+$\mathcal{L}(\bu, f, \xi )$ is stationary. This gives rise to three
+conditions; the first is the constraint or the state equation, which in our
+case is the weak form of the forward problem, i.e., find $\bu( t )
+\in \mathcal{S}_t, t \in [ 0, T ]$, such that
+\[ \begin{array}{lll}
+     (\bw, \rho \ddot{\bu} ) + a (\bw,\bu)
+     & = & (\bw,\force) + (\bw,\tmmathbf{h})_{\Gamma}
+     \forall \bw \in \mathcal{V}
+   \end{array} \]
+Computing the differential with respect to $\bu$ gives us the adjoint
+or the co-state equation. The adjoint equation can be written as, find
+$\bu( t ) \in \mathcal{S}_t, t \in [ 0, T ]$, such that,
+\[ ( (\bu-\tmmathbf{z}),\bw) = (\tmmathbf{\xi}, \rho
+   \ddot{\bw} ) + a (\tmmathbf{\xi},\bw) \forall
+   \bw \in \mathcal{V} \]
+Similarly obtaining the derivatives with respect to the controls or the forces
+$f$ in our case we obtain the optimality condition, which can be written as,
+\[ ( b\force,\bw) = - (\tmmathbf{\xi},\bw) \forall
+   \bw \in \mathcal{V} \]
+
+In the descretized form the optimization problem can be written as,
+
+\begin{equation}
+\min_{\bu,\force,\bxi} \mathcal{L} (\bu, \force, \bxi) = \min_{\bu,\force,\bxi} \frac{1}{2} \Vert Q\bu - \bz \Vert^2 + \frac{\beta}{2} \force^TW\force + \bxi^T(L\bu - \force),
+\end{equation}
+where $Q$ corresponds to the interpolation matrix which uses the values of $\bu$ obtained by solving the forward problem to warp the end-diastole observation $\bz_0$ to obtain results at all points where the observations $\bz$ are available. $W$ is the smoothing operator in the objective function (identity matrix for the current case) and $L$ is the linear elasticity operator described earlier. KKT optimality conditions for the above problem are given by:
+
+\begin{eqnarray*}
+Q^T(Q\bu - \bz) + L^T\bxi&=& 0, \\
+\beta W\force - \bxi &=& 0, \\
+L\bu - \force &=& 0. 
+\end{eqnarray*}
+
+From the above equations we can derive the reduced gradient $g$ and the reduced Hessian $H$. The reduced gradient is given by,
+
+\begin{eqnarray}
+\bxi &=& -L^{-T}(Q^T(Q\bu - \bz)), \\
+g &=& \beta W\force + L^{-T}(Q^T(Q\bu - \bz)) = 0. 
+\end{eqnarray}
+
+%In the above equation $-L^{-1}C$ is the sensitivity matrix ($S$) and as such it represents the variation of the field with respect to the force\footnote{the controls in general} $\force$. Using $S$ instead of $-L^{-1}C$ 
+
+Using the expression for the reduced gradient, we can evaluate the reduced Hessian which is the derivative of the reduced gradient with respect to the controls ($\force$),
+\begin{equation}
+H = \beta W + L^{-T}Q^TQL^{-1}.
+\end{equation}
+ 
+%\subsection{Solving it ...}
+%
+%The optimization algorithm can be described as follows, starting with an
+%initial guess for the forces, $f^{( 0 )}$,
+%\begin{enumerateroman}
+%  \item Solve the forward problem, $F (\bu^{( m )}, f^{( m )} ) = 0$
+%  to obtain the displacements $\bu^{( m )}$.
+%  
+%  \item Compute the gradient of the cost functional, $\frac{D\mathcal{J}}{D f}
+%  (\bu^{( m )}, f^{( m )} )$.
+%  
+%  \item Compute the step, $\delta f^{( m )}$ based on the gradient.
+%  
+%  \item $f^{( m + 1 )} \longleftarrow f^{( m )} + \delta f^{( m )}$ 
+%\end{enumerateroman}
+%We compute the gradient of the cost functional, by the adjoint method.
+
+\end{document}

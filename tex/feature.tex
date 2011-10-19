@@ -1,0 +1,74 @@
+\section {Feature Extraction}
+\label{feature} 
+
+For any imaging based diagnosis algorithm it is important that we are able to robustly extract features that characterize the pathology. Most of the work done under CAD has focused on pathologies that can be characterized by structural changes, like tumors. The only case where diagnosis of pathologies has utilized functional information has been using functional imaging modalities like fMRI or PET. Structural information, albeit important, is not sufficient to characterize cardiomyopathies. Cardiamyopathies are characterized by both structural and functional changes and both of these need to be extracted from the image before accurate diagnosis can be done. 
+
+We propose to train a classifier on feature vectors extracted from cardiac MR cine sequences. These feature vectors characterize both structural and functional changes within the myocardium. We shall now briefly describe the various components.
+
+\subsection{Structural Features}
+
+The structural features are extracted from dark-blood MR images of the patient. As we are only interested in the structural information this is a 3D image. The myocardium can be segmented by either planting a single seed in the myocardium and region growing or can also be segmented by using the determinant of jacobian map that is obtained during the extraction of functional features. Every point on the myocardium is then represented by three values representing different structural information,
+
+\begin{itemize}
+  \item Signal intensity
+
+  \item Myocardial Wall Thickness
+
+  \item Myocardial Wall Curvature
+\end{itemize}
+
+\subsection{Functional Features}
+
+The extraction of the functional features is a bit more involved. We intend to characterize myocardial function by using estimates of cardiac motion fields extracted from 4D MR Cine sequences. There are two aspects to this problem; the first in the development of specific acquisition techniques to obtain the most useful images, and the second to the post-processing of these images for estimation of cardiac deformation. For the first aspect a lot of work has been done within the MR community regarding the development of MR tagging \cite{mrtag}, and to a lesser extent, MR phase velocity Imaging \cite{mrphase}. Although both methods provide very good estimates of the deformation fields, they are not suited for our case as we prefer to use standard MT Cine sequences are are more routinely performed in a clinical setting. 
+
+The second aspect is the analysis of these images and related to work done traditionally within the computer vision and medical imaging communities, especially in the area of deformable image registration. There are numerous methods that have been used for registring cardiac images and a recent thourough survey of cardiac registration methods can be found in \cite{regSurvey}. Traditional approaches for performing image-similarity based deformable registration depend on defining a metric for image-similarity and a model for defining the deformations on the image. The problem can then be rephrased as one of non-linear optimization, i.e., the maximization of the similarity metric between the two images subject to constraints on the smoothness of the deformation.
+
+More Literature review ...
+
+We use MR cine sequences to extract the motion field for the entire cardiac cycle by registering all the frames to the $t_0$ frame which corresponds to
+end-diastole.
+
+\subsubsection{Validation of deformation fields}
+
+We validate the accuracy of the registeration algorithm(s) by comparing the resulting deformation fields with those produced by using HARP \cite{mrtag} on tagged MR cine sequences of the same patient.
+
+All the deformation fields are represented in the space of the $t_0$ frame. The most important functional characteristics of the myocardium are contained in the volumetric changes that occur within the cardiac wall. We compute the jacobian of this defromation field and from that get the determinant of the jacobian matrix. The jacobian at any given point $(x,y,z)$ is defined by
+
+\begin{equation}
+J(x,y,z) = \left[  
+	\begin{array}{ccc}
+		\frac{\partial u}{\partial x} & \frac{\partial u}{\partial y} & \frac{\partial u}{\partial z} \\	
+		\frac{\partial v}{\partial x} & \frac{\partial v}{\partial y} & \frac{\partial v}{\partial z} \\	
+		\frac{\partial w}{\partial x} & \frac{\partial w}{\partial y} & \frac{\partial w}{\partial z} 
+	\end{array}
+	\right] 
+\end{equation} 
+where $(u,v,w)$ are the deformations at point $(x,y,z)$. The determinant of the jacobian at a point $p$ gives us the factor by which the tissue expands or shrinks volumetrically near $p$. Since the myocardium deforms (shrinks/expands) most during the cardiac cycle compared with the surrounding tissue, we can use the determinant of the jacobian to segment the myocardium. The determinant of the jacobian is a good meausre of myocardial activity over a cardiac cycle, as abnormal myocardiac behaviour is usually characterized either by no motion or excessive motion in certain regions. The determinant of the jacobian is able to characterize such changes is an accurate and concise manner.
+
+\subsection{Spatio-Temporal Normalization}
+
+Before we can input the feature vectors into the classifier
+or build a statistical cardiac-motion atlas we need to normalize the feature
+vectors. This is important because different people have hearts of different
+sizes (spatial) and also their heartbeats are different (temporal).
+
+One approach to perform spatial normalization would be to register the $t_0$
+frames of different subjects to a common reference frame. However this is not
+the best option as it will result in similar normalized hearts for the case of
+an enlarged RV and one with a smaller LV. We propose to spatially normalize
+the hearts based on the chest size. Since this is how Radiologists avaluate
+heart sizes, it is better to normalize the hearts this way. We use the
+distances from the spine to the sternum and the distance from the sternum to
+the T4 vertebra and the perpendicular distance to the left flank.
+
+As different patients have different heart rates we also need to normalize the
+datasets temporally. The first frame in MR cine sequences corresponds to the
+end of diastole and the last frame is one short of this. Thus if we match the
+endpoints of the sequences and normalize, we can normalize the datasets to a
+uniform heart rate. However as the heart has a contraction (systole) and an
+expansion (diastole) phase, it is also import to align the end-systole frames
+for different phases. We detect the end-systole phase using the determinant of
+jacobian map and look for the frame where the determinant changes from
+contracting to expansion for most cells within the myocardium.
+
+\subsection{Feature Selection and Classifier}

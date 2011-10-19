@@ -1,0 +1,264 @@
+// Usage 
+//    This program is used to flip and resample DTI
+//
+// compile:  
+//   make -f mkResDTI
+
+#include <iostream>
+#include <strstream>
+#include <fstream>
+#include <math.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
+//#include <GL/gl.h>
+//#include <GL/glu.h>
+//#include <GL/glut.h> 
+
+#include "DTVolume.h"
+
+char infile[200];
+char outfile[200];
+float irx,iry,irz, orx,ory,orz; //resolutions of input and output
+int idx,idy,idz,odx,ody,odz;//dimensions of input and output
+int NEARESTNEIGHBOR; //sampling method
+int FLIP_XYZ=-1; //flag if to flip the DT volume
+float cx,cy,cz,CX,CY,CZ; //center of old /new volume
+
+void resample(DTVolume& vd,DTVolume& nvd, int NearestSample=1);
+void usage(int argc, char ** argv);
+int mainResample(int argc, char ** argv);
+
+
+void getParameters(int argc, char ** argv)
+{
+   extern char *optarg;
+   int c;
+   char cc;
+
+   strcpy (infile,argv[1]);
+   strcpy( outfile,argv[2]);
+   irx = iry = irz = 1.0; //input resolution
+   orx = ory = orz = 1.0; //output resolution
+   idx=idy=odx=ody=256; // dimensions
+   cx=cy=cz=CX=CY=CZ=-1;
+   odz=idz=-1;
+   NEARESTNEIGHBOR=0;
+   FLIP_XYZ=-1; //not to flip DT volume
+   
+
+   while ((c=getopt(argc-2,argv+2,"d:D:r:R:Nc:C:f:")) != -1) {
+      switch (c) {
+      case 'N': //using nearest neighbor in resampling
+	NEARESTNEIGHBOR=1;
+	break;
+      case 'f': //flip DT volume
+	sscanf(optarg,"%c", &cc);
+	if (cc == 'X' || cc == 'x')
+	   FLIP_XYZ=0;
+	else
+	if (cc == 'Y' || cc == 'y')
+	   FLIP_XYZ=1;
+	else
+	if (cc == 'Z' || cc == 'z')
+	   FLIP_XYZ=2;
+	break;
+      case 'D':
+	sscanf(optarg,"%d,%d,%d",&odx,&ody,&odz);
+	break;	
+      case 'd':
+	sscanf(optarg,"%d,%d",&idx,&idy);
+	break;
+      case 'r':
+	sscanf(optarg,"%f,%f,%f",&irx,&iry,&irz);
+	break;
+      case 'R':
+	sscanf(optarg,"%f,%f,%f",&orx,&ory,&orz);
+	break;
+      case 'c':
+	sscanf(optarg,"%f,%f,%f",&cx,&cy,&cz);
+	break;
+      case 'C':
+	sscanf(optarg,"%f,%f,%f",&CX,&CY,&CZ);
+	break;
+      case 'H':
+      defualts:
+	usage(argc, argv);
+	break;
+      }
+    }
+    if (odz == -1){//use input's dimensions
+	odx=idx;
+	ody=idy;
+	odz=idz;
+    }
+    cout <<"idx="<<idx<<endl;
+    cout <<"idy="<<idy<<endl;
+    cout <<"idz="<<idz<<endl;
+    cout <<"odx="<<odx<<endl;
+    cout <<"ody="<<ody<<endl;
+    cout <<"odz="<<odz<<endl;
+    cout <<"irx="<<irx<<endl;
+    cout <<"iry="<<iry<<endl;
+    cout <<"irz="<<irz<<endl;
+    cout <<"orx="<<orx<<endl;
+    cout <<"ory="<<ory<<endl;
+    cout <<"orz="<<orz<<endl;
+    cout <<"cx="<<cx<<endl;
+    cout <<"cy="<<cy<<endl;
+    cout <<"cz="<<cz<<endl;
+    cout <<"CX="<<CX<<endl;
+    cout <<"CY="<<CY<<endl;
+    cout <<"CZ="<<CZ<<endl;
+    cout <<"FLIP_XYZ="<<FLIP_XYZ<<endl;
+
+    //exit(0);
+ 
+}
+void usage(int argc, char ** argv)
+{
+     cout << "\n\nThis program is for resampling DT volume data and pading"<<endl; 
+     cout << "  zero or trimming according to the output dimensions"<<endl;
+     cout << "\n\n Usage: \n    "<< argv[0] <<" inVol outVol [options]"<<endl;
+     cout << "     Options:"<<endl;
+     cout <<"         -d<float,float>: "<<endl;
+     cout <<"               input dimensions XY,      default: -d256,256 in XY"<<endl;
+     cout <<"         -D<float,float,float>:"<<endl;
+     cout <<"               output dimensions of XYZ, default: same as input,"<<endl;
+     cout <<"         -r<float,float,float>:"<<endl;
+     cout <<"               input resolution,  default: -r1.0,1.0,1.0"<<endl;	
+     cout <<"         -R<float,float,float>:"<<endl; 
+     cout <<"               output resolution, default: -R1.0,1.0,1.0"<<endl;
+     cout <<"         -c<float,float,float>:"<<endl; 
+     cout <<"               input volume cener,  default: the center of input"<<endl;	
+     cout <<"         -C<float,float,float>:"<<endl; 
+     cout <<"               output volume center, default: the center of the output"<<endl;
+     cout <<"         -N: using nearest neighbor in resampling, default: trilinear"<<endl;
+     cout <<"         -f: flip the DT volume, e.g. -f X."<<endl;
+
+     cout <<"\n Note: the input center will be mapped to the output cener"<<endl;
+
+     cout <<"\n\n Example:"<<endl;
+     cout <<"     "<<argv[0]<<" inVol.img outVol.img -d256,256 -D 256,256,140 "<<endl;
+     cout <<"                      -r0.9375,0.9375,3.0 -R 0.9375,0.9375,1.5 "<<endl;
+     cout <<"                      -c128,128,28 -C 124.5,126.5,43.5  -f \n\n\n"<<endl;
+     cout <<"\n\n    Feed back to : xdr@jhu.edu   - Sept 3, 2001"<<endl;
+     exit(0);
+}
+int mainResample(int argc, char ** argv)
+{
+   if (argc < 3){
+      usage(argc,argv);
+      return 0;
+   }
+   getParameters(argc,argv);
+
+   DTVolume vd(infile, idx,idy,irx, iry, irz);
+
+   vd.getDimXYZ(idx,idy,idz); //get idz
+
+   if (odz==-1)
+	odz=idz;
+   cout << " idz = "<<idz<<endl;
+   cout << "now odz="<<odz<<endl;
+   vd.outputs();
+
+   if (FLIP_XYZ!=-1)
+	vd.flipVolume(FLIP_XYZ);
+   
+   cout <<"\n\nnow the new volume..."<<endl;
+   DTVolume nvd;
+   nvd.newVolume(odx,ody,odz,orx,ory,orz);
+   nvd.outputs();
+
+   resample(vd,nvd,NEARESTNEIGHBOR);
+
+   nvd.saveTensorData(outfile); 
+
+   cout <<"\n\n    Feed back to : xdr@jhu.edu   - Sept 3, 2001"<<endl;
+   return 0;  
+
+}
+
+
+int main(int argc, char ** argv)
+{
+    return mainResample(argc, argv);
+
+}
+
+void resample(DTVolume& vd,DTVolume& nvd, int NearestSample)
+{
+
+  double lx,ly,lz; //old volume physical length center
+  double nlx,nly,nlz; //new volume physical length center
+  int dx,dy,dz;  //old volume dimensions
+  int ndx,ndy,ndz; //new volume dimensions
+  int XX,YY,ZZ,i;
+  double px, py, pz, gridx, gridy, gridz;
+  //float t;
+  DTensor cc,zero_tensor;
+
+  for (i=0; i<6; i++)
+	zero_tensor.a[i]=0.0f;
+
+  if ((cx==-1)&&(cy==-1)&&(cz==-1)){
+     vd.getDimXYZ(dx,dy,dz);
+     lx = irx*dx/2.0;  //default center (dx/2,dy/2,dz/2)
+     ly = iry*dy/2.0;
+     lz = irz*dz/2.0;
+  }else{
+     lx = irx*cx; //user defined (cx,cy,cz)
+     ly = iry*cy;
+     lz = irz*cz;
+  }
+
+  nvd.getDimXYZ(ndx,ndy,ndz);
+  if ((CX==-1)&&(CY==-1)&&(CZ==-1)){
+     nlx = orx*ndx/2.0; //default center (ndx/2,ndy/2,ndz/2)
+     nly = ory*ndy/2.0;
+     nlz = orz*ndz/2.0;
+  }else{
+     nlx = orx*CX; //user defined (CX,CY,CZ)
+     nly = ory*CY;
+     nlz = orz*CZ;
+  }
+
+  cout <<"\n\n Now begin to resample: using ";
+  cout <<((NEARESTNEIGHBOR==1)?"Nearest Neighbor":"Trilinear")<<endl; 
+  pz= -nlz + lz;
+  for (ZZ = 0; ZZ <ndz; ZZ++,pz += orz){
+    cout << "computing Z slice .... "<< ZZ << char(13); flush(cout);
+    if (pz < 0)
+	continue;
+    gridz = pz / irz;
+    py = -nly + ly;
+    for (YY = 0; YY <ndy; YY++, py += ory){
+       if (py<0) 
+	 continue;
+       gridy = py / iry;
+       px = -nlx + lx;
+       for (XX = 0; XX <ndx; XX++,px += orx){
+	 if (px<0) 
+	    continue;
+	 gridx = px / irx;
+	 if (NearestSample==1){
+	   //cc = vd.getValuei((int)(gridx+0.5),(int)(gridy+0.5),(int)(gridz+0.5));
+	   if (1==vd.getTensorAt((int)(gridx+0.5),(int)(gridy+0.5),(int)(gridz+0.5),cc))
+	   	nvd.setTensorAt(XX,YY,ZZ,cc);
+	   else 
+		nvd.setTensorAt(XX,YY,ZZ,zero_tensor);
+	 }else{
+	   if (1==vd.fgetTensorAt(gridx, gridy, gridz,cc))
+ 	     nvd.setTensorAt(XX,YY,ZZ,cc);
+	   else 
+	     nvd.setTensorAt(XX,YY,ZZ,zero_tensor);
+	 }
+       }  
+    }    
+  }
+  cout<<endl<<endl;
+
+}
+

@@ -1,0 +1,71 @@
+\contentsline {chapter}{Acknowledgements}{iii}{section*.1}
+\contentsline {chapter}{Abstract}{iv}{chapter*.2}
+\contentsline {chapter}{Contents}{vi}{chapter*.2}
+\contentsline {chapter}{List of Figures}{ix}{chapter*.3}
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Motivation}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}Arrhythmogenic Right Ventricular Cardiomyopathy}{4}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}Clinical Features and Relevance}{4}{subsection.1.2.1}
+\contentsline {subsection}{\numberline {1.2.2}MR Imaging of ARVC}{4}{subsection.1.2.2}
+\contentsline {section}{\numberline {1.3}Assessing Myocardial Function}{5}{section.1.3}
+\contentsline {subsection}{\numberline {1.3.1}Specialized MR Protocols}{6}{subsection.1.3.1}
+\contentsline {subsubsection}{MR Tagging}{6}{section*.5}
+\contentsline {subsubsection}{Phase Contrast Imaging}{7}{section*.6}
+\contentsline {subsubsection}{DENSE and HARP}{8}{section*.7}
+\contentsline {subsection}{\numberline {1.3.2}Extracting motion from MR Cine images}{8}{subsection.1.3.2}
+\contentsline {section}{\numberline {1.4}Biomechanical Modeling of the Heart}{10}{section.1.4}
+\contentsline {section}{\numberline {1.5}Contributions}{10}{section.1.5}
+\contentsline {section}{\numberline {1.6}Organization of this Thesis}{10}{section.1.6}
+\contentsline {chapter}{\numberline {2}Image Registration based Motion Estimation}{11}{chapter.2}
+\contentsline {section}{\numberline {2.1}Using MR Cine Sequences for Structural and Functional Characterization}{12}{section.2.1}
+\contentsline {section}{\numberline {2.2}Wavelet Attribute Vectors}{16}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Construction of Wavelet Attribute Vectors}{17}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Wavelet attribute vector similarity function}{19}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Selecting the best correspondence point}{20}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}Distinctiveness of attribute vectors}{23}{subsection.2.2.4}
+\contentsline {section}{\numberline {2.3}Estimating the Cardiac Motion Field}{26}{section.2.3}
+\contentsline {section}{\numberline {2.4}Periodicity Constraint}{30}{section.2.4}
+\contentsline {chapter}{\numberline {3}Mechanical Model of the Heart}{32}{chapter.3}
+\contentsline {section}{\numberline {3.1}Introduction}{32}{section.3.1}
+\contentsline {section}{\numberline {3.2}Anatomical Structure of the Heart}{33}{section.3.2}
+\contentsline {section}{\numberline {3.3}Mechanical Modeling}{34}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Linear Elastodynamics}{35}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Semidiscrete Galerkin formulation of elastodynamics}{39}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}Solving the forward problem: Newmark Scheme}{43}{subsection.3.3.3}
+\contentsline {subsubsection}{Imposing boundary conditions.}{44}{section*.8}
+\contentsline {subsubsection}{Multigrid acceleration.}{45}{section*.9}
+\contentsline {section}{\numberline {3.4}Diffusion Tensor Imaging}{45}{section.3.4}
+\contentsline {section}{\numberline {3.5}Warping Diffusion Tensors from template to subjects}{47}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Deformable Image Registration}{48}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}Tensor Reorientation}{48}{subsection.3.5.2}
+\contentsline {section}{\numberline {3.6}Results and Validation}{50}{section.3.6}
+\contentsline {chapter}{\numberline {4}Octree Meshing}{54}{chapter.4}
+\contentsline {section}{\numberline {4.1}Background}{58}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Morton encoding}{60}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Balance Constraint}{61}{subsection.4.1.2}
+\contentsline {section}{\numberline {4.2}Algorithms}{62}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Constructing large linear octrees in parallel}{62}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Constructing a minimal linear octree between two octants}{64}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Constructing complete linear octrees from a partial set of octants}{65}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.4}Parallel bottom-up coarsening of octrees}{67}{subsection.4.2.4}
+\contentsline {subsubsection}{Using the parallel coarsening algorithm for partitioning octants}{69}{section*.10}
+\contentsline {subsection}{\numberline {4.2.5}Balancing large linear octrees in parallel}{70}{subsection.4.2.5}
+\contentsline {subsubsection}{Local balancing}{73}{section*.11}
+\contentsline {subsubsection}{Balancing a local block}{74}{section*.12}
+\contentsline {subsubsection}{Searching for neighbors}{76}{section*.13}
+\contentsline {subsubsection}{Ripple propagation}{80}{section*.14}
+\contentsline {subsubsection}{Insulation against the ripple-effect}{81}{section*.15}
+\contentsline {subsubsection}{Balancing inter-processor boundaries}{84}{section*.16}
+\contentsline {subsubsection}{Communication costs for parallel balancing}{87}{section*.17}
+\contentsline {section}{\numberline {4.3}Results}{91}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Test Data}{92}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Comparison between different strategies for the local balancing stage}{93}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Scalability analysis}{95}{subsection.4.3.3}
+\contentsline {section}{\numberline {4.4}Conclusions}{96}{section.4.4}
+\contentsline {section}{\numberline {4.5}Properties of Morton encoding}{103}{section.4.5}
+\contentsline {section}{\numberline {4.6}Multicomponent Morton Representation}{105}{section.4.6}
+\contentsline {section}{\numberline {4.7}Analysis of the Block Partitioning Algorithm}{105}{section.4.7}
+\contentsline {section}{\numberline {4.8}Special case during construction}{107}{section.4.8}
+\contentsline {chapter}{\numberline {5}Inverse Problem}{108}{chapter.5}
+\contentsline {chapter}{\numberline {6}Results}{109}{chapter.6}
+\contentsline {chapter}{Bibliography}{110}{chapter.6}

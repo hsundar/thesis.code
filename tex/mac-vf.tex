@@ -1,0 +1,83 @@
+\def\half{\frac{1}{2}}
+\def\us{u^*}	\def\bus{{\bu^*}}	\def\buh{{\bu^h}}
+\def\udiv{\bu\!\cdot \div}	\def\usdiv{\bus\!\cdot \div}
+\def\uhdiv{\buh\!\cdot \div}
+\def\divu{\div\!\cdot\!\bu}	\def\divus{\div\!\cdot\!\bus}
+\def\divuh{\div\!\cdot\!\buh} \def\divv{\div\!\cdot\!\bv}
+\def\vatwo{\left[\begin{array}{c}v_1^a\\v_2^a\end{array}\right]}
+\def\ubtwo{\left[\begin{array}{c}u_1^b\\u_2^b\end{array}\right]}
+\def\va3{\left[\begin{array}{c}v_1^a\\v_2^a\\v_3^a\end{array}\right]}
+\def\ub3{\left[\begin{array}{c}u_1^b\\u_2^b\\u_3^b\end{array}\right]}
+\def\fb3{\left[\begin{array}{c}f_1^b\\f_2^b\\f_3^b\end{array}\right]}
+\def\rs#1{{r_{#1}^*}}	\def\brs#1{{{\bf r}_{#1}^*}}
+\def\gradv3{\left[\begin{array}{ccc}
+	v_{1,x_1}&v_{1,x_2}&v_{1,x_3}\\
+	v_{2,x_1}&v_{2,x_2}&v_{2,x_3}\\
+	v_{3,x_1}&v_{3,x_2}&v_{3,x_3}\\
+\end{array}\right]}
+\def\strainu3{\left[\begin{array}{ccc}
+	2 u_{1,x_1}&u_{1,x_2}+u_{2,x_1}&u_{1,x_3}+u_{3,x_1}\\
+	u_{2,x_1}+u_{1,x_2}&2 u_{2,x_2}&u_{2,x_3}+u_{3,x_2}\\
+	u_{3,x_1}+u_{1,x_3}&u_{3,x_2}+u_{2,x_3}&2 u_{3,x_3}
+\end{array}\right]}
+\def\divstrainv3{\left[\begin{array}{c}
+	2v_{1,x_1x_1}+v_{1,x_2x_2}+ v_{1,x_3x_3}+v_{2,x_1x_2}+ v_{3,x_1x_3}\\
+	 v_{1,x_2x_1}+v_{2,x_1x_1}+2v_{2,x_2x_2}+v_{2,x_3x_3}+ v_{3,x_2x_3}\\
+	 v_{1,x_3x_1}+v_{2,x_3x_2}+ v_{3,x_1x_1}+v_{3,x_2x_2}+2v_{3,x_3x_3}
+\end{array}\right]}
+\def\divstrainu3{\left[\begin{array}{c}
+	2u_{1,x_1x_1}+u_{1,x_2x_2}+ u_{1,x_3x_3}+u_{2,x_1x_2}+ u_{3,x_1x_3}\\
+	 u_{1,x_2x_1}+u_{2,x_1x_1}+2u_{2,x_2x_2}+u_{2,x_3x_3}+ u_{3,x_2x_3}\\
+	 u_{1,x_3x_1}+u_{2,x_3x_2}+ u_{3,x_1x_1}+u_{3,x_2x_2}+2u_{3,x_3x_3}
+\end{array}\right]}
+\def\gradq3{\left[\begin{array}{c}q_{x_1}\\q_{x_2}\\q_{x_3}\end{array}\right]}
+\def\gradp3{\left[\begin{array}{c}p_{x_1}\\p_{x_2}\\p_{x_3}\end{array}\right]}
+%
+% stress components
+%
+\def\Ts{{T^*}}	\def\bTs{{\bT^*}}	\def\bTh{{\bT^h}}	\def\bSh{{\bS^h}}
+\def\S#1{{\tilde{S}_{#1}}}
+\def\T#1{{\tilde{T}_{#1}}}	\def\Ts#1{{\tilde{T}_{#1}^*}}
+%
+\def\Sa{\left[\begin{array}{c}\S{1}^a\\\S{2}^a\\\S{3}^a\end{array}\right]}
+\def\Tb{\left[\begin{array}{c}\T{1}^b\\\T{2}^b\\\T{3}^b\end{array}\right]}
+%
+% convective derivatives of stress
+%
+\def\dusT{\left( \div \bus \cdot \bT + \bT \cdot (\div \bus)^T\right)}
+\def\duTs{\left( \div \bu \cdot \bTs + \bTs \cdot (\div \bu)^T\right)}
+\def\duTh{\left( \div \buh \cdot \bTh + \bTh \cdot (\div \buh)^T\right)}
+\def\dusTs{\left( \div \bus \cdot \bTs + \bTs \cdot (\div \bus)^T\right)}
+\def\duS{\left( \div \bu \cdot \bS + \bS \cdot (\div \bu)^T\right)}
+\def\duSh{\left( \div \buh \cdot \bSh + \bSh \cdot (\div \buh)^T\right)}
+\def\dusS{\left( \div \bus \cdot \bS + \bS \cdot (\div \bus)^T\right)}
+\def\triangledown{\mathchar"0235 }
+\def\bDT{\overtriangle{\bT}}
+\def\bDS{\overtriangle{\bS}}
+%
+% common VF expressions
+%
+
+\newcommand{\piola}{\mathcal{J}{\bf F^{-1}\tilde{T}F^{-T} }}
+\newcommand{\rhou}{\left( \rho \bu \right)}
+\newcommand{\rhoe}{\left( \rho e \right)}
+\newcommand{\rhouu}{\left( \rho \bu \bu \right)}
+\newcommand{\rhoeu}{\left( \rho e \bu \right)}
+\newcommand{\drdt}{\frac{\partial \rho}{\partial t}}
+\newcommand{\drudt}{\frac{\partial \rhou}{\partial t}}
+\newcommand{\dredt}{\frac{\partial \rhoe}{\partial t}}
+\newcommand{\dudt}{\frac{\partial \bu}{\partial t}}
+\newcommand{\dudtsq}{\frac{\partial^2 \bu}{\partial t^2}}
+\newcommand{\dUdt}{\frac{\partial \bU}{\partial t}}
+\newcommand{\gradu}{\div \bu}
+\newcommand{\gradut}{\left( \div \bu \right)^{T}}
+\newcommand{\umag}{\|\bu\|}
+\newcommand{\dudx}{\frac{\partial u_{1}}{\partial x_{1}}}
+\newcommand{\dudy}{\frac{\partial u_{1}}{\partial x_{2}}}
+\newcommand{\dudz}{\frac{\partial u_{1}}{\partial x_{3}}}
+\newcommand{\dvdx}{\frac{\partial u_{2}}{\partial x_{1}}}
+\newcommand{\dvdy}{\frac{\partial u_{2}}{\partial x_{2}}}
+\newcommand{\dvdz}{\frac{\partial u_{2}}{\partial x_{3}}}
+\newcommand{\dwdx}{\frac{\partial u_{3}}{\partial x_{1}}}
+\newcommand{\dwdy}{\frac{\partial u_{3}}{\partial x_{2}}}
+\newcommand{\dwdz}{\frac{\partial u_{3}}{\partial x_{3}}}

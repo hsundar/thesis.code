@@ -1,0 +1,919 @@
+This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2009.11.29)  29 NOV 2010 11:53
+entering extended mode
+**C:/home/ThesisCode/tex/thesis.tex
+(C:/home/ThesisCode/tex/thesis.tex
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, dumylang, nohyphenation, ge
+rman, ngerman, german-x-2009-06-19, ngerman-x-2009-06-19, french, loaded.
+(C:\home\ThesisCode\tex\upenndiss.cls
+Document Class: upenndiss 2000/5/24 U. Penn Dissertation Class for LaTeX2e
+("C:\Program Files\MiKTeX 2.8\tex\latex\base\report.cls"
+Document Class: report 2007/10/19 v1.4h Standard LaTeX document class
+("C:\Program Files\MiKTeX 2.8\tex\latex\base\size12.clo"
+File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+("C:\Program Files\MiKTeX 2.8\tex\latex\setspace\setspace.sty"
+Package: setspace 2000/12/01 6.7 Contributed and Supported LaTeX2e package
+
+Package: `setspace' 6.7 <2000/12/01>
+)) ("C:\Program Files\MiKTeX 2.8\tex\latex\psnfss\times.sty"
+Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
+)
+("C:\Program Files\MiKTeX 2.8\tex\latex\graphics\epsfig.sty"
+Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
+
+("C:\Program Files\MiKTeX 2.8\tex\latex\graphics\graphicx.sty"
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.8\tex\latex\graphics\keyval.sty"
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+("C:\Program Files\MiKTeX 2.8\tex\latex\graphics\graphics.sty"
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.8\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("C:\Program Files\MiKTeX 2.8\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+("C:\Program Files\MiKTeX 2.8\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2009/08/25 v0.04m Graphics/color for pdfTeX
+\Gread@gobject=\count88
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+\epsfxsize=\dimen105
+\epsfysize=\dimen106
+)
+("C:\Program Files\MiKTeX 2.8\tex\latex\bbm\bbm.sty"
+Package: bbm 1999/03/15 V 1.2 provides fonts for set symbols - TH
+LaTeX Font Info:    Overwriting math alphabet `\mathbbm' in version `bold'
+(Font)                  U/bbm/m/n --> U/bbm/bx/n on input line 33.
+LaTeX Font Info:    Overwriting math alphabet `\mathbbmss' in version `bold'
+(Font)                  U/bbmss/m/n --> U/bbmss/bx/n on input line 35.
+)
+("C:\Program Files\MiKTeX 2.8\tex\latex\subfigure\subfigure.sty"
+Package: subfigure 2002/07/30 v2.1.4 subfigure package
+\subfigtopskip=\skip43
+\subfigcapskip=\skip44
+\subfigcaptopadj=\dimen107
+\subfigbottomskip=\skip45
+\subfigcapmargin=\dimen108
+\subfiglabelskip=\skip46
+\c@subfigure=\count89
+\c@lofdepth=\count90
+\c@subtable=\count91
+\c@lotdepth=\count92
+
+****************************************
+* Local config file subfigure.cfg used *
+****************************************
+("C:\Program Files\MiKTeX 2.8\tex\latex\subfigure\subfigure.cfg")
+\subfig@top=\skip47
+\subfig@bottom=\skip48
+)
+("C:\Program Files\MiKTeX 2.8\tex\latex\hyperref\hyperref.sty"
+Package: hyperref 2009/10/19 v6.79b Hypertext links for LaTeX
+
+("C:\Program Files\MiKTeX 2.8\tex\generic\oberdiek\ifpdf.sty"
+Package: ifpdf 2009/04/10 v2.0 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in pdf mode detected.
+)
+("C:\Program Files\MiKTeX 2.8\tex\generic\oberdiek\ifvtex.sty"
+Package: ifvtex 2008/11/04 v1.4 Switches for detecting VTeX and its modes (HO)
+Package ifvtex Info: VTeX not detected.
+)
+("C:\Program Files\MiKTeX 2.8\tex\latex\ifxetex\ifxetex.sty"
+Package: ifxetex 2009/01/23 v0.5 Provides ifxetex conditional
+)
+("C:\Program Files\MiKTeX 2.8\tex\latex\oberdiek\hycolor.sty"
+Package: hycolor 2009/10/02 v1.5 Code for color options of hyperref/bookmark (H
+O)
+
+("C:\Program Files\MiKTeX 2.8\tex\latex\oberdiek\xcolor-patch.sty"
+Package: xcolor-patch 2009/10/02 xcolor patch
+))
+\@linkdim=\dimen109
+\Hy@linkcounter=\count93
+\Hy@pagecounter=\count94
+
+("C:\Program Files\MiKTeX 2.8\tex\latex\hyperref\pd1enc.def"
+File: pd1enc.def 2009/10/19 v6.79b Hyperref: PDFDocEncoding definition (HO)
+)
+("C:\Program Files\MiKTeX 2.8\tex\generic\oberdiek\etexcmds.sty"
+Package: etexcmds 2007/12/12 v1.2 Prefix for e-TeX command names (HO)
+
+("C:\Program Files\MiKTeX 2.8\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2007/09/09 v1.2 Providing info/warning/message (HO)
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)
+("C:\Program Files\MiKTeX 2.8\tex\latex\00miktex\hyperref.cfg"
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+("C:\Program Files\MiKTeX 2.8\tex\latex\oberdiek\kvoptions.sty"
+Package: kvoptions 2009/08/13 v3.4 Keyval support for LaTeX options (HO)
+
+("C:\Program Files\MiKTeX 2.8\tex\generic\oberdiek\kvsetkeys.sty"
+Package: kvsetkeys 2009/07/30 v1.5 Key value parser with default handler suppor
+t (HO)
+))
+Package hyperref Info: Option `hyperindex' set `true' on input line 2864.
+Package hyperref Info: Option `colorlinks' set `true' on input line 2864.
+
+
+Package hyperref Warning: Option `pagecolor' is not available anymore.
+
+Package hyperref Info: Hyper figures OFF on input line 2975.
+Package hyperref Info: Link nesting OFF on input line 2980.
+Package hyperref Info: Hyper index ON on input line 2983.
+Package hyperref Info: Plain pages OFF on input line 2990.
+Package hyperref Info: Backreferencing ON on input line 2993.
+Implicit mode ON; LaTeX internals redefined
+Package hyperref Info: Bookmarks ON on input line 3191.
+("C:\Program Files\MiKTeX 2.8\tex\latex\hyperref\backref.sty"
+Package: backref 2006/09/05 v1.28 Bibliographical back referencing
+)
+("C:\Program Files\MiKTeX 2.8\tex\latex\ltxmisc\url.sty"
+\Urlmuskip=\muskip10
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 3428.
+
+("C:\Program Files\MiKTeX 2.8\tex\generic\oberdiek\bitset.sty"
+Package: bitset 2007/09/28 v1.0 Data type bit set (HO)
+
+("C:\Program Files\MiKTeX 2.8\tex\generic\oberdiek\intcalc.sty"
+Package: intcalc 2007/09/27 v1.1 Expandable integer calculations (HO)
+)
+("C:\Program Files\MiKTeX 2.8\tex\generic\oberdiek\bigintcalc.sty"
+Package: bigintcalc 2007/11/11 v1.1 Expandable big integer calculations (HO)
+
+("C:\Program Files\MiKTeX 2.8\tex\generic\oberdiek\pdftexcmds.sty"
+Package: pdftexcmds 2009/09/23 v0.6 LuaTeX support for pdfTeX utility functions
+ (HO)
+
+("C:\Program Files\MiKTeX 2.8\tex\generic\oberdiek\ifluatex.sty"
+Package: ifluatex 2009/04/17 v1.2 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+("C:\Program Files\MiKTeX 2.8\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2009/08/05 v1.0 Some LaTeX kernel commands for general use (HO
+)
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+)))
+\Fld@menulength=\count95
+\Field@Width=\dimen110
+\Fld@charsize=\dimen111
+\Field@toks=\toks15
+Package hyperref Info: Hyper figures OFF on input line 4377.
+Package hyperref Info: Link nesting OFF on input line 4382.
+Package hyperref Info: Hyper index ON on input line 4385.
+Package hyperref Info: backreferencing ON on input line 4390.
+Package hyperref Info: Link coloring ON on input line 4395.
+Package hyperref Info: Link coloring with OCG OFF on input line 4402.
+Package hyperref Info: PDF/A mode OFF on input line 4407.
+
+("C:\Program Files\MiKTeX 2.8\tex\generic\oberdiek\atbegshi.sty"
+Package: atbegshi 2008/07/31 v1.9 At begin shipout hook (HO)
+)
+\Hy@abspage=\count96
+\c@Item=\count97
+\c@Hfootnote=\count98
+)
+*hyperref using default driver hpdftex*
+("C:\Program Files\MiKTeX 2.8\tex\latex\hyperref\hpdftex.def"
+File: hpdftex.def 2009/10/19 v6.79b Hyperref driver for pdfTeX
+\Fld@listcount=\count99
+)
+("C:\Program Files\MiKTeX 2.8\tex\latex\ams\math\amsmath.sty"
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip49
+
+For additional information on amsmath, use the `?' option.
+("C:\Program Files\MiKTeX 2.8\tex\latex\ams\math\amstext.sty"
+Package: amstext 2000/06/29 v2.01
+
+("C:\Program Files\MiKTeX 2.8\tex\latex\ams\math\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks16
+\ex@=\dimen112
+))
+("C:\Program Files\MiKTeX 2.8\tex\latex\ams\math\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen113
+)
+("C:\Program Files\MiKTeX 2.8\tex\latex\ams\math\amsopn.sty"
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count100
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count101
+\leftroot@=\count102
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count103
+\DOTSCASE@=\count104
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen114
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count105
+\c@MaxMatrixCols=\count106
+\dotsspace@=\muskip11
+\c@parentequation=\count107
+\dspbrk@lvl=\count108
+\tag@help=\toks17
+\row@=\count109
+\column@=\count110
+\maxfields@=\count111
+\andhelp@=\toks18
+\eqnshift@=\dimen115
+\alignsep@=\dimen116
+\tagshift@=\dimen117
+\tagwidth@=\dimen118
+\totwidth@=\dimen119
+\lineht@=\dimen120
+\@envbody=\toks19
+\multlinegap=\skip50
+\multlinetaggap=\skip51
+\mathdisplay@stack=\toks20
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+)
+("C:\Program Files\MiKTeX 2.8\tex\latex\amsfonts\amsfonts.sty"
+Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
+)
+("C:\Program Files\MiKTeX 2.8\tex\latex\amsfonts\amssymb.sty"
+Package: amssymb 2009/06/22 v3.00
+)
+(C:\home\ThesisCode\tex\mac-gen.tex) (C:\home\ThesisCode\tex\mac-fem.tex)
+(C:\home\ThesisCode\tex\mac-vf.tex)
+\c@algorithm=\count112
+\c@acknowledgement=\count113
+\c@axiom=\count114
+\c@lemma=\count115
+\c@proof=\count116
+\c@case=\count117
+\c@claim=\count118
+\c@conclusion=\count119
+\c@condition=\count120
+\c@conjecture=\count121
+\c@criterion=\count122
+\c@example=\count123
+\c@exercise=\count124
+\c@notation=\count125
+\c@problem=\count126
+\c@remark=\count127
+\c@prop=\count128
+\c@define=\count129
+\c@solution=\count130
+\c@summary=\count131
+ (C:\home\ThesisCode\tex\thesis.aux
+(C:\home\ThesisCode\tex\acknow.aux) (C:\home\ThesisCode\tex\abstract.aux)
+(C:\home\ThesisCode\tex\introduction.aux) (C:\home\ThesisCode\tex\hammer.aux)
+(C:\home\ThesisCode\tex\model.aux) (C:\home\ThesisCode\tex\octree.aux)
+(C:\home\ThesisCode\tex\inverse.aux) (C:\home\ThesisCode\tex\results.aux))
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 137.
+LaTeX Font Info:    ... okay on input line 137.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 137.
+LaTeX Font Info:    ... okay on input line 137.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 137.
+LaTeX Font Info:    ... okay on input line 137.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 137.
+LaTeX Font Info:    ... okay on input line 137.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 137.
+LaTeX Font Info:    ... okay on input line 137.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 137.
+LaTeX Font Info:    ... okay on input line 137.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 137.
+LaTeX Font Info:    ... okay on input line 137.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 137.
+
+
+("C:\Program Files\MiKTeX 2.8\tex\latex\psnfss\ot1ptm.fd"
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+("C:\Program Files\MiKTeX 2.8\tex\context\base\supp-pdf.tex"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count132
+\scratchdimen=\dimen121
+\scratchbox=\box28
+\nofMPsegments=\count133
+\nofMParguments=\count134
+\everyMPshowfont=\toks21
+\MPscratchCnt=\count135
+\MPscratchDim=\dimen122
+\MPnumerator=\count136
+\everyMPtoPDFconversion=\toks22
+) ("C:\Program Files\MiKTeX 2.8\tex\latex\graphics\color.sty"
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+("C:\Program Files\MiKTeX 2.8\tex\latex\00miktex\color.cfg"
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 130.
+)
+Package hyperref Info: Link coloring ON on input line 137.
+
+("C:\Program Files\MiKTeX 2.8\tex\latex\hyperref\nameref.sty"
+Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
+
+("C:\Program Files\MiKTeX 2.8\tex\latex\oberdiek\refcount.sty"
+Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
+)
+\c@section@level=\count137
+)
+LaTeX Info: Redefining \ref on input line 137.
+LaTeX Info: Redefining \pageref on input line 137.
+
+(C:\home\ThesisCode\tex\thesis.out) (C:\home\ThesisCode\tex\thesis.out)
+\@outlinefile=\write3
+\AtBeginShipoutBox=\box29
+
+[1
+
+{C:/Documents and Settings/All Users/Application Data/MiKTeX/2.8/pdftex/config/
+pdftex.map}] [2]
+
+Package hyperref Warning: No destination for bookmark of \addcontentsline,
+(hyperref)                destination is added on input line 139.
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 139.
+No file acknow.tex.
+[3
+
+]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 139.
+ (C:\home\ThesisCode\tex\abstract.tex [4
+
+]) [5]
+(C:\home\ThesisCode\tex\thesis.toc
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
+LaTeX Font Info:    Try loading font information for U+msa on input line 6.
+
+("C:\Program Files\MiKTeX 2.8\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 6.
+
+("C:\Program Files\MiKTeX 2.8\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+) [6
+
+
+] [7])
+\tf@toc=\write4
+ [8]
+(C:\home\ThesisCode\tex\thesis.lof [9
+
+]
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 38.
+
+("C:\Program Files\MiKTeX 2.8\tex\latex\psnfss\ot1pcr.fd"
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+) [10] [11] [12]
+[13] [14] [15] [16])
+\tf@lof=\write5
+ [17] (C:\home\ThesisCode\tex\introduction.tex
+Chapter 1.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 4.
+[1
+
+
+] [2] [3] [4] [5] [6] [7]
+Overfull \hbox (2.09575pt too wide) in paragraph at lines 44--45
+\OT1/ptm/m/n/12 displacement-encoded stim-u-lated echo, the com-plex con-ju-gat
+e of the displacement-encoded
+ []
+
+[8] [9]) [10] (C:\home\ThesisCode\tex\hammer.tex
+Chapter 2.
+[11
+
+
+
+]
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 14.
+ ("C:\Program Files\MiKTeX 2.8\tex\latex\psnfss\omsptm.fd"
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 14.
+ [12]
+<images/mr.png, id=759, 165.79588pt x 165.79588pt>
+File: images/mr.png Graphic file (type png)
+ <use images/mr.png>
+<images/mr_tag.png, id=760, 513.92pt x 513.92pt>
+File: images/mr_tag.png Graphic file (type png)
+ <use images/mr_tag.png>
+<images/phase.png, id=761, 202.99368pt x 202.99368pt>
+File: images/phase.png Graphic file (type png)
+ <use images/phase.png>
+[13 <C:/home/ThesisCode/tex/images/mr.png (PNG copy)> <C:/home/ThesisCode/tex/i
+mages/mr_tag.png (PNG copy)> <C:/home/ThesisCode/tex/images/phase.png (PNG copy
+)>] [14] [15] [16]
+Overfull \hbox (2.81578pt too wide) in paragraph at lines 56--57
+\OT1/ptm/m/n/12 We con-struct the wavelet at-tribute vec-tors in a multi-resolu
+tion man-ner by tak-ing the wavelet
+ []
+
+[17] <images/wav/wav_const.png, id=832, 1810.765pt x 737.75626pt>
+File: images/wav/wav_const.png Graphic file (type png)
+
+<use images/wav/wav_const.png> [18 <C:/home/ThesisCode/tex/images/wav/wav_const
+.png>] <images/wav_local.png, id=839, 1082.0425pt x 919.435pt>
+File: images/wav_local.png Graphic file (type png)
+
+<use images/wav_local.png> [19 <C:/home/ThesisCode/tex/images/wav_local.png (PN
+G copy)>] <images/frame-01.png, id=847, 385.44pt x 345.29pt>
+File: images/frame-01.png Graphic file (type png)
+
+<use images/frame-01.png>
+Underfull \hbox (badness 1173) in paragraph at lines 103--103
+\OT1/ptm/m/n/10 points were se-lected, with the
+ []
+
+<images/frame-10.png, id=848, 383.4325pt x 344.28625pt>
+File: images/frame-10.png Graphic file (type png)
+
+<use images/frame-10.png> [20 <C:/home/ThesisCode/tex/images/frame-01.png (PNG 
+copy)> <C:/home/ThesisCode/tex/images/frame-10.png>]
+<images/wav-p1-01-t1.png, id=866, 527.72156pt x 403.5075pt>
+File: images/wav-p1-01-t1.png Graphic file (type png)
+
+<use images/wav-p1-01-t1.png>
+<images/wav-p1-01-y.png, id=867, 526.21594pt x 405.01312pt>
+File: images/wav-p1-01-y.png Graphic file (type png)
+
+<use images/wav-p1-01-y.png>
+Underfull \hbox (badness 3514) in paragraph at lines 155--155
+[]\OT1/ptm/m/n/10 (b) The sub-ject im-age, same
+ []
+
+<images/wav-p1-01-b.png, id=868, 526.96875pt x 406.51875pt>
+File: images/wav-p1-01-b.png Graphic file (type png)
+
+<use images/wav-p1-01-b.png>
+Underfull \hbox (badness 3849) in paragraph at lines 159--159
+[]\OT1/ptm/m/n/10 (c) The sub-ject im-age, same
+ []
+
+<images/wav-p1-06-01.png, id=869, 424.58624pt x 399.74344pt>
+File: images/wav-p1-06-01.png Graphic file (type png)
+
+<use images/wav-p1-06-01.png>
+Underfull \hbox (badness 3098) in paragraph at lines 167--167
+\OT1/ptm/m/n/10 shown fur-ther along
+ []
+
+<images/wav-p1-06-02.png, id=870, 423.83344pt x 399.74344pt>
+File: images/wav-p1-06-02.png Graphic file (type png)
+
+<use images/wav-p1-06-02.png>
+Underfull \hbox (badness 3098) in paragraph at lines 171--171
+\OT1/ptm/m/n/10 shown fur-ther along
+ []
+
+<images/wav-p1-06-03.png, id=871, 423.83344pt x 399.74344pt>
+File: images/wav-p1-06-03.png Graphic file (type png)
+
+<use images/wav-p1-06-03.png>
+Underfull \hbox (badness 3098) in paragraph at lines 175--175
+\OT1/ptm/m/n/10 shown fur-ther along
+ []
+
+<images/wav-p1-06-04.png, id=872, 423.83344pt x 399.74344pt>
+File: images/wav-p1-06-04.png Graphic file (type png)
+
+<use images/wav-p1-06-04.png>
+Underfull \hbox (badness 3098) in paragraph at lines 178--178
+\OT1/ptm/m/n/10 shown fur-ther along
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 178--178
+\OT1/ptm/m/n/10 car-diac cy-cle, the
+ []
+
+
+Underfull \hbox (badness 3108) in paragraph at lines 178--178
+\OT1/ptm/m/n/10 space are shown in
+ []
+
+[21] [22 <C:/home/ThesisCode/tex/images/wav-p1-01-t1.png (PNG copy)> <C:/home/T
+hesisCode/tex/images/wav-p1-01-y.png (PNG copy)> <C:/home/ThesisCode/tex/images
+/wav-p1-01-b.png (PNG copy)> <C:/home/ThesisCode/tex/images/wav-p1-06-01.png (P
+NG copy)> <C:/home/ThesisCode/tex/images/wav-p1-06-02.png (PNG copy)> <C:/home/
+ThesisCode/tex/images/wav-p1-06-03.png (PNG copy)> <C:/home/ThesisCode/tex/imag
+es/wav-p1-06-04.png (PNG copy)>]
+<images/dist_explain.png, id=890, 1082.0425pt x 919.435pt>
+File: images/dist_explain.png Graphic file (type png)
+
+<use images/dist_explain.png> [23 <C:/home/ThesisCode/tex/images/dist_explain.p
+ng>] <images/dist-a.pdf, id=897, 361.35pt x 347.2975pt>
+File: images/dist-a.pdf Graphic file (type pdf)
+
+<use images/dist-a.pdf> <images/dist-b.pdf, id=898, 361.35pt x 361.35pt>
+File: images/dist-b.pdf Graphic file (type pdf)
+
+<use images/dist-b.pdf> <images/dist-c.pdf, id=899, 361.35pt x 361.35pt>
+File: images/dist-c.pdf Graphic file (type pdf)
+
+<use images/dist-c.pdf> [24 <C:/home/ThesisCode/tex/images/dist-a.pdf> <C:/home
+/ThesisCode/tex/images/dist-b.pdf> <C:/home/ThesisCode/tex/images/dist-c.pdf>]
+<images/hari-dist2.png, id=946, 942.52126pt x 748.7975pt>
+File: images/hari-dist2.png Graphic file (type png)
+
+<use images/hari-dist2.png>
+<images/distinctiveness.png, id=947, 294.34969pt x 251.43938pt>
+File: images/distinctiveness.png Graphic file (type png)
+
+<use images/distinctiveness.png> [25] [26 <C:/home/ThesisCode/tex/images/hari-d
+ist2.png> <C:/home/ThesisCode/tex/images/distinctiveness.png (PNG copy)>]
+<images/motion-est.pdf, id=965, 614.295pt x 216.81pt>
+File: images/motion-est.pdf Graphic file (type pdf)
+
+<use images/motion-est.pdf> [27] [28 <C:/home/ThesisCode/tex/images/motion-est.
+pdf>] [29] [30]) [31] (C:\home\ThesisCode\tex\model.tex
+Chapter 3.
+[32
+
+
+
+] [33] <images/grays_3.jpg, id=1019, 752.8125pt x 478.03593pt>
+File: images/grays_3.jpg Graphic file (type jpg)
+
+<use images/grays_3.jpg>
+<images/grays_2.png, id=1020, 729.47531pt x 614.295pt>
+File: images/grays_2.png Graphic file (type png)
+
+<use images/grays_2.png> [34 <C:/home/ThesisCode/tex/images/grays_3.jpg> <C:/ho
+me/ThesisCode/tex/images/grays_2.png (PNG copy)>] [35]
+Overfull \hbox (9.71391pt too wide) in alignment at lines 89--101
+ [][][] []
+ []
+
+[36] [37] [38] [39]
+LaTeX Font Info:    Try loading font information for U+euf on input line 215.
+ ("C:\Program Files\MiKTeX 2.8\tex\latex\amsfonts\ueuf.fd"
+File: ueuf.fd 2009/06/22 v3.00 Euler Fraktur
+)
+Overfull \hbox (64.4257pt too wide) in alignment at lines 207--220
+ [][][] []
+ []
+
+
+Overfull \hbox (19.26685pt too wide) in alignment at lines 224--233
+ [][][] []
+ []
+
+[40] [41] [42] [43] <images/mat_prop.pdf, id=1105, 505.89pt x 440.64626pt>
+File: images/mat_prop.pdf Graphic file (type pdf)
+
+<use images/mat_prop.pdf> [44 <C:/home/ThesisCode/tex/images/mat_prop.pdf>]
+[45] <images/fibers3.png, id=1138, 1015.795pt x 887.315pt>
+File: images/fibers3.png Graphic file (type png)
+
+<use images/fibers3.png> [46 <C:/home/ThesisCode/tex/images/fibers3.png (PNG co
+py)>] [47] [48] [49] [50] <images/dot.png, id=1186, 268.00125pt x 253.94875pt>
+File: images/dot.png Graphic file (type png)
+
+<use images/dot.png>
+<images/pd_mapped_dti_2.png, id=1188, 1203.49625pt x 994.71625pt>
+File: images/pd_mapped_dti_2.png Graphic file (type png)
+
+<use images/pd_mapped_dti_2.png>
+<images/pd_mapped_dti_3.png, id=1189, 633.36626pt x 661.47125pt>
+File: images/pd_mapped_dti_3.png Graphic file (type png)
+
+<use images/pd_mapped_dti_3.png>
+<images/graph.pdf, id=1190, 614.295pt x 440.64626pt>
+File: images/graph.pdf Graphic file (type pdf)
+ <use images/graph.pdf>)
+[51] [52 <C:/home/ThesisCode/tex/images/dot.png (PNG copy)> <C:/home/ThesisCode
+/tex/images/pd_mapped_dti_2.png (PNG copy)> <C:/home/ThesisCode/tex/images/pd_m
+apped_dti_3.png (PNG copy)>] [53 <C:/home/ThesisCode/tex/images/graph.pdf>]
+(C:\home\ThesisCode\tex\octree.tex
+Chapter 4.
+[54
+
+
+
+] [55] [56] [57] <images/octLevels.pdf, id=1345, 394.06543pt x 310.47092pt>
+File: images/octLevels.pdf Graphic file (type pdf)
+
+<use images/octLevels.pdf>
+<images/linOct.pdf, id=1346, 259.25958pt x 258.71356pt>
+File: images/linOct.pdf Graphic file (type pdf)
+
+<use images/linOct.pdf> <images/balOct.pdf, id=1347, 225.643pt x 209.58301pt>
+File: images/balOct.pdf Graphic file (type pdf)
+
+<use images/balOct.pdf> [58] [59]
+<images/mortonInterleaving.pdf, id=1365, 159.15259pt x 218.43808pt>
+File: images/mortonInterleaving.pdf Graphic file (type pdf)
+
+<use images/mortonInterleaving.pdf> [60 <C:/home/ThesisCode/tex/images/octLevel
+s.pdf> <C:/home/ThesisCode/tex/images/linOct.pdf> <C:/home/ThesisCode/tex/image
+s/balOct.pdf>] [61 <C:/home/ThesisCode/tex/images/mortonInterleaving.pdf>]
+[62]
+Underfull \hbox (badness 10000) in paragraph at lines 405--407
+[]\OT1/ptm/m/sc/12 Constructing a com-plete lin-ear oc-tree from
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 405--407
+\OT1/ptm/m/sc/12 a dis-tributed list of points (par-al-lel) \OT1/pcr/m/n/12 - P
+oints2Octree
+ []
+
+[63] [64] <images/compReg.pdf, id=1439, 419.5675pt x 774.895pt>
+File: images/compReg.pdf Graphic file (type pdf)
+
+<use images/compReg.pdf>
+Underfull \hbox (badness 10000) in paragraph at lines 448--450
+[]\OT1/ptm/m/sc/12 Constructing a min-i-mal lin-ear oc-tree be-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 448--450
+\OT1/ptm/m/sc/12 tween two oc-tants (se-quen-tial) \OT1/pcr/m/n/12 - CompleteRe
+gion
+ []
+
+[65 <C:/home/ThesisCode/tex/images/compReg.pdf, page is rotated 90 degrees>]
+[66] <images/n2o.pdf, id=1465, 433.62pt x 824.07875pt>
+File: images/n2o.pdf Graphic file (type pdf)
+ <use images/n2o.pdf>
+Underfull \hbox (badness 10000) in paragraph at lines 506--508
+[]\OT1/ptm/m/sc/12 Constructing a com-plete lin-ear oc-tree from a par-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 506--508
+\OT1/ptm/m/sc/12 tial (in-com-plete) set of oc-tants (par-al-lel) \OT1/pcr/m/n/
+12 - CompleteOctree
+ []
+
+[67 <C:/home/ThesisCode/tex/images/n2o.pdf, page is rotated 90 degrees>]
+[68] <images/bPart.pdf, id=1492, 339.06674pt x 290.88673pt>
+File: images/bPart.pdf Graphic file (type pdf)
+
+<use images/bPart.pdf>
+<images/MortonPart.pdf, id=1493, 258.56902pt x 257.27318pt>
+File: images/MortonPart.pdf Graphic file (type pdf)
+
+<use images/MortonPart.pdf>
+<images/BlockPartDemo.pdf, id=1494, 258.56902pt x 257.9738pt>
+File: images/BlockPartDemo.pdf Graphic file (type pdf)
+
+<use images/BlockPartDemo.pdf> [69 <C:/home/ThesisCode/tex/images/bPart.pdf> <C
+:/home/ThesisCode/tex/images/MortonPart.pdf> <C:/home/ThesisCode/tex/images/Blo
+ckPartDemo.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 618--620
+[]\OT1/ptm/m/sc/12 Partitioning oc-tants into large con-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 618--620
+\OT1/ptm/m/sc/12 tigu-ous blocks (par-al-lel) \OT1/pcr/m/n/12 - BlockPartition
+ []
+
+
+Underfull \hbox (badness 3199) in paragraph at lines 649--651
+[]\OT1/ptm/m/sc/12 Partitioning a dis-tributed list of oc-tants (par-al-lel) \O
+T1/pcr/m/n/12 -
+ []
+
+
+Overfull \hbox (67.08pt too wide) in paragraph at lines 649--651
+\OT1/pcr/m/n/12 Partition [] 
+ []
+
+[70] [71] [72] [73] <images/indBalNh.pdf, id=1562, 317.185pt x 480.79625pt>
+File: images/indBalNh.pdf Graphic file (type pdf)
+
+<use images/indBalNh.pdf> [74] [75 <C:/home/ThesisCode/tex/images/indBalNh.pdf,
+ page is rotated 90 degrees>]
+Underfull \hbox (badness 10000) in paragraph at lines 796--798
+[]\OT1/ptm/m/sc/12 Constructing a com-plete bal-anced sub-tree of
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 796--798
+\OT1/ptm/m/sc/12 an oc-tant, given one of its de-scen-dants (se-quen-tial)
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 859--861
+[]\OT1/ptm/m/sc/12 Removing over-laps from a sorted
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 859--861
+\OT1/ptm/m/sc/12 list of oc-tants (se-quen-tial) \OT1/pcr/m/n/12 - Linearise
+ []
+
+[76] [77] [78] <images/searchN.pdf, id=1601, 221.82875pt x 599.23875pt>
+File: images/searchN.pdf Graphic file (type pdf)
+
+<use images/searchN.pdf> [79] [80 <C:/home/ThesisCode/tex/images/searchN.pdf, p
+age is rotated 90 degrees>]
+Underfull \hbox (badness 1406) in paragraph at lines 956--958
+[]\OT1/ptm/m/sc/12 Ripple prop-a-ga-tion on in-com-plete do-mains (se-quen-tial
+) \OT1/pcr/m/n/12 -
+ []
+
+
+Overfull \hbox (45.48001pt too wide) in paragraph at lines 956--958
+\OT1/pcr/m/n/12 Ripple [] 
+ []
+
+
+LaTeX Warning: Command \l invalid in math mode on input line 974.
+
+<images/balancedBoundary.pdf, id=1639, 113.02426pt x 98.24103pt>
+File: images/balancedBoundary.pdf Graphic file (type pdf)
+
+<use images/balancedBoundary.pdf>
+<images/insulation.pdf, id=1640, 146.46217pt x 170.64052pt>
+File: images/insulation.pdf Graphic file (type pdf)
+
+<use images/insulation.pdf> [81] [82] [83]
+Overfull \hbox (7.04025pt too wide) in paragraph at lines 1081--1101
+\OT1/ptm/m/n/12 After the intra-processor, and inter-block bound-aries are bal-
+anced, the inter-processor bound-
+ []
+
+[84 <C:/home/ThesisCode/tex/images/balancedBoundary.pdf> <C:/home/ThesisCode/te
+x/images/insulation.pdf>] <images/parBal.pdf, id=1689, 465.74pt x 676.5275pt>
+File: images/parBal.pdf Graphic file (type pdf)
+
+<use images/parBal.pdf>
+<images/commTwoStage.pdf, id=1690, 660.48459pt x 344.31335pt>
+File: images/commTwoStage.pdf Graphic file (type pdf)
+
+<use images/commTwoStage.pdf> [85 <C:/home/ThesisCode/tex/images/parBal.pdf, pa
+ge is rotated 90 degrees>] [86 <C:/home/ThesisCode/tex/images/commTwoStage.pdf>
+]
+Underfull \hbox (badness 10000) in paragraph at lines 1199--1201
+[]\OT1/ptm/m/sc/12 Balancing com-plete lin-ear oc-trees (par-al-lel)
+ []
+
+
+LaTeX Warning: Float too large for page by 15.59843pt on input line 1242.
+
+[87] [88] <images/numComm.pdf, id=1741, 172.645pt x 507.8975pt>
+File: images/numComm.pdf Graphic file (type pdf)
+
+<use images/numComm.pdf> [89] [90 <C:/home/ThesisCode/tex/images/numComm.pdf, p
+age is rotated 90 degrees>] [91] [92]
+<images/smy1.pdf, id=1780, 379.4175pt x 519.9425pt>
+File: images/smy1.pdf Graphic file (type pdf)
+ <use images/smy1.pdf>
+<images/smy4.pdf, id=1781, 380.42125pt x 489.83pt>
+File: images/smy4.pdf Graphic file (type pdf)
+ <use images/smy4.pdf>
+<images/smy8.pdf, id=1782, 380.42125pt x 493.845pt>
+File: images/smy8.pdf Graphic file (type pdf)
+ <use images/smy8.pdf>
+<images/smy16.pdf, id=1783, 382.42876pt x 493.845pt>
+File: images/smy16.pdf Graphic file (type pdf)
+ <use images/smy16.pdf>
+[93] [94 <C:/home/ThesisCode/tex/images/smy1.pdf, page is rotated 90 degrees> <
+C:/home/ThesisCode/tex/images/smy4.pdf, page is rotated 90 degrees> <C:/home/Th
+esisCode/tex/images/smy8.pdf, page is rotated 90 degrees> <C:/home/ThesisCode/t
+ex/images/smy16.pdf, page is rotated 90 degrees>] [95]
+<images/isoGran.pdf, id=1816, 1255.23961pt x 865.1221pt>
+File: images/isoGran.pdf Graphic file (type pdf)
+
+<use images/isoGran.pdf>
+<images/isoLN.pdf, id=1825, 1245.20212pt x 835.0096pt>
+File: images/isoLN.pdf Graphic file (type pdf)
+ <use images/isoLN.pdf>
+<images/isoRG.pdf, id=1834, 1245.20212pt x 835.0096pt>
+File: images/isoRG.pdf Graphic file (type pdf)
+ <use images/isoRG.pdf>
+<images/fs1.pdf, id=1846, 784.9325pt x 503.8825pt>
+File: images/fs1.pdf Graphic file (type pdf)
+ <use images/fs1.pdf>
+<images/fs32.pdf, id=1855, 815.045pt x 503.8825pt>
+File: images/fs32.pdf Graphic file (type pdf)
+ <use images/fs32.pdf>
+<images/fs128.pdf, id=1864, 815.045pt x 507.8975pt>
+File: images/fs128.pdf Graphic file (type pdf)
+ <use images/fs128.pdf>
+[96] [97 <C:/home/ThesisCode/tex/images/isoGran.pdf>] [98 <C:/home/ThesisCode/t
+ex/images/isoLN.pdf>] [99 <C:/home/ThesisCode/tex/images/isoRG.pdf>] [100 <C:/h
+ome/ThesisCode/tex/images/fs1.pdf>] [101 <C:/home/ThesisCode/tex/images/fs32.pd
+f>] [102 <C:/home/ThesisCode/tex/images/fs128.pdf>]
+<images/MortonZtypes.pdf, id=2029, 342.19102pt x 155.38853pt>
+File: images/MortonZtypes.pdf Graphic file (type pdf)
+
+<use images/MortonZtypes.pdf> [103] [104 <C:/home/ThesisCode/tex/images/MortonZ
+types.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 1812--1814
+[]\OT1/ptm/m/sc/12 Finding the lesser of two Mor-ton ids (se-quen-tial)
+ []
+
+[105] [106]) [107] (C:\home\ThesisCode\tex\inverse.tex
+Chapter 5.
+) [108
+
+
+
+] (C:\home\ThesisCode\tex\results.tex
+Chapter 6.
+) [109
+
+
+
+] (C:\home\ThesisCode\tex\thesis.bbl (C:\home\ThesisCode\tex\thesis.brf)
+\tf@brf=\write6
+
+[110
+
+
+] [111] [112] [113] [114] [115] [116] [117] [118] [119] [120] [121])
+[122] (C:\home\ThesisCode\tex\thesis.aux (C:\home\ThesisCode\tex\acknow.aux)
+(C:\home\ThesisCode\tex\abstract.aux) (C:\home\ThesisCode\tex\introduction.aux)
+(C:\home\ThesisCode\tex\hammer.aux) (C:\home\ThesisCode\tex\model.aux)
+(C:\home\ThesisCode\tex\octree.aux) (C:\home\ThesisCode\tex\inverse.aux)
+(C:\home\ThesisCode\tex\results.aux)) ) 
+Here is how much of TeX's memory you used:
+ 7582 strings out of 495285
+ 104326 string characters out of 3180342
+ 223962 words of memory out of 3000000
+ 10043 multiletter control sequences out of 15000+200000
+ 41481 words of font info for 104 fonts, out of 3000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 38i,13n,38p,3843b,526s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX 2.8/fonts/enc/d
+vips/fontname/8r.enc}<C:/Program Files/MiKTeX 2.8/fonts/type1/public/amsfonts/c
+m/cmbsy10.pfb><C:/Program Files/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmbx1
+0.pfb><C:/Program Files/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C
+:/Program Files/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmbx6.pfb><C:/Program
+ Files/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Program Files/Mi
+KTeX 2.8/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.8
+/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.8/fonts/t
+ype1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.8/fonts/type1/pub
+lic/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.8/fonts/type1/public/amsfo
+nts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cm
+mi8.pfb><C:/Program Files/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmmib10.pfb
+><C:/Program Files/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Prog
+ram Files/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files
+/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.
+8/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.8/fonts/ty
+pe1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.8/fonts/type1/publ
+ic/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.8/fonts/type1/public/amsfon
+ts/cm/cmtt12.pfb><C:/Program Files/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cm
+tt8.pfb><C:/Program Files/MiKTeX 2.8/fonts/type1/public/amsfonts/euler/eufm10.p
+fb><C:/Program Files/MiKTeX 2.8/fonts/type1/public/amsfonts/euler/eufm7.pfb><C:
+/Program Files/MiKTeX 2.8/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Pr
+ogram Files/MiKTeX 2.8/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Progr
+am Files/MiKTeX 2.8/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX
+ 2.8/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.8/fonts/type1/
+urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.8/fonts/type1/urw/times/utmri8a
+.pfb>
+Output written on thesis.pdf (139 pages, 6342402 bytes).
+PDF statistics:
+ 2498 PDF objects out of 2984 (max. 8388607)
+ 465 named destinations out of 1000 (max. 500000)
+ 745 words of extra memory for PDF output out of 10000 (max. 10000000)
+

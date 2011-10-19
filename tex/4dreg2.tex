@@ -1,0 +1,252 @@
+\documentclass{article}
+\usepackage{amsmath,epsfig,calc,capt-of,ifthen}
+
+%%%%%%%%%% Start TeXmacs macros
+\newcommand{\tmfloatcontents}{}
+\newlength{\tmfloatwidth}
+\newcommand{\tmfloat}[5]{
+  \renewcommand{\tmfloatcontents}{#4}
+  \setlength{\tmfloatwidth}{\widthof{\tmfloatcontents}+1in}
+  \ifthenelse{\equal{#2}{small}}
+    {\ifthenelse{\lengthtest{\tmfloatwidth > \linewidth}}
+      {\setlength{\tmfloatwidth}{\linewidth}}{}}
+    {\setlength{\tmfloatwidth}{\linewidth}}  \begin{minipage}[#1]{\tmfloatwidth}
+    \begin{center}
+      \tmfloatcontents
+      \captionof{#3}{#5}
+    \end{center}
+  \end{minipage}}
+\newcommand{\tmop}[1]{\operatorname{#1}}
+\newenvironment{itemizedot}
+  {\begin{itemize}\renewcommand{\labelitemi}{$\bullet$}\renewcommand{\labelitemii}{$\bullet$}\renewcommand{\labelitemiii}{$\bullet$}\renewcommand{\labelitemiv}{$\bullet$}}{\end{itemize}}
+\newenvironment{itemizearrow}
+  {\begin{itemize}\renewcommand{\labelitemi}{$\rightarrow$}\renewcommand{\labelitemii}{$\rightarrow$}\renewcommand{\labelitemiii}{$\rightarrow$}\renewcommand{\labelitemiv}{$\rightarrow$}}{\end{itemize}}
+\newcommand{\tmem}[1]{{\em #1\/}}
+%%%%%%%%%% End TeXmacs macros
+
+\begin{document}
+
+\section{4D Registration}
+
+We define two 4D sequences, the template $T$ and the subject $S$. The template
+can be extensively preprocessed as it is a one time process. The goal of this
+document is to formalize the 4D registration process starting from the two 4D
+sequences. The 4D registration problem formulation is shown graphically in
+figure 1.
+
+\tmfloat{h}{big}{figure}{\epsfig{file=}}{Formulation of the 4D registration
+problem}
+
+\subsection{Spatio-Temporal Affine Registration}
+
+We first perform an affine registration between the template and the subject.
+We solve for a full 3D (spatial) affine transformation and for a temporal
+translation and a scale. We do not permit rotation or shear between the
+spatial and temporal coordinates as it does not make physical sense. The
+process is done in three steps. Normalized mutual information is used as the
+similarity measure. First we estimate the 3D affine transformation $A (
+\vec{x} )$ by performing a 3D affine registration between the two end-diastole
+images. Once this is estimated we then estimate the temporal shift and scale
+of the subject with respect to the template, using the estimated spatial
+transformation. The temporal normalization aligns the two sequences and makes
+them both have the same number of frames. We follow this with a second set of
+spatial registration. The difference in this case is that the similarity is
+evaluated over all image pairs in the sequence. Since the temporal
+normalization has been performed, the image pairs correspond to each other. We
+iterate over the last two steps till they converge and we have the final 4D
+affine transformation.
+
+In the following steps it is assumed that the subject $S$ has been warped to
+the template space using the results of the affine registration. Both the
+sequences have $N$ frames each at the end of the affine registration.
+
+\subsection{Attribute Vector}
+
+The represent the attribute vector as $\vec{A} = ( \vec{W}, \vec{G} )$, where
+$\vec{W}$ is the wavelet attribute at location $( \vec{x}, t )$ and $\vec{G}$
+is the geometric attribute vector. The geometric attribute vector is made up
+of the image intensity at different scales, graident, and the edge distance
+transform.
+
+\subsection{Combined motion field extraction and 4D registration}
+
+We start with the images $T$ and $S$. Both are 4D image sequences and the
+intensity at any location $( \vec{x}, t )$ can be accessed by, $T ( \vec{x}, t
+)$ and $S ( \vec{x}, t )$. The attribute vector $\vec{A}$ at a given location
+$( \vec{x}, t )$  is made of the two components, $\vec{W}$ and $\vec{G}$,
+which are given by:
+\begin{description}
+  \item[Template] The wavelet attribute vector is represented by $\vec{W}_T (
+  \vec{x}, t ) \tmop{and} \tmop{the} \tmop{geometric} \tmop{attribute}
+  \tmop{vector} \tmop{by} \vec{G}_T ( \vec{x}, t )$.
+  
+  \item[Subject] The wavelet attribute vector is represented by $\vec{W}_S (
+  \vec{x}, t )$ and the geometric attribute vector by $\vec{G}_S ( \vec{x}, t
+  )$
+\end{description}
+We also define the following transformations:
+\begin{itemizedot}
+  \item $M_T ( \vec{x}, t )$: The motion field defined over the template
+  space. The transformation maps a point $\vec{x}$ in the end-diastole frame
+  of the template to its corresponding point in frame at time $t$.
+  
+  \item $M_S ( \vec{x}, t )$: The motion field defined over the subject space.
+  The transformation maps a point $\vec{x}$ in the end-diastole frame of the
+  subject to its corresponding point in frame at time $t$.
+  
+  \item $H_{T \leftarrow S} ( \vec{x}, t )$: The 4d transformation that maps a
+  point $( \vec{x}, t )$ from the subject to the template space.
+\end{itemizedot}
+These transformations are illustrated in figure 1.
+
+\subsubsection{Step 1: Estimating the Template Motion Field $M_T ( \vec{x}
+\text{}$, t)}
+
+This step needs to be done only once and can be done offline and the result
+can be stored. A sparse set of focus points $\vec{p} \in \Omega_T ( \vec{x} )$
+needs to be defined on the template. This can either be done by the user (one
+time on one volume) or using some feature extraction policy. These points are
+tracked through the entire sequence $T$ in order to determine the
+correspondances and estimate the motion field $M_T ( \vec{x}, t )$. We solve
+an energy minimization problem where we solve for the deformation vectors at
+each of these points at each time frame. The energy function that is minimized
+during this step is defined as:
+\[ E = E_W + E_{\tmop{Smooth}} + E_{\tmop{diffeo}} \]
+\begin{itemizearrow}
+  \item Similarity: This is the wavelet similarity term. The similarity is
+  computed between the wavelet attribute vectors at the point $M_T ( \vec{x},
+  t )$, $W_T \text{$( M_T ( \vec{x}, t ) )$}$ and at the point $M_T ( \vec{x},
+  t + 1 )$, $W_T ( M_T ( \vec{x}, t + 1 ) )$. The Energy function for
+  similarity is defined as
+  \[ E_W = \sum_{t = 0}^{N - 1} \sum_{\vec{x} \in \{ \vec{p} \}} \omega_{}_T (
+     \vec{x}, t ) \left( \sum_{\vec{z} \in n ( \vec{x}, 0 )} \varphi \left(
+     W_T ( M_T ( \vec{z}, t ) ), W_T ( M_T ( \vec{z}, t + 1 ) ) \right)
+     \right) \]
+  \item Smoothness: We wish to maintain a smooth path for all the points. We
+  add a second order smoothing term to the motions obtained. This adds to the
+  overall energy and defines the spatio-temporal smootheness of the motion
+  field. The level of spatial and temporal smoothing is controlled by the
+  parameters $\alpha$ and $\beta$. We define this energy as
+  \[ E_{\tmop{Smooth}} = \alpha \cdot \sum_{t = 0}^{N - 1} \sum_{\vec{x} \in
+     \{ \vec{p} \}} \| \frac{\partial^2 M_{_{} T} ( \vec{x}, t )}{\partial
+     \vec{x}^2} \| + \beta \cdot \sum_{\vec{x} \in \{ \vec{p} \}} \sum_{t =
+     0}^{N - 1} \| \frac{\partial^2 M_{_{} T} ( \vec{x}, t )}{\partial t^2} \|
+  \]
+  \item Spatial Diffeomorphic contraints: Impose diffeomorphic constraints by
+  triangulating the original set of points and making sure the deformation is
+  diffeomorphic. The energy function for the diffeomorphic constraint is
+  computed by assigning a very high penalty for each vertex in the modified
+  mesh that crosses over a facet in the tetrahedral mesh. Since we have other
+  smoothness terms, this test is fast and sufficient to ensure that topology
+  is not violated.
+\end{itemizearrow}
+We also impose constraint on the cyclic nature of the deformation. We impose a
+hard constraint on the deformations to return a point $\vec{x}$ to itself
+after the full cardiac cycle, i.e., $( \vec{x}, 0 ) = M_T ( \vec{x}, N )$.
+This is done by ensuring that during each step of the minimization,
+\[ \text{$\sum_{\vec{x} \in \{ \vec{p} \}} \| M_T ( \vec{x}, N ) - ( \vec{x},
+   0 ) \| = 0$} \]
+
+\subsubsection{Step 2: Combined estimation of 4D deformation field $H_{T
+\leftarrow S} ( \vec{x}, t )$ and subject motion field $M_S ( \vec{x}$,t)}
+
+The problem is again posed as one of minimizing an energy function. We define
+the various components of our energy function. We estimate the 4D deformation
+field and since the template motion field $M_T ( \vec{x}, t )$ is already
+known at this stage, we get the subject motion field from these two
+deformations. The energy function that our 4D registration algorithm minimizes
+is defined as follows:
+\[ E = E_F + E_B + E_C + E_{\tmop{SmoothM}} + E_{\tmop{SmoothH}} +
+   E_{\tmop{diffeo}} \]
+In order to make the registration independent of which of the two sequences
+are treated as the template, the energy function should be symmetrical to the
+two sequences being registered. Therefore we evaluate both the both the
+forward transformation $H_{T \leftarrow S} ( \vec{x}, t )$ and the backward
+transformation $H_{S \leftarrow T} ( \vec{x}, t ) = H_{T \leftarrow S}^{- 1} (
+\vec{x}, t )$ and force them to be consistent with each other. These two
+evaluations give rise to the forward and backward energy terms, $E_F$ and
+$E_B$, respectively. These terms are defined as:
+\begin{eqnarray*}
+  &  & E_F = \sum_{t = 0}^{N - 1} \sum_{\vec{x} \in \Omega_T ( \vec{x} )}
+  \gamma_{}_T ( \vec{x}, t ) \left( \sum_{( \vec{z}, \tau ) \in n ( \vec{x}, t
+  )} d \left( G_T ( \vec{z}, \tau ), G_S ( H_{S \leftarrow T} ( \vec{z}, \tau
+  ) ) \right) \right)
+\end{eqnarray*}
+\[ E_B = \sum_{t = 0}^{N - 1} \sum_{\vec{x} \in \Omega_S ( \vec{x} )}
+   \gamma_{}_S ( \vec{x}, t ) \left( \sum_{( \vec{z}, \tau ) \in n ( \vec{x},
+   t )} d \left( G_T ( H_{T \leftarrow S} ( \vec{z}, \tau ) ), G_S ( \vec{z},
+   \tau ) \right) \right)  \]
+We can obtain the subject motion field $M_S ( \vec{x}, t )$ in terms of the
+template motion field $M_T ( \vec{x}, t )$  and the 4D deformation $H_{T
+\leftarrow S} ( \vec{x}, t )$. This relation can be expressed as:
+\[ M_S ( \vec{x}, t ) = H_{S \leftarrow T} ( M_T ( H_{T \leftarrow S} (
+   \vec{x}, 0 ), t ) ) \]
+The next term in the energy function is added because in addition to
+maximizing the similarity between the subject and the template, we also need
+that the correspondance that is implied on the subject as a result is also
+correct. The third component in our energy function $E_C$ measures the
+attribute vector matching of corresponding points in different time frames of
+the subject $S ( \vec{x}, t )$. This term is similar to the wavelet similarity
+term defined in Step 1. We can write this as
+\[ E_C = \sum_{t = 0}^{N - 1} \sum_{\vec{x} \in \Omega_S ( \vec{x} )}
+   \omega_{}_S ( \vec{x}, t ) \left( \sum_{\vec{z} \in n ( \vec{x}, 0 )}
+   \varphi \left( W_S ( M_S ( \vec{z}, t ) ), W_S ( M_S ( \vec{z}, t + 1 ) )
+   \right) \right) \]
+The next two terms in the energy function are the smoothness terms. The
+spatio-temporal smoothness term $E_{\tmop{SmoothM}}$ is similar to the
+$E_{\tmop{Smooth}}$ term defined in Step 1, except that it is defined on the
+subject. This is imposed to ensure that the estimated motion field on the
+subject is spatio-temporally smooth. This can be written down as
+\[ E_{\tmop{SmoothM}} = \alpha \cdot \sum_{t = 0}^{N - 1} \sum_{\vec{x} \in
+   \Omega_S ( \vec{x} )} \| \frac{\partial^2 M_{_{} S} ( \vec{x}, t
+   )}{\partial \vec{x}^2} \| + \beta \cdot \sum_{\vec{x} \in \Omega_S (
+   \vec{x} )} \sum_{t = 0}^{N - 1} \| \frac{\partial^2 M_{_{} S} ( \vec{x}, t
+   )}{\partial t^2} \| \]
+The other smoothness term is the smoothness that needs to be enforced on the
+4D deformation $H_{S \leftarrow T} ( \vec{x}, t )$. We add a second order term
+here similar to the one added to smooth the motion field. This can be written
+as
+\[ E_{\tmop{SmoothH}} = \zeta \cdot \sum_{t = 0}^{N - 1} \sum_{\vec{x} \in \{
+   \vec{p} \}} \| \frac{\partial^2 H_{S \leftarrow_{} T} ( \vec{x}, t
+   )}{\partial \vec{x}^2} \| + \eta \cdot \sum_{\vec{x} \in \{ \vec{p} \}}
+   \sum_{t = 0}^{N - 1} \| \frac{\partial^2 H_{S \leftarrow_{} T} ( \vec{x}, t
+   )}{\partial t^2} \| \]
+The diffeomorphic constraint is again calculated by ensuring that the
+triangulated mesh transformed to the subject space does not violate topology.
+
+Unlike Step 1 where evaluation of the wavelet similarity term was done in the
+neighbourhood of focus points, we cannot guarantee that the subject also has
+``{\tmem{good}}'' focus points at the corrsponding locations. Therefore, it
+does not make sense to evaluate $E_C$ over the set of points $H_{T \leftarrow
+S} ( \vec{x}, t )$. We instead take a random sample of points and evaluate
+$E_C$ over these points. Since affine registration has been performed we can
+selectively pick a distribution of points concentrated largely on the
+myocardial area.
+
+As in Step 1 we again define a hard constraint on the cyclic nature of the
+deformation, this time on the subject. This can be written down as:
+\[ \text{$\text{$\sum_{\vec{x} \in \Omega_S ( \vec{x} )} \| M_S ( \vec{x}, N )
+   -_{} ( \vec{x}, 0 ) \| = 0$}$} \]
+
+\subsubsection{Definitions}
+
+\begin{description}
+  \item[$\gamma_T ( \vec{x}, t )$] The weights for the geometric attribute
+  vectors on the template.
+  
+  \item[$\gamma_S ( \vec{x}, t )$] The weights for the geometric attribute
+  vectors on the subject.
+  
+  \item[$\omega_T ( \vec{x}, t )$] The weights for the wavelet attribute
+  vectors on the template.
+  
+  \item[$\omega_S ( \vec{x}, t )$] The weights for the wavelet attribute
+  vectors on the subject.
+  
+  \item[$n ( \vec{x}, t )$]   The neighbourhood about a point ($\vec{x}, t )$.
+  
+  \item[$\varphi ( \cdot, \cdot )$]   The similarity between two attribute
+  vectors.
+\end{description}
+
+\end{document}
